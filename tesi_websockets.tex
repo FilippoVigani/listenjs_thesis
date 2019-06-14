@@ -1,0 +1,365 @@
+ %\documentclass[12pt,a4paper,oneside]{report}
+
+\documentclass[12pt,a4paper,openright]{report}
+
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+
+%\usepackage[latin1]{inputenc}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{natbib}
+\usepackage{newlfont}
+\usepackage{hyperref}
+\usepackage{url}
+
+\usepackage{framed,color,verbatim}
+\definecolor{shadecolor}{rgb}{.9, .9, .9}
+
+\newenvironment{code}%
+   {\snugshade\verbatim}%
+   {\endverbatim\endsnugshade}
+
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+%\usepackage{showkeys} serve per mostrare le etichette, va tolta per la versione definitiva;
+%\linespread{1.3}
+\oddsidemargin=0pt
+\textwidth= 450pt
+\hyphenation{} %serve per la sillabazione
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}\addtolength{\headwidth}{20pt}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
+\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+\cfoot{}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+						% Frontespizio
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+{{\Large{\textsc{Alma Mater Studiorum $\cdot$ Universit\`a di
+Bologna}}}} \rule[0.1cm]{15.8cm}{0.1mm}
+\rule[0.5cm]{15.8cm}{0.6mm}
+{\small{\bf SCUOLA DI SCIENZE\\
+  Corso di Laurea in Informatica }}
+  \end{center}
+  \vspace{40mm}
+  \begin{center}
+  {\LARGE{\bf Resource-centric push model over WebSockets}}\\
+  \end{center}
+  \vspace{40mm}
+  \par
+  \noindent
+  \begin{minipage}[t]{0.47\textwidth}
+  {\large{\bf Relatore:\\
+  Chiar.mo Prof.\\
+  Fabio Vitali}}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.47\textwidth}\raggedleft
+  {\large{\bf Presentata da:\\
+  Filippo Vigani}}
+  \end{minipage}
+  \vspace{30mm}
+  \begin{center}
+  {\large{\bf Sessione I\\%inserire il numero della sessione in cui ci si laurea
+  Anno Accademico 2018-2019}}%inserire l'anno accademico a cui si è iscritti
+  \end{center}
+  \end{titlepage}
+  \pagenumbering{roman}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  							% Dedica
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \cleardoublepage
+
+  \cleardoublepage
+  \thispagestyle{empty}
+  \vspace*{\stretch{1}}
+  \large                                  %aumenta la grandezza del carattere a 14pt
+  \begin{flushright}
+  \em
+  \itshape
+
+  \end{flushright}
+  \vspace{\stretch{2}}
+  \cleardoublepage
+
+
+  \afterpage{\blankpage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% Indice
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}\normalsize
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\tableofcontents
+\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
+INDICE}}
+
+\listoffigures
+\addcontentsline{toc}{chapter}{Lista delle figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% Introduzione
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Introduzione}
+\rhead[\fancyplain{}{\bfseries
+INTRODUZIONE}]{\fancyplain{}{\bfseries\thepage}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
+INTRODUZIONE}}
+\addcontentsline{toc}{chapter}{Introduzione}
+Quando si sviluppa un’applicazione web, si deve considerare che meccanismo di data delivery utilizzare. Spesso si vuole sviluppare un’applicazione che lavori con dati in tempo reale: può essere una dashboard con l’andamento di un mercato azionario, o una console di un servizio backend su cui lavorano più utenti, o ancora un semplice calendario condiviso per la gestione di appuntamenti.
+
+\bigskip
+
+Per molto tempo l’unica modalità per reperire i dati da un web browser è stata tramite client pull, ovvero il client si occupa di richiedere una risorsa, e richiedere se la risorsa stessa sia stata modificata.
+
+\bigskip
+
+Con l’implementazione dei websocket nella maggior parte dei browser, la situazione cambia. Si apre la possibilità di ricevere dati tramite server push, senza dover periodicamente richiedere una risorsa, ma lasciando al server l’onere di notificare i client dell’avvenuta modifica della risorsa.
+
+\bigskip
+
+Tuttavia i websocket rimangono un’implementazione di basso livello, e lavorarci su applicazioni di alto livello, dove l’architettura e la separation of concerns è un punto focale, risulta complesso.
+
+\bigskip
+
+La soluzione proposta permette in modo semplice ed intuitivo di rimanere in ascolto di una risorsa come se fosse un endpoint REST, e ogni qualvolta questa risorsa venga aggiornata, essere notificati del nuovo contenuto, senza doversi preoccupare di una gestione efficiente delle risorse.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% Background
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Background}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+\pagenumbering{arabic}
+
+Nello sviluppo di applicazioni web moderne spesso si ha la necessità di aggiornare parti dell’interfaccia in modo che rispecchino delle risorse non presenti localmente in tempo reale. Si pensi per esempio ad un’applicazione che deve visualizzare i dati dello stock market, o ad un social network, o ad un calendario per la gestione degli appuntamenti, o ancora ad una semplice dashboard di gestione aziendale. 
+
+\bigskip
+
+In tutti questi casi, poter vedere le modifiche effettuate da terzi sulle stesse risorse in real-time è essenziale o migliora di gran lunga la user experience. Le applicazioni real-time stanno gradualmente dominando l’internet in quanto forniscono un perfetto equilibrio di informazioni, funzionalità, contenuto e interattività che portano ad aumentare lo user engagement.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+			% Sviluppo app moderne real-time
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sviluppo app moderne real-time}\label{sec_appmoderne}
+
+Con applicazioni real-time intendiamo applicazioni che permettano di ricevere e visualizzare degli aggiornamenti che risiedono su un server nel minor tempo possibile. Da una definizione così banale, spuntano in realtà una serie di questioni importanti per quanto concerne sia le tecnologie per implementarle, che le tecniche utilizzate che la gestione delle risorse.
+
+\bigskip
+
+Gli sviluppatori web, fino a qualche anno fa, per ottenere dei risultati simili hanno dovuto sfruttare diverse tecniche che aggirassero le limitazioni dei browser. Infatti l’unico modo di ricevere dati per un browser era quello di inviare una richiesta al server, e ricevere una risposta. Ciò significa che il client non aveva modo di essere notificato in caso la risorsa richiesta venisse modificata.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+			% Client pull
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Client pull}\label{sec_clientpull}
+
+Questo stile di comunicazione ove la richiesta è originata dal client e risposta dal server è chiamato client pull. Il client pull forma la base per la comunicazione tra un browser e un server tramite il protocollo HTTP, e su di esso si sono costruiti una serie di stili architetturali per fornire interoperabilità tra web services in maniera prestabilita. Per esempio, uno degli stili più utilizzati è REST (REpresentational State Transfer), che stabilisce che i web services devono permettere ad altri sistemi di richiedere l’accesso o la manipolazione di rappresentazioni testuali di risorse web usando un insieme predefinito di operazioni stateless.
+
+\bigskip
+
+Un protocollo stateless prevede che il server non mantenga nessuna informazione riguardante la connessione attiva del client tra una richiesta e l’altra. Non mantenendo alcun tipo di informazione sulla sessione, ne consegue che per verificare se una risorsa è stata aggiornata rispetto a quella salvata da un browser in precedenza, è necessario richiedere la stessa risorsa e compararla con la precedente.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+		% Polling e long polling
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Polling e long polling}
+
+Una delle tecniche largamente utilizzate per verificare se una risorsa, web o meno, sia stata modificata è appunto richiedere la stessa risorsa a intervalli regolari, e confrontarla con la precedente. Questa tecnica nella letteratura è chiamata polling. Nell’ambito dei web services e di HTTP, si possono distinguere due tipi di polling: Polling semplice e long polling
+\begin{description}
+\item Nel \textbf{polling semplice} la risorsa viene richiesta periodicamente e il server risponde immediatamente con la risorsa richiesta. Ad un livello più basso, viene aperta una connessione, inviato un messaggio dal client al server contenente la richiesta, inviato un messaggio di risposta dal server al client contenente la risorsa, e la connessione viene chiusa. Successivamente, dopo un periodo di polling prestabilito, si ripete.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.5\textwidth]{assets/polling.png}
+\caption{Polling}
+\end{figure}
+
+\item Nel caso del \textbf{long polling}, invece, il client invia una richiesta ad una risorsa specifica. Il server, invece di rispondere immediatamente, tiene aperta la connessione fintanto che la risorsa non viene aggiornata o finché una soglia di timeout viene superata. Quando sono presenti nuovi dati, il server risponde alla richiesta chiudendo la connessione di conseguenza. Dopodiché il client richiede nuovamente la stessa risorsa e rimane in attesa.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.5\textwidth]{assets/long_polling.png}
+\caption{Long polling}
+\end{figure}
+
+A differenza del polling semplice, dove l’implementazione riguarda solo la parte client, e il server espone un semplice endpoint REST, nel long polling il server deve supportare questo tipo di interazione con il client. Infatti, oltre ad esporre un semplice endpoint REST, dovrà esporre un endpoint che si occupa di mantenere il client in attesa, ed inviare la risposta solo una volta che viene aggiornata la risorsa. Inoltre, dovrà gestire lo stato di connessioni multiple, ed implementare strategie per preservare lo stato delle sessioni quando si utilizzano più server e load balancers.
+
+\end{description}
+
+\subsection{Problematiche}
+Entrambe le tecniche di polling sono dei workaround dovute alle storiche limitazioni dei browser e di HTTP, e dunque presentano delle problematiche. 
+% Consumo di banda e traffico dati
+\subsubsection{Consumo di banda e traffico dati}
+Poiché il polling richiede ad intervalli regolari la stessa risorsa, spreca traffico dati per passare sia la richiesta della risorsa stessa, che per ricevere il payload effettivo. In particolare per ogni richiesta HTTP, deve essere stabilita una nuova connessione, si deve fare il parsing degli header HTTP, si deve presumibilmente reperire i dati da un database, e infine inviare i dati al client.
+
+% Ritardo
+\subsubsection{Ritardo}
+Per limitare questo consumo, si cerca di trovare un equilibrio riducendo la frequenza di poll. Ma così facendo, risulta che per ricevere un aggiornamento di una risorsa, il client potrebbe aspettare fino alla durata dell’intervallo di tempo tra una richiesta e la successiva.
+
+%%%%%%. Incoerenza dei dati
+\subsubsection{Incoerenza dei dati}
+Nel caso del long polling, la risorsa viene inviata presumibilmente appena subisce delle modifiche. Tuttavia nel lasso di tempo che passa tra quando il client riceve una risposta, ed effettua la nuova richiesta da tenere aperta, la risorsa stessa potrebbe essere modificata. In tal caso, il server non ha nessuna connessione in sospeso con il client, ed esso perderebbe l’aggiornamento. 
+
+%%%%%%. Performance e scalabilità
+\subsubsection{Performance e scalabilità}
+Con l’aumentare del numero di client connessi, il numero di richieste rapportate al tempo invece di incrementare linearmente si moltiplica, in quanto ogni client per la stessa risorsa non effettuerà una singola richiesta, ma richieste multiple. Ciò rende i sistemi che implementano supportano polling difficili da scalare e poco performanti.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+			% Server push
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Server push}\label{sec_serverpush}
+A differenza del client pull, il server push è uno stile di comunicazione che prevede che sia il server a inviare ad un client dei dati, senza che una richiesta venga inviata in precedenza da parte del client. I servizi che supportano server push, spesso si basano su delle preferenze espresse dal client in precedenza. Questo modello è chiamato publish/subscribe. Un client esprime di voler ricevere gli aggiornamenti ad una risorsa o “channel”, e il server si occupa di inviare la risorsa a tale channel ogni volta che viene modificata.
+
+\bigskip
+
+Prima di HTML5, non era possibile implementare un modello publish/subscribe che funzionasse sulle applicazioni web, se non tramite astrazioni basate su polling. Con l’arrivo di HTML living standard e diverse tecnologie web, è ora possibile implementare sistemi connection-based per lo scambio di dati in real-time.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+		% WebSockets
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{WebSockets}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% Listen JS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Listen JS}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+			% Struttura ad alto livello
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Struttura ad alto livello}\label{sec_struttura}
+
+\subsection{Libreria client}
+
+\subsection{Libreria server}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+			% Features
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Features}\label{sec_features}
+
+\subsection{Disconnection detection}
+
+\subsection{Reconnection}
+
+\subsection{Multiplexing}
+
+\subsection{Observer pattern across the stack}
+
+\subsection{Semplificazione utilizzo WebSocket}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+			% Struttura a basso livello
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Struttura a basso livello}\label{sec_struttura}
+
+\subsection{Architettura}
+E messaggi di scambio
+
+\subsection{Implementazione multiplexing}
+
+\subsection{Implementazione disconnection detection}
+
+\subsection{Implementazione reconnection}
+
+\subsection{Implementazione observer pattern}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+			% Applicazione di esempio
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Applicazione di esempio}\label{sec_applicazioneesempio}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% Valutazione
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Valutazione}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+			% Confronto tra XHR polling e WebSocket
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Confronto tra XHR polling e websockets}\label{sec_confrontopollingwebsockets}
+
+\subsection{Responsiveness}
+
+\subsection{Traffico dati}
+
+\subsection{User experience}
+Tradeoff
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+			% Valore aggiunto di Listen JS
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Valore aggiunto di Listen JS}\label{sec_valorelistenjs}
+
+\subsection{Utilizzo risorse e limitazioni browser}
+Limite socket aperti contemporaneamente
+
+\subsection{Immediatezza integrazione da parte di sviluppatori}
+
+\subsection{Architettura}
+Separation of Concerns
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+						% Conclusioni
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\chapter*{Conclusioni}
+\rhead[\fancyplain{}{\bfseries
+Conclusioni}]{\fancyplain{}{\bfseries\thepage}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
+Conclusioni}}
+\addcontentsline{toc}{chapter}{Conclusioni}
+
+Questo è un test di citazione \cite{websockets}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% Sviluppi futuri
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Sviluppi futuri}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% Bibliografia
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\rhead[\fancyplain{}{\bfseries
+Bibliografia}]{\fancyplain{}{\bfseries\thepage}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
+Bibliografia}}
+
+\bibliographystyle{plain}
+\bibliography{bibliografia}
+\addcontentsline{toc}{chapter}{Bibliografia}
+
+\end{document}
