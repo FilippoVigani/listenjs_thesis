@@ -21,7 +21,7 @@
 \definecolor{lightblue}{rgb}{0.1,0.57,0.7}
 \definecolor{lightred}{rgb}{1,0.4,0.5}
 
-% JavaScript
+% JavaScriptnpm sta
 \lstdefinelanguage{JavaScript}{
   keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, true, try, typeof, var, void, while, with, const, let},
   ndkeywords={class, export, boolean, throw, implements, import, this},
@@ -44,8 +44,10 @@
    showstringspaces=false,
    showspaces=false,
    numbers=left,
-   numberstyle=\footnotesize,
+   numberstyle=\tiny,
    numbersep=9pt,
+   frameround=tttt,
+   frame=single,
    tabsize=3,
    breaklines=true,
    showtabs=false,
@@ -252,6 +254,7 @@ Un esempio di utilizzo di polling client side potrebbe essere il seguente:
 \end{figure}
 
 \item Nel caso del \textbf{long polling}, conosciuto anche come \textit{hanging GET} o \textit{COMET}, invece, il client invia una richiesta ad una risorsa specifica. Il server, invece di rispondere immediatamente, tiene aperta la connessione fintanto che la risorsa non viene aggiornata o finché una soglia di timeout viene superata. Quando sono presenti nuovi dati, il server risponde alla richiesta chiudendo la connessione di conseguenza. Dopodiché il client richiede nuovamente la stessa risorsa e rimane in attesa.
+Questo flusso può essere implementato come l'esempio seguente:
 \lstinputlisting[caption=Client side XHR long polling example]{snippets/longpolling_sample.js}
 
 \begin{figure}[htbp]
@@ -296,9 +299,9 @@ Prima di HTML5, non era possibile implementare un modello publish/subscribe che 
     % Server Sent Events
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Server Sent Events}
-I Server Sent Events (SSE) sono una tecnologia push che permette ad un broswer di ricevere aggiornamenti da un server tramite una connessione HTTP. L'API che offre questa funzionalità, chiamata EventSource API, è standardizzata dal W3C come parte di HTML5.
+I Server Sent Events (SSE) sono una tecnologia push che permette ad un broswer di ricevere aggiornamenti da un server tramite una connessione HTTP tramite una comunicazione simplex\footnote{in un'unica direzione}. L'API che offre questa funzionalità, chiamata \textit{EventSource API}, è standardizzata dal W3C come parte di HTML5.
 
-Il flusso di una comunicazione basata su \textit{EventSource} è il seguente:
+Il flusso di una comunicazione basata su EventSource è il seguente\cite{eventsource_api}, sintetizzato in figura \ref{fig:server_sent_events}.
 
 \begin{enumerate}
   \item Il client tramite la chiamata API \verb|new EventSource('/api/myEndpoint')| apre una nuova connessione HTTP.
@@ -308,20 +311,47 @@ Il flusso di una comunicazione basata su \textit{EventSource} è il seguente:
   \item Il server può dunque inviare quando desidera un nuovo messaggio, finché la connessione non viene chiusa da una delle due parti.
 \end{enumerate}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=.5\textwidth]{assets/server_sent_events.png}
 \caption{Server Sent Events Flow}
+\label{fig:server_sent_events}
 \end{figure}
 
-La limitazione di questa tecnologia è che una volta aperta una connessione, il client non potrà sfruttare la stessa per inviare ulteriori messaggi. Ciò significa che per rimanere in ascolto di diverse risorse in instanti differenti, sarà necessario aprire più connessioni.
-Inoltre, al momento di questa stesura, nessuna versione di Internet Explorer e nessuna versione precedente alla 75 di Edge supportano i SSE.\cite{sse_support_caniuse}
+Un esempio di utilizzo di quest'API è il seguente:
+\lstinputlisting[caption=Client side EventSource example]{snippets/eventsource_sample.js}
+
+La limitazione di questa tecnologia è che una volta aperta una connessione, il client non potrà sfruttare la stessa per inviare ulteriori messaggi. Ciò significa che per rimanere in ascolto di diverse risorse in instanti differenti, sarà necessario aprire più connessioni. Se invece il server supporta HTTP/2, SSE potrà sfruttare il multiplexing offerto da HTTP/2 automaticamente.
+Inoltre, al momento di questa stesura, nessuna versione di Internet Explorer e nessuna versione precedente alla 75 di Edge supportano i SSE\cite{sse_support_caniuse}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 		% WebSockets
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{WebSockets}
+I WebSocket sono un protocollo che permette una comunicazione full-duplex\footnote{in entrambe le direzioni e contemporaneamente} mediante una singola connessione TCP.
+L'RFC 6455 afferma che WebSocket è progettato in modo da funzionare attraverso le porte HTTP 80 e 433 e di supportare proxy e intermediari HTTP, rendendolo dunque compatibile con il protocollo HTTP\cite{websockets_rfc}. Per poter essere compatibile, l'handshake tramite WebSocket fa uso dell'header \verb|Upgrade| di HTTP per cambiare protocollo da HTTP a WebSocket. Ciò è possibile perché entrambi i protocolli fanno parte dell'application layer nel modello OSI e dipendono da TCP.
 
+\bigskip
+
+Nei browser i WebSocket possono essere utilizzati mediante la \textit{WebSocket API}, anch'essa presente nell'HTML Living Standard di WHATWG.
+Il flusso di comunicazione basato su WebSocket può essere espresso come segue\cite{websockets} ed illustrato in figura \ref{fig:websockets}:
+\begin{enumerate}
+  \item Il client tramite la chiamata API \verb|new WebSocket('/api/myEndpoint')| apre una nuova connessione HTTP, specificando nella richiesta gli header \verb|Upgrade: WebSocket| e \verb|Connection: Upgrade|.
+  \item Il client registra le callback agli eventi \verb|onmessage|, \verb|onopen|, \verb|onclose| e \verb|onerror|.
+  \item Il server risponde alla richiesta con codice \verb|101 Switching Protocols| e gestisce il socket aperto tramite protocollo WebSocket.
+  \item Il client e il server possono finalmente scambiarsi messaggi in entrambe le direzioni.
+\end{enumerate}
+L'implementazione è molto simile a quella dei Server Sent Events:
+\lstinputlisting[caption=Client side WebSocket example]{snippets/websocket_sample.js}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=.5\textwidth]{assets/websockets.png}
+\caption{WebSockets Flow}
+\label{fig:websockets}
+\end{figure}
+I WebSocket sono supportati da tutti i browser moderni. 
+Sfortunatamente al momento della stesura non è possibile comunicare con i WebSocket tramite HTTP/2, in quanto non dispone di del meccanismo di Upgrade di HTTP/1.1. Tuttavia i browser si stanno adoperando a supportare l'apertura di una comunicazione attraverso WebSocket su HTTP/2 seguendo il recente RCF 8441\cite{websockets_http2_rfc}. Ciò porterà a poter sfruttare il multiplexing offerto da HTTP/2 automaticamente anche con i WebSocket.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Listen JS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -412,8 +442,6 @@ Conclusioni}]{\fancyplain{}{\bfseries\thepage}}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
 Conclusioni}}
 \addcontentsline{toc}{chapter}{Conclusioni}
-
-Questo è un test di citazione \cite{websockets}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Sviluppi futuri

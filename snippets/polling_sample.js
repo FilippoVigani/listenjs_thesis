@@ -7,13 +7,20 @@ setTimeout(() => {
 
 function fetchAppointmentsAndUpdateUI(){
 	fetch('/api/appointments')
-	.then( response => {
+	.then(response => {
+		/* Parse response */
 		return response.json()
 	})
-	.then( appointments => {
+	.then(appointments => {
 		/* Update UI */
 		this.setState({
 			appointments: appointments
+		})
+	})
+	.catch(error => {
+		/* Handle error */
+		this.setState({
+			error: error
 		})
 	})
 }

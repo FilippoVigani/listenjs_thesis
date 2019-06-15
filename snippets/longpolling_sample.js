@@ -14,4 +14,10 @@ function fetchAppointmentsAndUpdateUI(){
 		/* Restart long polling */
 		fetchAppointmentsAndUpdateUI()
 	})
+	.catch(error => {
+		/* Handle error */
+		this.setState({
+			error: error
+		})
+	})
 }

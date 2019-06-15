@@ -3,7 +3,8 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Polling}}{3}{figure.1.1}% 
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Long polling}}{4}{figure.1.2}% 
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Server Sent Events Flow}}{6}{figure.1.3}% 
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Server Sent Events Flow}}{7}{figure.1.3}% 
+\contentsline {figure}{\numberline {1.4}{\ignorespaces WebSockets Flow}}{9}{figure.1.4}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

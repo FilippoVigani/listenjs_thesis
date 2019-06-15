@@ -6,40 +6,40 @@
 \contentsline {section}{\numberline {1.1}Sviluppo app moderne real-time}{1}{section.1.1}% 
 \contentsline {section}{\numberline {1.2}Client pull}{2}{section.1.2}% 
 \contentsline {subsection}{\numberline {1.2.1}Polling e long polling}{2}{subsection.1.2.1}% 
-\contentsline {subsection}{\numberline {1.2.2}Problematiche}{4}{subsection.1.2.2}% 
+\contentsline {subsection}{\numberline {1.2.2}Problematiche}{5}{subsection.1.2.2}% 
 \contentsline {subsubsection}{Consumo di banda e traffico dati}{5}{section*.4}% 
 \contentsline {subsubsection}{Ritardo}{5}{section*.5}% 
 \contentsline {subsubsection}{Incoerenza dei dati}{5}{section*.6}% 
 \contentsline {subsubsection}{Performance e scalabilit\IeC {\`a}}{5}{section*.7}% 
-\contentsline {section}{\numberline {1.3}Server push}{5}{section.1.3}% 
+\contentsline {section}{\numberline {1.3}Server push}{6}{section.1.3}% 
 \contentsline {subsection}{\numberline {1.3.1}Server Sent Events}{6}{subsection.1.3.1}% 
-\contentsline {subsection}{\numberline {1.3.2}WebSockets}{6}{subsection.1.3.2}% 
-\contentsline {chapter}{\numberline {2}Listen JS}{7}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Struttura ad alto livello}{7}{section.2.1}% 
-\contentsline {subsection}{\numberline {2.1.1}Libreria client}{7}{subsection.2.1.1}% 
-\contentsline {subsection}{\numberline {2.1.2}Libreria server}{7}{subsection.2.1.2}% 
-\contentsline {section}{\numberline {2.2}Features}{7}{section.2.2}% 
-\contentsline {subsection}{\numberline {2.2.1}Disconnection detection}{7}{subsection.2.2.1}% 
-\contentsline {subsection}{\numberline {2.2.2}Reconnection}{7}{subsection.2.2.2}% 
-\contentsline {subsection}{\numberline {2.2.3}Multiplexing}{7}{subsection.2.2.3}% 
-\contentsline {subsection}{\numberline {2.2.4}Observer pattern across the stack}{7}{subsection.2.2.4}% 
-\contentsline {subsection}{\numberline {2.2.5}Semplificazione utilizzo WebSocket}{7}{subsection.2.2.5}% 
-\contentsline {section}{\numberline {2.3}Struttura a basso livello}{7}{section.2.3}% 
-\contentsline {subsection}{\numberline {2.3.1}Architettura}{7}{subsection.2.3.1}% 
-\contentsline {subsection}{\numberline {2.3.2}Implementazione multiplexing}{8}{subsection.2.3.2}% 
-\contentsline {subsection}{\numberline {2.3.3}Implementazione disconnection detection}{8}{subsection.2.3.3}% 
-\contentsline {subsection}{\numberline {2.3.4}Implementazione reconnection}{8}{subsection.2.3.4}% 
-\contentsline {subsection}{\numberline {2.3.5}Implementazione observer pattern}{8}{subsection.2.3.5}% 
-\contentsline {section}{\numberline {2.4}Applicazione di esempio}{8}{section.2.4}% 
-\contentsline {chapter}{\numberline {3}Valutazione}{9}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Confronto tra XHR polling e websockets}{9}{section.3.1}% 
-\contentsline {subsection}{\numberline {3.1.1}Responsiveness}{9}{subsection.3.1.1}% 
-\contentsline {subsection}{\numberline {3.1.2}Traffico dati}{9}{subsection.3.1.2}% 
-\contentsline {subsection}{\numberline {3.1.3}User experience}{9}{subsection.3.1.3}% 
-\contentsline {section}{\numberline {3.2}Valore aggiunto di Listen JS}{9}{section.3.2}% 
-\contentsline {subsection}{\numberline {3.2.1}Utilizzo risorse e limitazioni browser}{9}{subsection.3.2.1}% 
-\contentsline {subsection}{\numberline {3.2.2}Immediatezza integrazione da parte di sviluppatori}{9}{subsection.3.2.2}% 
-\contentsline {subsection}{\numberline {3.2.3}Architettura}{9}{subsection.3.2.3}% 
-\contentsline {chapter}{Conclusioni}{10}{chapter*.8}% 
-\contentsline {chapter}{\numberline {4}Sviluppi futuri}{11}{chapter.4}% 
-\contentsline {chapter}{Bibliografia}{12}{chapter*.9}% 
+\contentsline {subsection}{\numberline {1.3.2}WebSockets}{7}{subsection.1.3.2}% 
+\contentsline {chapter}{\numberline {2}Listen JS}{10}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Struttura ad alto livello}{10}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}Libreria client}{10}{subsection.2.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}Libreria server}{10}{subsection.2.1.2}% 
+\contentsline {section}{\numberline {2.2}Features}{10}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Disconnection detection}{10}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}Reconnection}{10}{subsection.2.2.2}% 
+\contentsline {subsection}{\numberline {2.2.3}Multiplexing}{10}{subsection.2.2.3}% 
+\contentsline {subsection}{\numberline {2.2.4}Observer pattern across the stack}{10}{subsection.2.2.4}% 
+\contentsline {subsection}{\numberline {2.2.5}Semplificazione utilizzo WebSocket}{10}{subsection.2.2.5}% 
+\contentsline {section}{\numberline {2.3}Struttura a basso livello}{10}{section.2.3}% 
+\contentsline {subsection}{\numberline {2.3.1}Architettura}{10}{subsection.2.3.1}% 
+\contentsline {subsection}{\numberline {2.3.2}Implementazione multiplexing}{11}{subsection.2.3.2}% 
+\contentsline {subsection}{\numberline {2.3.3}Implementazione disconnection detection}{11}{subsection.2.3.3}% 
+\contentsline {subsection}{\numberline {2.3.4}Implementazione reconnection}{11}{subsection.2.3.4}% 
+\contentsline {subsection}{\numberline {2.3.5}Implementazione observer pattern}{11}{subsection.2.3.5}% 
+\contentsline {section}{\numberline {2.4}Applicazione di esempio}{11}{section.2.4}% 
+\contentsline {chapter}{\numberline {3}Valutazione}{12}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Confronto tra XHR polling e websockets}{12}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}Responsiveness}{12}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}Traffico dati}{12}{subsection.3.1.2}% 
+\contentsline {subsection}{\numberline {3.1.3}User experience}{12}{subsection.3.1.3}% 
+\contentsline {section}{\numberline {3.2}Valore aggiunto di Listen JS}{12}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Utilizzo risorse e limitazioni browser}{12}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}Immediatezza integrazione da parte di sviluppatori}{12}{subsection.3.2.2}% 
+\contentsline {subsection}{\numberline {3.2.3}Architettura}{12}{subsection.3.2.3}% 
+\contentsline {chapter}{Conclusioni}{13}{chapter*.8}% 
+\contentsline {chapter}{\numberline {4}Sviluppi futuri}{14}{chapter.4}% 
+\contentsline {chapter}{Bibliografia}{15}{chapter*.9}% 

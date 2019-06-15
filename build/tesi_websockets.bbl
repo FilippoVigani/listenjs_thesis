@@ -1,12 +1,29 @@
 \begin{thebibliography}{1}
 
 \bibitem{sse_support_caniuse}
-{Server Sent Events}.
+{Server Sent Events Support}.
 \newblock \url{https://caniuse.com/#search=server%20sent%20events}.
 
+\bibitem{websockets_rfc}
+{I. Fette and A. Melnikov}.
+\newblock {The WebSocket Protocol}.
+\newblock {RFC} {6455}, {RFC Editor}, {December} {2011}.
+
 \bibitem{websockets}
-{WebSockets - MDN}.
+{MDN}.
+\newblock {WebSockets}.
 \newblock
   \url{https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API}.
+
+\bibitem{websockets_http2_rfc}
+{P. McManus}.
+\newblock {Bootstrapping WebSockets with HTTP/2}.
+\newblock {RFC} {8441}, {RFC Editor}, {September} {2018}.
+
+\bibitem{eventsource_api}
+{WHATWG}.
+\newblock {Server-Sent Events}.
+\newblock
+  \url{https://html.spec.whatwg.org/multipage/server-sent-events.html#server-sent-events}.
 
 \end{thebibliography}
