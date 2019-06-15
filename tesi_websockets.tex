@@ -6,6 +6,51 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
+\usepackage{upquote}
+\usepackage{framed,xcolor,verbatim}
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
+\definecolor{editorGray}{rgb}{0.98, 0.98, 0.98}
+\definecolor{editorOcher}{HTML}{FF7F00}
+\definecolor{green}{HTML}{0D9E0D}
+\definecolor{orange}{HTML}{CF7B2F}
+\definecolor{red}{HTML}{D53235}
+\definecolor{olive}{rgb}{0.17,0.59,0.20}
+\definecolor{brown}{rgb}{0.69,0.31,0.31}
+\definecolor{purple}{HTML}{BC5298}
+\definecolor{lightblue}{rgb}{0.1,0.57,0.7}
+\definecolor{lightred}{rgb}{1,0.4,0.5}
+
+% JavaScript
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, true, try, typeof, var, void, while, with, const, let},
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]//,
+  morestring=[b]",
+  morestring=[b]',
+  % Code design
+  identifierstyle=\color{black},
+  keywordstyle=\color{purple}\bfseries,
+  ndkeywordstyle=\color{red}\bfseries,
+  stringstyle=\color{green}\ttfamily,
+  commentstyle=\color{darkgray}\ttfamily,
+}
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{editorGray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=3,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
 
 %\usepackage[latin1]{inputenc}
 \usepackage{indentfirst}
@@ -15,7 +60,6 @@
 \usepackage{hyperref}
 \usepackage{url}
 
-\usepackage{framed,color,verbatim}
 \definecolor{shadecolor}{rgb}{.9, .9, .9}
 
 \newenvironment{code}%
@@ -184,7 +228,7 @@ Gli sviluppatori web, fino a qualche anno fa, per ottenere dei risultati simili 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Client pull}\label{sec_clientpull}
 
-Questo stile di comunicazione ove la richiesta è originata dal client e risposta dal server è chiamato client pull. Il client pull forma la base per la comunicazione tra un browser e un server tramite il protocollo HTTP, e su di esso si sono costruiti una serie di stili architetturali per fornire interoperabilità tra web services in maniera prestabilita. Per esempio, uno degli stili più utilizzati è REST (REpresentational State Transfer), che stabilisce che i web services devono permettere ad altri sistemi di richiedere l’accesso o la manipolazione di rappresentazioni testuali di risorse web usando un insieme predefinito di operazioni stateless.
+Questo stile di comunicazione ove la richiesta è originata dal client e risposta dal server è chiamato \textit{client pull}. Il client pull forma la base per la comunicazione tra un browser e un server tramite il protocollo HTTP, e su di esso si sono costruiti una serie di stili architetturali per fornire interoperabilità tra web services in maniera prestabilita. Per esempio, uno degli stili più utilizzati è REST (REpresentational State Transfer), che stabilisce che i web services devono permettere ad altri sistemi di richiedere l’accesso o la manipolazione di rappresentazioni testuali di risorse web usando un insieme predefinito di operazioni stateless.
 
 \bigskip
 
@@ -198,6 +242,8 @@ Un protocollo stateless prevede che il server non mantenga nessuna informazione 
 Una delle tecniche largamente utilizzate per verificare se una risorsa, web o meno, sia stata modificata è appunto richiedere la stessa risorsa a intervalli regolari, e confrontarla con la precedente. Questa tecnica nella letteratura è chiamata polling. Nell’ambito dei web services e di HTTP, si possono distinguere due tipi di polling: Polling semplice e long polling
 \begin{description}
 \item Nel \textbf{polling semplice} la risorsa viene richiesta periodicamente e il server risponde immediatamente con la risorsa richiesta. Ad un livello più basso, viene aperta una connessione, inviato un messaggio dal client al server contenente la richiesta, inviato un messaggio di risposta dal server al client contenente la risorsa, e la connessione viene chiusa. Successivamente, dopo un periodo di polling prestabilito, si ripete.
+Un esempio di utilizzo di polling client side potrebbe essere il seguente:
+\lstinputlisting[caption=Client side XHR polling example]{snippets/polling_sample.js}
 
 \begin{figure}[htbp]
 \centering
@@ -205,7 +251,8 @@ Una delle tecniche largamente utilizzate per verificare se una risorsa, web o me
 \caption{Polling}
 \end{figure}
 
-\item Nel caso del \textbf{long polling}, invece, il client invia una richiesta ad una risorsa specifica. Il server, invece di rispondere immediatamente, tiene aperta la connessione fintanto che la risorsa non viene aggiornata o finché una soglia di timeout viene superata. Quando sono presenti nuovi dati, il server risponde alla richiesta chiudendo la connessione di conseguenza. Dopodiché il client richiede nuovamente la stessa risorsa e rimane in attesa.
+\item Nel caso del \textbf{long polling}, conosciuto anche come \textit{hanging GET} o \textit{COMET}, invece, il client invia una richiesta ad una risorsa specifica. Il server, invece di rispondere immediatamente, tiene aperta la connessione fintanto che la risorsa non viene aggiornata o finché una soglia di timeout viene superata. Quando sono presenti nuovi dati, il server risponde alla richiesta chiudendo la connessione di conseguenza. Dopodiché il client richiede nuovamente la stessa risorsa e rimane in attesa.
+\lstinputlisting[caption=Client side XHR long polling example]{snippets/longpolling_sample.js}
 
 \begin{figure}[htbp]
 \centering
@@ -246,6 +293,31 @@ A differenza del client pull, il server push è uno stile di comunicazione che p
 Prima di HTML5, non era possibile implementare un modello publish/subscribe che funzionasse sulle applicazioni web, se non tramite astrazioni basate su polling. Con l’arrivo di HTML living standard e diverse tecnologie web, è ora possibile implementare sistemi connection-based per lo scambio di dati in real-time.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
+    % Server Sent Events
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Server Sent Events}
+I Server Sent Events (SSE) sono una tecnologia push che permette ad un broswer di ricevere aggiornamenti da un server tramite una connessione HTTP. L'API che offre questa funzionalità, chiamata EventSource API, è standardizzata dal W3C come parte di HTML5.
+
+Il flusso di una comunicazione basata su \textit{EventSource} è il seguente:
+
+\begin{enumerate}
+  \item Il client tramite la chiamata API \verb|new EventSource('/api/myEndpoint')| apre una nuova connessione HTTP.
+  \item Il client registra le callback agli eventi \verb|onmessage|, \verb|onopen| e \verb|onerror|.
+  \item Il server risponde alla prima richiesta specificando nell'header \verb|Content-Type| il tipo \verb|text/event-stream|.
+  \item Il client, se supporta la EventSource API, mantiene la connessione aperta in attesa di nuovi messaggi.
+  \item Il server può dunque inviare quando desidera un nuovo messaggio, finché la connessione non viene chiusa da una delle due parti.
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.5\textwidth]{assets/server_sent_events.png}
+\caption{Server Sent Events Flow}
+\end{figure}
+
+La limitazione di questa tecnologia è che una volta aperta una connessione, il client non potrà sfruttare la stessa per inviare ulteriori messaggi. Ciò significa che per rimanere in ascolto di diverse risorse in instanti differenti, sarà necessario aprire più connessioni.
+Inoltre, al momento di questa stesura, nessuna versione di Internet Explorer e nessuna versione precedente alla 75 di Edge supportano i SSE.\cite{sse_support_caniuse}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
 		% WebSockets
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{WebSockets}
@@ -258,7 +330,7 @@ Prima di HTML5, non era possibile implementare un modello publish/subscribe che 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Struttura ad alto livello
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Struttura ad alto livello}\label{sec_struttura}
+\section{Struttura ad alto livello}\label{sec_struttura_alto_livello}
 
 \subsection{Libreria client}
 
@@ -282,7 +354,7 @@ Prima di HTML5, non era possibile implementare un modello publish/subscribe che 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Struttura a basso livello
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Struttura a basso livello}\label{sec_struttura}
+\section{Struttura a basso livello}\label{sec_struttura_basso_livello}
 
 \subsection{Architettura}
 E messaggi di scambio

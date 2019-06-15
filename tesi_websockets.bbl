@@ -1,0 +1,12 @@
+\begin{thebibliography}{1}
+
+\bibitem{sse_support_caniuse}
+{Server Sent Events}.
+\newblock \url{https://caniuse.com/#search=server%20sent%20events}.
+
+\bibitem{websockets}
+{WebSockets - MDN}.
+\newblock
+  \url{https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API}.
+
+\end{thebibliography}
