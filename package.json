@@ -4,7 +4,7 @@
   "description": "",
   "main": "tesi_websockets.pdf",
   "scripts": {
-    "start": "pdflatex tesi_websockets && bibtex tesi_websockets && pdflatex tesi_websockets && pdflatex tesi_websockets && start tesi_websockets.pdf"
+    "start": "pdflatex -output-directory=build ./tesi_websockets && bibtex ./build/tesi_websockets && pdflatex -output-directory=build ./tesi_websockets && pdflatex -output-directory=build ./tesi_websockets && start ./build/tesi_websockets.pdf"
   },
   "repository": {
     "type": "git",
