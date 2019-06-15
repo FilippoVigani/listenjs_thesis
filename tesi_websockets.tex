@@ -28,6 +28,7 @@
   morecomment=[s]{/*}{*/},
   morecomment=[l]//,
   morestring=[b]",
+  morestring=[b]`,
   morestring=[b]',
   % Code design
   identifierstyle=\color{black},
@@ -299,14 +300,14 @@ Prima di HTML5, non era possibile implementare un modello publish/subscribe che 
     % Server Sent Events
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Server Sent Events}
-I Server Sent Events (SSE) sono una tecnologia push che permette ad un broswer di ricevere aggiornamenti da un server tramite una connessione HTTP tramite una comunicazione simplex\footnote{in un'unica direzione}. L'API che offre questa funzionalità, chiamata \textit{EventSource API}, è standardizzata dal W3C come parte di HTML5.
+I Server Sent Events (SSE) sono una tecnologia push che permette ad un browser di ricevere aggiornamenti da un server tramite una connessione HTTP tramite una comunicazione simplex\footnote{in un'unica direzione}. L'API che offre questa funzionalità, chiamata \textit{EventSource API}, è standardizzata dal W3C come parte di HTML5.
 
 Il flusso di una comunicazione basata su EventSource è il seguente\cite{eventsource_api}, sintetizzato in figura \ref{fig:server_sent_events}.
 
 \begin{enumerate}
-  \item Il client tramite la chiamata API \verb|new EventSource('/api/myEndpoint')| apre una nuova connessione HTTP.
-  \item Il client registra le callback agli eventi \verb|onmessage|, \verb|onopen| e \verb|onerror|.
-  \item Il server risponde alla prima richiesta specificando nell'header \verb|Content-Type| il tipo \verb|text/event-stream|.
+  \item Il client tramite la chiamata API \lstinline{new EventSource('/api/myEndpoint')} apre una nuova connessione HTTP.
+  \item Il client registra le callback agli eventi \lstinline{onmessage}, \lstinline{onopen} e \lstinline{onerror}.
+  \item Il server risponde alla prima richiesta specificando nell'header \lstinline{Content-Type} il tipo \lstinline{text/event-stream}.
   \item Il client, se supporta la EventSource API, mantiene la connessione aperta in attesa di nuovi messaggi.
   \item Il server può dunque inviare quando desidera un nuovo messaggio, finché la connessione non viene chiusa da una delle due parti.
 \end{enumerate}
@@ -329,16 +330,16 @@ Inoltre, al momento di questa stesura, nessuna versione di Internet Explorer e n
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{WebSockets}
 I WebSocket sono un protocollo che permette una comunicazione full-duplex\footnote{in entrambe le direzioni e contemporaneamente} mediante una singola connessione TCP.
-L'RFC 6455 afferma che WebSocket è progettato in modo da funzionare attraverso le porte HTTP 80 e 433 e di supportare proxy e intermediari HTTP, rendendolo dunque compatibile con il protocollo HTTP\cite{websockets_rfc}. Per poter essere compatibile, l'handshake tramite WebSocket fa uso dell'header \verb|Upgrade| di HTTP per cambiare protocollo da HTTP a WebSocket. Ciò è possibile perché entrambi i protocolli fanno parte dell'application layer nel modello OSI e dipendono da TCP.
+L'RFC 6455 afferma che WebSocket è progettato in modo da funzionare attraverso le porte HTTP 80 e 433 e di supportare proxy e intermediari HTTP, rendendolo dunque compatibile con il protocollo HTTP\cite{websockets_rfc}. Per poter essere compatibile, l'handshake tramite WebSocket fa uso dell'header \lstinline{Upgrade} di HTTP per cambiare protocollo da HTTP a WebSocket. Ciò è possibile perché entrambi i protocolli fanno parte dell'application layer nel modello OSI e dipendono da TCP.
 
 \bigskip
 
 Nei browser i WebSocket possono essere utilizzati mediante la \textit{WebSocket API}, anch'essa presente nell'HTML Living Standard di WHATWG.
 Il flusso di comunicazione basato su WebSocket può essere espresso come segue\cite{websockets} ed illustrato in figura \ref{fig:websockets}:
 \begin{enumerate}
-  \item Il client tramite la chiamata API \verb|new WebSocket('/api/myEndpoint')| apre una nuova connessione HTTP, specificando nella richiesta gli header \verb|Upgrade: WebSocket| e \verb|Connection: Upgrade|.
-  \item Il client registra le callback agli eventi \verb|onmessage|, \verb|onopen|, \verb|onclose| e \verb|onerror|.
-  \item Il server risponde alla richiesta con codice \verb|101 Switching Protocols| e gestisce il socket aperto tramite protocollo WebSocket.
+  \item Il client tramite la chiamata API \lstinline{new WebSocket('/api/myEndpoint')} apre una nuova connessione HTTP, specificando nella richiesta gli header \lstinline{Upgrade: WebSocket} e \lstinline{Connection: Upgrade}.
+  \item Il client registra le callback agli eventi \lstinline{onmessage}, \lstinline{onopen}, \lstinline{onclose} e \lstinline{onerror}.
+  \item Il server risponde alla richiesta con codice \lstinline{101 Switching Protocols} e gestisce il socket aperto tramite protocollo WebSocket.
   \item Il client e il server possono finalmente scambiarsi messaggi in entrambe le direzioni.
 \end{enumerate}
 L'implementazione è molto simile a quella dei Server Sent Events:
@@ -351,7 +352,7 @@ L'implementazione è molto simile a quella dei Server Sent Events:
 \label{fig:websockets}
 \end{figure}
 I WebSocket sono supportati da tutti i browser moderni. 
-Sfortunatamente al momento della stesura non è possibile comunicare con i WebSocket tramite HTTP/2, in quanto non dispone di del meccanismo di Upgrade di HTTP/1.1. Tuttavia i browser si stanno adoperando a supportare l'apertura di una comunicazione attraverso WebSocket su HTTP/2 seguendo il recente RCF 8441\cite{websockets_http2_rfc}. Ciò porterà a poter sfruttare il multiplexing offerto da HTTP/2 automaticamente anche con i WebSocket.
+Sfortunatamente al momento della stesura non è possibile comunicare con i WebSocket tramite HTTP/2, in quanto non dispone del meccanismo di Upgrade di HTTP/1.1. Tuttavia i browser si stanno adoperando per supportare l'apertura di una comunicazione attraverso WebSocket su HTTP/2 seguendo il recente RCF 8441\cite{websockets_http2_rfc}. Ciò porterà a poter sfruttare il multiplexing offerto da HTTP/2 automaticamente anche con i WebSocket.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Listen JS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
