@@ -13,7 +13,7 @@
 \contentsline {subsubsection}{Performance e scalabilit\IeC {\`a}}{5}{section*.7}% 
 \contentsline {section}{\numberline {1.3}Server push}{6}{section.1.3}% 
 \contentsline {subsection}{\numberline {1.3.1}Server Sent Events}{6}{subsection.1.3.1}% 
-\contentsline {subsection}{\numberline {1.3.2}WebSockets}{7}{subsection.1.3.2}% 
+\contentsline {subsection}{\numberline {1.3.2}WebSockets}{8}{subsection.1.3.2}% 
 \contentsline {chapter}{\numberline {2}Listen JS}{10}{chapter.2}% 
 \contentsline {section}{\numberline {2.1}Struttura ad alto livello}{10}{section.2.1}% 
 \contentsline {subsection}{\numberline {2.1.1}Libreria client}{11}{subsection.2.1.1}% 

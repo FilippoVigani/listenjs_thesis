@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  16 JUN 2019 17:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  16 JUN 2019 18:10
 entering extended mode
 **./tesi_websockets.tex
 (tesi_websockets.tex
@@ -648,20 +648,20 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 303.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 303.
-<assets/server_sent_events.png, id=334, 803.0pt x 382.42876pt>
+<assets/server_sent_events.png, id=334, 1656.1875pt x 1288.815pt>
 File: assets/server_sent_events.png Graphic file (type png)
 <use assets/server_sent_events.png>
 Package pdftex.def Info: assets/server_sent_events.png  used on input line 317.
 
-(pdftex.def)             Requested size: 225.0pt x 107.15517pt.
- (snippets/eventsource_sample.js [6]) [7 <./assets/server_sent_events.png (PNG 
-copy)>] (snippets/websocket_sample.js)
-<assets/websockets.png, id=381, 394.47375pt x 348.1005pt>
+(pdftex.def)             Requested size: 270.00275pt x 210.10843pt.
+ (snippets/eventsource_sample.js [6]) [7 <./assets/server_sent_events.png>] (sn
+ippets/websocket_sample.js [8])
+<assets/websockets.png, id=410, 1648.1575pt x 1635.10875pt>
 File: assets/websockets.png Graphic file (type png)
 <use assets/websockets.png>
 Package pdftex.def Info: assets/websockets.png  used on input line 350.
-(pdftex.def)             Requested size: 225.0pt x 198.54681pt.
- [8] [9 <./assets/websockets.png>]
+(pdftex.def)             Requested size: 225.0pt x 223.20018pt.
+ [9 <./assets/websockets.png>]
 Capitolo 2.
 [10
 
@@ -669,7 +669,7 @@ Capitolo 2.
 
 LaTeX Warning: Reference `listenjs' on page 11 undefined on input line 382.
 
-<assets/listenjs.png, id=422, 803.0pt x 803.0pt>
+<assets/listenjs.png, id=427, 803.0pt x 803.0pt>
 File: assets/listenjs.png Graphic file (type png)
 <use assets/listenjs.png>
 Package pdftex.def Info: assets/listenjs.png  used on input line 385.
@@ -708,9 +708,9 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 10467 strings out of 492895
- 152656 string characters out of 3133473
- 325815 words of memory out of 3000000
+ 10471 strings out of 492895
+ 152720 string characters out of 3133473
+ 333815 words of memory out of 3000000
  13956 multiletter control sequences out of 15000+200000
  23337 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -737,9 +737,9 @@ four/jknappen/ec/dpi600\eccc1728.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/latxfont/lcircle1.pfb>
 Output written on C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websock
-ets.pdf (26 pages, 571305 bytes).
+ets.pdf (26 pages, 561357 bytes).
 PDF statistics:
- 1108 PDF objects out of 1200 (max. 8388607)
- 227 named destinations out of 1000 (max. 500000)
+ 1115 PDF objects out of 1200 (max. 8388607)
+ 231 named destinations out of 1000 (max. 500000)
  338 words of extra memory for PDF output out of 10000 (max. 10000000)
 
