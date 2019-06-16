@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  16 JUN 2019 22:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  16 JUN 2019 23:53
 entering extended mode
 **./tesi_websockets.tex
 (tesi_websockets.tex
@@ -21,6 +21,37 @@ File: size12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
+("C:\Program Files\MiKTeX 2.9\tex/latex/geometry\geometry.sty"
+Package: geometry 2018/04/16 v5.8 Page Geometry
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\ifpdf.sty"
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+)
+("C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\ifvtex.sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex/generic/ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count89
+\Gm@cntv=\count90
+\c@Gm@tempcnt=\count91
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks15
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/geometry\geometry.cfg"))
 ("C:\Program Files\MiKTeX 2.9\tex/generic/babel\babel.sty"
 Package: babel 2019/06/03 3.32 The Babel package
 
@@ -39,19 +70,19 @@ Language: italian 2019/01/05 v.1.4.01 Italian support for the babel system
 
 ("C:\Program Files\MiKTeX 2.9\tex/generic/babel\babel.def"
 File: babel.def 2019/06/03 3.32 Babel common definitions
-\babel@savecnt=\count89
-\U@D=\dimen103
+\babel@savecnt=\count92
+\U@D=\dimen111
 
 ("C:\Program Files\MiKTeX 2.9\tex/generic/babel\txtbabel.def")
-\bbl@dirlevel=\count90
+\bbl@dirlevel=\count93
 )
-\it@lettering=\count91
-\it@doublequoteactive=\count92
-\it@ISOcompliance=\count93
+\it@lettering=\count94
+\it@doublequoteactive=\count95
+\it@ISOcompliance=\count96
 ))
 ("C:\Program Files\MiKTeX 2.9\tex/latex/etoolbox\etoolbox.sty"
 Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count94
+\etb@tempcnta=\count97
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\fontenc.sty"
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
@@ -62,31 +93,27 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\inputenc.sty"
 Package: inputenc 2018/08/11 v1.3c Input encoding file
-\inpenc@prehook=\toks14
-\inpenc@posthook=\toks15
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/listings\listings.sty"
-("C:\Program Files\MiKTeX 2.9\tex/latex/graphics\keyval.sty"
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks16
-)
-\lst@mode=\count95
+\lst@mode=\count98
 \lst@gtempboxa=\box27
-\lst@token=\toks17
-\lst@length=\count96
-\lst@currlwidth=\dimen104
-\lst@column=\count97
-\lst@pos=\count98
-\lst@lostspace=\dimen105
-\lst@width=\dimen106
-\lst@newlines=\count99
-\lst@lineno=\count100
-\lst@maxwidth=\dimen107
+\lst@token=\toks18
+\lst@length=\count99
+\lst@currlwidth=\dimen112
+\lst@column=\count100
+\lst@pos=\count101
+\lst@lostspace=\dimen113
+\lst@width=\dimen114
+\lst@newlines=\count102
+\lst@lineno=\count103
+\lst@maxwidth=\dimen115
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/listings\lstmisc.sty"
 File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
-\c@lstnumber=\count101
-\lst@skipnumbers=\count102
+\c@lstnumber=\count104
+\lst@skipnumbers=\count105
 \lst@framebox=\box28
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/listings\listings.cfg"
@@ -258,10 +285,10 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 ("C:\Program Files\MiKTeX 2.9\tex/latex/framed\framed.sty"
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip43
-\fb@frw=\dimen108
-\fb@frh=\dimen109
-\FrameRule=\dimen110
-\FrameSep=\dimen111
+\fb@frw=\dimen116
+\fb@frh=\dimen117
+\FrameRule=\dimen118
+\FrameSep=\dimen119
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/xcolor\xcolor.sty"
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -286,8 +313,8 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/tools\verbatim.sty"
 Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks18
-\verbatim@line=\toks19
+\every@verbatim=\toks19
+\verbatim@line=\toks20
 \verbatim@in@stream=\read1
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/tools\indentfirst.sty"
@@ -311,7 +338,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip53
 \bibsep=\skip54
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count103
+\c@NAT@ctr=\count106
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\newlfont.sty"
 Package: newlfont 1998/08/17 v2.2m Standard LaTeX package
@@ -337,10 +364,9 @@ Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
 Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
@@ -365,25 +391,22 @@ Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex/generic/ifxetex\ifxetex.sty"
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
 ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\auxhook.sty"
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\kvoptions.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen112
-\Hy@linkcounter=\count104
-\Hy@pagecounter=\count105
+\@linkdim=\dimen120
+\Hy@linkcounter=\count107
+\Hy@pagecounter=\count108
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\pd1enc.def"
 File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count106
+\Hy@SavedSpaceFactor=\count109
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -395,17 +418,17 @@ Package hyperref Info: Plain pages OFF on input line 4534.
 Package hyperref Info: Backreferencing OFF on input line 4539.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4772.
-\c@Hy@tempcnt=\count107
+\c@Hy@tempcnt=\count110
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/url\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5125.
-\XeTeXLinkMargin=\dimen113
-\Fld@menulength=\count108
-\Field@Width=\dimen114
-\Fld@charsize=\dimen115
+\XeTeXLinkMargin=\dimen121
+\Fld@menulength=\count111
+\Field@Width=\dimen122
+\Fld@charsize=\dimen123
 Package hyperref Info: Hyper figures OFF on input line 6380.
 Package hyperref Info: Link nesting OFF on input line 6385.
 Package hyperref Info: Hyper index ON on input line 6388.
@@ -415,16 +438,16 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6405.
 Package hyperref Info: PDF/A mode OFF on input line 6410.
 LaTeX Info: Redefining \ref on input line 6450.
 LaTeX Info: Redefining \pageref on input line 6454.
-\Hy@abspage=\count109
-\c@Item=\count110
-\c@Hfootnote=\count111
+\Hy@abspage=\count112
+\c@Item=\count113
+\c@Hfootnote=\count114
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\hpdftex.def"
 File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
-\Fld@listcount=\count112
-\c@bookmark@seq@number=\count113
+\Fld@listcount=\count115
+\c@bookmark@seq@number=\count116
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
@@ -447,8 +470,8 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 )
-\Gin@req@height=\dimen116
-\Gin@req@width=\dimen117
+\Gin@req@height=\dimen124
+\Gin@req@width=\dimen125
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/svg\svg.sty"
 Package: svg 2018/11/12 v2.02b (include SVG pictures)
@@ -468,8 +491,8 @@ Package shellesc Info: Restricted shell escape enabled on input line 69.
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
 \svg@box=\box29
-\c@svg@param@lastpage=\count114
-\c@svg@param@currpage=\count115
+\c@svg@param@lastpage=\count117
+\c@svg@param@currpage=\count118
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\transparent.sty"
 Package: transparent 2018/11/18 v1.3 Transparency via pdfTeX's color stack (HO)
@@ -477,7 +500,7 @@ Package: transparent 2018/11/18 v1.3 Transparency via pdfTeX's color stack (HO)
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/tools\afterpage.sty"
 Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
-\AP@output=\toks20
+\AP@output=\toks21
 \AP@partial=\box30
 \AP@footins=\box31
 )
@@ -486,45 +509,80 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 93.
 (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.aux)
 \openout1 = `tesi_websockets.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 103.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 103.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 104.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 104.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 103.
-LaTeX Font Info:    ... okay on input line 103.
-LaTeX Info: Redefining \it@ocap on input line 103.
-LaTeX Info: Redefining \it@ccap on input line 103.
-\c@lstlisting=\count116
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
 
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* hratio: 1:1
+* modes: twoside 
+* h-part:(L,W,R)=(89.62709pt, 418.25368pt, 89.6271pt)
+* v-part:(T,H,B)=(101.40665pt, 591.5302pt, 152.11pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=450.0pt
+* \textheight=591.5302pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=17.35712pt
+* \topmargin=-7.86334pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=85.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Info: Redefining \it@ocap on input line 104.
+LaTeX Info: Redefining \it@ccap on input line 104.
+\c@lstlisting=\count119
 ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count117
-\scratchdimen=\dimen118
+\scratchcounter=\count120
+\scratchdimen=\dimen126
 \scratchbox=\box32
-\nofMPsegments=\count118
-\nofMParguments=\count119
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count120
-\MPscratchDim=\dimen119
-\MPnumerator=\count121
-\makeMPintoPDFobject=\count122
-\everyMPtoPDFconversion=\toks22
+\nofMPsegments=\count121
+\nofMParguments=\count122
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count123
+\MPscratchDim=\dimen127
+\MPnumerator=\count124
+\makeMPintoPDFobject=\count125
+\everyMPtoPDFconversion=\toks23
 ) ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -539,7 +597,7 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 \AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring ON on input line 103.
+Package hyperref Info: Link coloring ON on input line 104.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -547,11 +605,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count123
+\c@section@level=\count126
 )
-LaTeX Info: Redefining \ref on input line 103.
-LaTeX Info: Redefining \pageref on input line 103.
-LaTeX Info: Redefining \nameref on input line 103.
+LaTeX Info: Redefining \ref on input line 104.
+LaTeX Info: Redefining \pageref on input line 104.
+LaTeX Info: Redefining \nameref on input line 104.
 
 (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.out)
 (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.out)
@@ -559,20 +617,56 @@ LaTeX Info: Redefining \nameref on input line 103.
 \openout3 = `tesi_websockets.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <17.28> on input line 112.
+(Font)              <17.28> on input line 113.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 112.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 112.
+(Font)              <12> on input line 113.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 113.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ) [1
 
-{C:/Users/filippo/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [1
+{C:/Users/filippo/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* hratio: 2:3
+* modes: twoside 
+* h-part:(L,W,R)=(71.70166pt, 418.25368pt, 107.55254pt)
+* v-part:(T,H,B)=(101.40665pt, 591.5302pt, 152.11pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=418.25368pt
+* \textheight=591.5302pt
+* \oddsidemargin=-0.56833pt
+* \evensidemargin=35.28255pt
+* \topmargin=-7.86334pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=85.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+ [1
+
+
+
+] [2
 
 ] [0
-
 
 ]
 (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.toc
@@ -584,7 +678,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.38 ...\numberline {3}Valutazione}{16}{chapter.3}
+l.33 ...azione multiplexing}{19}{subsection.2.3.2}
                                                   % [1
 
 
@@ -592,33 +686,42 @@ l.38 ...\numberline {3}Valutazione}{16}{chapter.3}
 \tf@toc=\write4
 \openout4 = `tesi_websockets.toc'.
 
+pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.179 \listoffigures
+                     [2]
+(C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.lof)
+\tf@lof=\write5
+\openout5 = `tesi_websockets.lof'.
 
+ [3
+
+]
+[4
+
+] [5] [6
+
+]
+Capitolo 1.
+
+Underfull \vbox (badness 1308) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.239 
+       [1]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 14.49998pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[2] (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.lof)
-\tf@lof=\write5
-\openout5 = `tesi_websockets.lof'.
-
-
-[3
-
-] [4
-
-]
-Capitolo 1.
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.241 
-       [1
-
-]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 255.
+[2]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 260.
 
  ("C:\Program Files\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -630,84 +733,111 @@ LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 9.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\ts1cmtt.fd"
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [2])
-<assets/polling.png, id=272, 2534.46875pt x 1576.89125pt>
+))
+<assets/polling.png, id=266, 2534.46875pt x 1576.89125pt>
 File: assets/polling.png Graphic file (type png)
 <use assets/polling.png>
-Package pdftex.def Info: assets/polling.png  used on input line 259.
-(pdftex.def)             Requested size: 360.00137pt x 223.96344pt.
-
-(snippets/longpolling_sample.js [3 <./assets/polling.png>])
-<assets/long_polling.png, id=293, 2530.45375pt x 1121.18875pt>
+Package pdftex.def Info: assets/polling.png  used on input line 264.
+(pdftex.def)             Requested size: 334.60422pt x 208.17915pt.
+ [3]
+(snippets/longpolling_sample.js [4 <./assets/polling.png>])
+<assets/long_polling.png, id=324, 2530.45375pt x 1121.18875pt>
 File: assets/long_polling.png Graphic file (type png)
 <use assets/long_polling.png>
-Package pdftex.def Info: assets/long_polling.png  used on input line 269.
-(pdftex.def)             Requested size: 360.00137pt x 159.49733pt.
- [4 <./assets/long_polling.png>] [5]
+Package pdftex.def Info: assets/long_polling.png  used on input line 274.
+(pdftex.def)             Requested size: 334.60422pt x 148.2403pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./assets/long_polling.png>] [6]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 309.
+(Font)              <7> on input line 314.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 309.
-<assets/server_sent_events.png, id=334, 1656.1875pt x 1288.815pt>
+(Font)              <5> on input line 314.
+ [7]
+<assets/server_sent_events.png, id=363, 1656.1875pt x 1288.815pt>
 File: assets/server_sent_events.png Graphic file (type png)
 <use assets/server_sent_events.png>
-Package pdftex.def Info: assets/server_sent_events.png  used on input line 323.
+Package pdftex.def Info: assets/server_sent_events.png  used on input line 328.
 
-(pdftex.def)             Requested size: 270.00275pt x 210.10843pt.
- (snippets/eventsource_sample.js [6]) [7 <./assets/server_sent_events.png>] (sn
-ippets/websocket_sample.js [8])
-<assets/websockets.png, id=410, 1648.1575pt x 1635.10875pt>
+(pdftex.def)             Requested size: 250.95476pt x 195.28047pt.
+ (snippets/eventsource_sample.js) [8 <./assets/server_sent_events.png>] [9] (sn
+ippets/websocket_sample.js)
+<assets/websockets.png, id=405, 1648.1575pt x 1635.10875pt>
 File: assets/websockets.png Graphic file (type png)
 <use assets/websockets.png>
-Package pdftex.def Info: assets/websockets.png  used on input line 356.
-(pdftex.def)             Requested size: 225.0pt x 223.20018pt.
- [9 <./assets/websockets.png>]
-Capitolo 2.
-[10
+Package pdftex.def Info: assets/websockets.png  used on input line 361.
+(pdftex.def)             Requested size: 209.12683pt x 207.45691pt.
+ [10] [11 <./assets/websockets.png>] [12
 
 ]
-<assets/listenjs.png, id=428, 803.0pt x 803.0pt>
+Capitolo 2.
+
+Underfull \vbox (badness 1019) has occurred while \output is active []
+
+ [13]
+<assets/listenjs.png, id=452, 803.0pt x 803.0pt>
 File: assets/listenjs.png Graphic file (type png)
 <use assets/listenjs.png>
-Package pdftex.def Info: assets/listenjs.png  used on input line 391.
-(pdftex.def)             Requested size: 225.0pt x 224.99776pt.
- [11 <./assets/listenjs.png>] (snippets/listenjsclient_sample.js) [12]
+Package pdftex.def Info: assets/listenjs.png  used on input line 396.
+(pdftex.def)             Requested size: 209.12683pt x 209.11815pt.
+
+[14] (snippets/listenjsclient_sample.js [15 <./assets/listenjs.png>]) [16]
 (snippets/listenjsserver_sample.js) (snippets/listenjsserver_fastify_sample.js)
-[13] (snippets/listenjsserver_notify_sample.js) [14] [15]
+(snippets/listenjsserver_notify_sample.js [17]) [18] [19] [20
+
+]
 Capitolo 3.
-[16
-
-] [17
+[21] [22
 
 
+] [23
+
+] [24
 
 ]
 Capitolo 4.
-[18
-
-] (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 543.
-
-[19
+[25] [26
 
 
+] (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.bbl
+Underfull \hbox (badness 4647) in paragraph at lines 4--8
+[]\T1/cmr/m/n/12 WHATWG.  Server-Sent Even-ts.  [][]$\T1/cmtt/m/n/12 https : / 
+/ html . spec . whatwg . org /
+ []
+
+
+Underfull \hbox (badness 2285) in paragraph at lines 10--12
+[]\T1/cmr/m/n/12 Server Sent Even-ts Sup-port.  [][]$\T1/cmtt/m/n/12 https : / 
+/ caniuse . com / #search = server %
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--36
+[]\T1/cmr/m/n/12 ListenJS ser-ver sour-ce co-de.  [][]$\T1/cmtt/m/n/12 https : 
+/ / github . com / VeegaP /
+ []
+
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 548.
+ [27
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 543.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 548.
  (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 543.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 543.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 548.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 548.
 Package rerunfilecheck Info: File `tesi_websockets.out' has not changed.
-(rerunfilecheck)             Checksum: 4AEC52C09FC06E5A7AD5549C8D312E8E;2720.
+(rerunfilecheck)             Checksum: 92DEBD903FB644E7E90F16EC16AECBB3;2721.
  ) 
 Here is how much of TeX's memory you used:
- 10473 strings out of 492895
- 152746 string characters out of 3133473
- 333815 words of memory out of 3000000
- 13958 multiletter control sequences out of 15000+200000
+ 10940 strings out of 492895
+ 159649 string characters out of 3133473
+ 343620 words of memory out of 3000000
+ 14402 multiletter control sequences out of 15000+200000
  23337 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,12n,43p,806b,2011s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,12n,43p,806b,1973s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\filippo\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ectt1200.pk> <C:\Users\filippo\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknap
 pen/ec/dpi600\ecrm1000.pk> <C:\Users\filippo\AppData\Local\MiKTeX\2.9\fonts/pk/
@@ -719,9 +849,9 @@ Users\filippo\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0
 600.pk> <C:\Users\filippo\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/
 dpi600\ecti1200.pk> <C:\Users\filippo\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/
 jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\filippo\AppData\Local\MiKTeX\2.9\font
-s/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\filippo\AppData\Local\MiK
-TeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\filippo\AppDa
-ta\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\f
+s/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\filippo\AppData\Local\MiK
+TeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\filippo\AppDa
+ta\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\f
 ilippo\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk>
  <C:\Users\filippo\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 ecbx2074.pk> <C:\Users\filippo\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappe
@@ -730,9 +860,9 @@ four/jknappen/ec/dpi600\eccc1728.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/latxfont/lcircle1.pfb>
 Output written on C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websock
-ets.pdf (26 pages, 561161 bytes).
+ets.pdf (37 pages, 571067 bytes).
 PDF statistics:
- 1115 PDF objects out of 1200 (max. 8388607)
- 231 named destinations out of 1000 (max. 500000)
+ 1168 PDF objects out of 1200 (max. 8388607)
+ 241 named destinations out of 1000 (max. 500000)
  338 words of extra memory for PDF output out of 10000 (max. 10000000)
 

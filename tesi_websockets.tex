@@ -1,7 +1,7 @@
  %\documentclass[12pt,a4paper,oneside]{report}
 
-\documentclass[12pt,a4paper,openright]{report}
-
+\documentclass[12pt,a4paper,openright,twoside]{report}
+\usepackage[hmarginratio=1:1]{geometry}
 \usepackage[italian]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -94,10 +94,11 @@
 
 \setlength{\parindent}{0pt}
 
-\pagestyle{fancy}\addtolength{\headwidth}{20pt}
+
+%\pagestyle{fancy}\addtolength{\headwidth}{20pt}
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
-\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+%\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
 \cfoot{}
 
 \begin{document}
@@ -139,6 +140,7 @@ Filippo Vigani}}
 Anno Accademico 2018-2019}}%inserire l'anno accademico a cui si è iscritti
 \end{center}
 \end{titlepage}
+\newgeometry{hmarginratio=2:3}
 \pagenumbering{roman}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -162,7 +164,7 @@ Anno Accademico 2018-2019}}%inserire l'anno accademico a cui si è iscritti
 
 \afterpage{\blankpage}
 
-%\linespread{1.3}
+\linespread{1.3}
 %\textwidth=345.0pt
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -171,24 +173,19 @@ Anno Accademico 2018-2019}}%inserire l'anno accademico a cui si è iscritti
 \pagenumbering{roman}\normalsize
 \clearpage{\pagestyle{empty}\cleardoublepage}
 \tableofcontents
-\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
-\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
-INDICE}}
+%\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+%\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries INDICE}}
 
 \listoffigures
-\addcontentsline{toc}{chapter}{Lista delle figure}
-
-
+\addcontentsline{toc}{chapter}{Elenco delle figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Introduzione
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter*{Introduzione}
-\rhead[\fancyplain{}{\bfseries
-INTRODUZIONE}]{\fancyplain{}{\bfseries\thepage}}
-\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
-INTRODUZIONE}}
+%\rhead[\fancyplain{}{\bfseries INTRODUZIONE}]{\fancyplain{}{\bfseries\thepage}}
+%\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries INTRODUZIONE}}
 \addcontentsline{toc}{chapter}{Introduzione}
 Quando si sviluppa un’applicazione web, si deve considerare che meccanismo di data delivery utilizzare. Spesso si vuole sviluppare un’applicazione che lavori con dati in tempo reale: può essere una dashboard con l’andamento di un mercato azionario, o una console di un servizio backend su cui lavorano più utenti, o ancora un semplice calendario condiviso per la gestione di appuntamenti.
 
@@ -212,7 +209,11 @@ La soluzione proposta permette in modo semplice ed intuitivo di rimanere in asco
 							% Background
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Background}
-\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+\pagestyle{fancy}
+\lhead[\rmfamily\thepage]{\fancyplain{}{\itshape\nouppercase\rightmark}} % respectively left page inner and right page inner 
+\rhead[\fancyplain{}{\itshape\nouppercase\leftmark}]{\rmfamily\thepage} % respectively left page outer and right page outer 
+%\rhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+%\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\leftmark}}
 \pagenumbering{arabic}
 
 Nello sviluppo di applicazioni web moderne spesso si ha la necessità di aggiornare parti dell’interfaccia in modo che rispecchino delle risorse non presenti localmente in tempo reale. Si pensi per esempio ad un’applicazione che deve visualizzare i dati dello stock market, o ad un social network, o ad un calendario per la gestione degli appuntamenti, o ancora ad una semplice dashboard di gestione aziendale. 
@@ -515,10 +516,10 @@ Separation of Concerns
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage{\pagestyle{empty}\cleardoublepage}
 \chapter*{Conclusioni}
-\rhead[\fancyplain{}{\bfseries
-Conclusioni}]{\fancyplain{}{\bfseries\thepage}}
-\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
-Conclusioni}}
+%\rhead[\fancyplain{}{\bfseries
+%Conclusioni}]{\fancyplain{}{\bfseries\thepage}}
+%\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
+%Conclusioni}}
 \addcontentsline{toc}{chapter}{Conclusioni}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -531,10 +532,10 @@ SSL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage{\pagestyle{empty}\cleardoublepage}
 
-\rhead[\fancyplain{}{\bfseries
-Bibliografia}]{\fancyplain{}{\bfseries\thepage}}
-\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
-Bibliografia}}
+%\rhead[\fancyplain{}{\bfseries
+%Bibliografia}]{\fancyplain{}{\bfseries\thepage}}
+%\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
+%Bibliografia}}
 
 \bibliographystyle{unsrt}
 \bibliography{bibliografia}
