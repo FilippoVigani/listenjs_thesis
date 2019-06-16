@@ -250,7 +250,7 @@ Un esempio di utilizzo di polling client side potrebbe essere il seguente:
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.5\textwidth]{assets/polling.png}
+\includegraphics[width=.8\textwidth]{assets/polling.png}
 \caption{Polling}
 \end{figure}
 
@@ -260,7 +260,7 @@ Questo flusso può essere implementato come l'esempio seguente:
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.5\textwidth]{assets/long_polling.png}
+\includegraphics[width=.8\textwidth]{assets/long_polling.png}
 \caption{Long polling}
 \end{figure}
 
@@ -379,6 +379,13 @@ La scelta di utilizzare i WebSocket come trasporto invece dei Server Sent Events
 \item Con i Server Sent Events non è possibile fare multiplexing utilizzando HTTP/1.1, in quanto non è possibile inviare messaggi successivi da client a server utilizzando la stessa connessione.
 \item Poiché con i Server Sent Events non si possono inviare messaggi da client a server sulla stessa connessione, risulta difficile implementare meccanismi di ping personalizzati. È dunque complicato lato client verificare quando un server non è più raggiungibile.
 \end{enumerate}
+Il client può mettersi in ascolto di una o più risorse in qualsiasi istante nel tmepo, e ricevere aggiornamenti in tempo reale delle risorse osservate, come in figura \ref{listenjs}.
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=.5\textwidth]{assets/listenjs.png}
+\caption{ListenJS client-server interaction}
+\label{fig:listenjs}
+\end{figure}
 
 \subsection{Libreria client}
 La libreria client permette con una linea di codice di rimanere in ascolto di qualsiasi risorsa negli endpoint che si desidera.
