@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  16 JUN 2019 18:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  16 JUN 2019 22:47
 entering extended mode
 **./tesi_websockets.tex
 (tesi_websockets.tex
@@ -559,10 +559,10 @@ LaTeX Info: Redefining \nameref on input line 103.
 \openout3 = `tesi_websockets.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <17.28> on input line 111.
+(Font)              <17.28> on input line 112.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 111.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 111.
+(Font)              <12> on input line 112.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 112.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -614,11 +614,11 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.235 
+l.241 
        [1
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 249.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 255.
 
  ("C:\Program Files\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -634,24 +634,24 @@ File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 <assets/polling.png, id=272, 2534.46875pt x 1576.89125pt>
 File: assets/polling.png Graphic file (type png)
 <use assets/polling.png>
-Package pdftex.def Info: assets/polling.png  used on input line 253.
+Package pdftex.def Info: assets/polling.png  used on input line 259.
 (pdftex.def)             Requested size: 360.00137pt x 223.96344pt.
 
 (snippets/longpolling_sample.js [3 <./assets/polling.png>])
 <assets/long_polling.png, id=293, 2530.45375pt x 1121.18875pt>
 File: assets/long_polling.png Graphic file (type png)
 <use assets/long_polling.png>
-Package pdftex.def Info: assets/long_polling.png  used on input line 263.
+Package pdftex.def Info: assets/long_polling.png  used on input line 269.
 (pdftex.def)             Requested size: 360.00137pt x 159.49733pt.
  [4 <./assets/long_polling.png>] [5]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 303.
+(Font)              <7> on input line 309.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 303.
+(Font)              <5> on input line 309.
 <assets/server_sent_events.png, id=334, 1656.1875pt x 1288.815pt>
 File: assets/server_sent_events.png Graphic file (type png)
 <use assets/server_sent_events.png>
-Package pdftex.def Info: assets/server_sent_events.png  used on input line 317.
+Package pdftex.def Info: assets/server_sent_events.png  used on input line 323.
 
 (pdftex.def)             Requested size: 270.00275pt x 210.10843pt.
  (snippets/eventsource_sample.js [6]) [7 <./assets/server_sent_events.png>] (sn
@@ -659,22 +659,19 @@ ippets/websocket_sample.js [8])
 <assets/websockets.png, id=410, 1648.1575pt x 1635.10875pt>
 File: assets/websockets.png Graphic file (type png)
 <use assets/websockets.png>
-Package pdftex.def Info: assets/websockets.png  used on input line 350.
+Package pdftex.def Info: assets/websockets.png  used on input line 356.
 (pdftex.def)             Requested size: 225.0pt x 223.20018pt.
  [9 <./assets/websockets.png>]
 Capitolo 2.
 [10
 
 ]
-
-LaTeX Warning: Reference `listenjs' on page 11 undefined on input line 382.
-
-<assets/listenjs.png, id=427, 803.0pt x 803.0pt>
+<assets/listenjs.png, id=428, 803.0pt x 803.0pt>
 File: assets/listenjs.png Graphic file (type png)
 <use assets/listenjs.png>
-Package pdftex.def Info: assets/listenjs.png  used on input line 385.
+Package pdftex.def Info: assets/listenjs.png  used on input line 391.
 (pdftex.def)             Requested size: 225.0pt x 224.99776pt.
-[11 <./assets/listenjs.png>] (snippets/listenjsclient_sample.js) [12]
+ [11 <./assets/listenjs.png>] (snippets/listenjsclient_sample.js) [12]
 (snippets/listenjsserver_sample.js) (snippets/listenjsserver_fastify_sample.js)
 [13] (snippets/listenjsserver_notify_sample.js) [14] [15]
 Capitolo 3.
@@ -689,29 +686,25 @@ Capitolo 4.
 [18
 
 ] (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 537.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 543.
 
 [19
 
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 537.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 543.
  (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 537.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 537.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 543.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 543.
 Package rerunfilecheck Info: File `tesi_websockets.out' has not changed.
 (rerunfilecheck)             Checksum: 4AEC52C09FC06E5A7AD5549C8D312E8E;2720.
-
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 10471 strings out of 492895
- 152720 string characters out of 3133473
+ 10473 strings out of 492895
+ 152746 string characters out of 3133473
  333815 words of memory out of 3000000
- 13956 multiletter control sequences out of 15000+200000
+ 13958 multiletter control sequences out of 15000+200000
  23337 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,12n,43p,806b,2011s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -737,7 +730,7 @@ four/jknappen/ec/dpi600\eccc1728.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/latxfont/lcircle1.pfb>
 Output written on C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websock
-ets.pdf (26 pages, 561357 bytes).
+ets.pdf (26 pages, 561161 bytes).
 PDF statistics:
  1115 PDF objects out of 1200 (max. 8388607)
  231 named destinations out of 1000 (max. 500000)

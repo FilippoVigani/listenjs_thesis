@@ -82,7 +82,7 @@
 %\usepackage{showkeys} serve per mostrare le etichette, va tolta per la versione definitiva;
 %\linespread{1.3}
 \oddsidemargin=0pt
-\textwidth= 450pt
+\textwidth=450pt
 \hyphenation{} %serve per la sillabazione
 \hypersetup{
     colorlinks,
@@ -105,59 +105,65 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 						% Frontespizio
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{titlepage}
 \begin{center}
 {{\Large{\textsc{Alma Mater Studiorum $\cdot$ Universit\`a di
 Bologna}}}} \rule[0.1cm]{15.8cm}{0.1mm}
 \rule[0.5cm]{15.8cm}{0.6mm}
 {\small{\bf SCUOLA DI SCIENZE\\
-  Corso di Laurea in Informatica }}
-  \end{center}
-  \vspace{40mm}
-  \begin{center}
-  {\LARGE{\bf Resource-centric push model over WebSockets}}\\
-  \end{center}
-  \vspace{40mm}
-  \par
-  \noindent
-  \begin{minipage}[t]{0.47\textwidth}
-  {\large{\bf Relatore:\\
-  Chiar.mo Prof.\\
-  Fabio Vitali}}
-  \end{minipage}
-  \hfill
-  \begin{minipage}[t]{0.47\textwidth}\raggedleft
-  {\large{\bf Presentata da:\\
-  Filippo Vigani}}
-  \end{minipage}
-  \vspace{30mm}
-  \begin{center}
-  {\large{\bf Sessione I\\%inserire il numero della sessione in cui ci si laurea
-  Anno Accademico 2018-2019}}%inserire l'anno accademico a cui si è iscritti
-  \end{center}
-  \end{titlepage}
-  \pagenumbering{roman}
+Corso di Laurea in Informatica }}
+\end{center}
+\vspace{40mm}
+\begin{center}
+{\LARGE{\bf Resource-centric push model}}\\
+\vspace{3mm}
+{\LARGE{\bf over WebSockets}}\\
+\end{center}
+\vspace{40mm}
+\par
+\noindent
+\begin{minipage}[t]{0.47\textwidth}
+{\large{\bf Relatore:\\
+Chiar.mo Prof.\\
+Fabio Vitali}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.47\textwidth}\raggedleft
+{\large{\bf Presentata da:\\
+Filippo Vigani}}
+\end{minipage}
+\vspace{30mm}
+\begin{center}
+{\large{\bf Sessione I\\%inserire il numero della sessione in cui ci si laurea
+Anno Accademico 2018-2019}}%inserire l'anno accademico a cui si è iscritti
+\end{center}
+\end{titlepage}
+\pagenumbering{roman}
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  							% Dedica
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% Dedica
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \cleardoublepage
+\cleardoublepage
 
-  \cleardoublepage
-  \thispagestyle{empty}
-  \vspace*{\stretch{1}}
-  \large                                  %aumenta la grandezza del carattere a 14pt
-  \begin{flushright}
-  \em
-  \itshape
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{\stretch{1}}
+\large                                  %aumenta la grandezza del carattere a 14pt
+\begin{flushright}
+\em
+\itshape
 
-  \end{flushright}
-  \vspace{\stretch{2}}
-  \cleardoublepage
+\end{flushright}
+\vspace{\stretch{2}}
+\cleardoublepage
 
 
-  \afterpage{\blankpage}
+\afterpage{\blankpage}
+
+%\linespread{1.3}
+%\textwidth=345.0pt
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Indice
@@ -379,7 +385,7 @@ La scelta di utilizzare i WebSocket come trasporto invece dei Server Sent Events
 \item Con i Server Sent Events non è possibile fare multiplexing utilizzando HTTP/1.1, in quanto non è possibile inviare messaggi successivi da client a server utilizzando la stessa connessione.
 \item Poiché con i Server Sent Events non si possono inviare messaggi da client a server sulla stessa connessione, risulta difficile implementare meccanismi di ping personalizzati. È dunque complicato lato client verificare quando un server non è più raggiungibile.
 \end{enumerate}
-Il client può mettersi in ascolto di una o più risorse in qualsiasi istante nel tmepo, e ricevere aggiornamenti in tempo reale delle risorse osservate, come in figura \ref{listenjs}.
+Il client può mettersi in ascolto di una o più risorse in qualsiasi istante nel tmepo, e ricevere aggiornamenti in tempo reale delle risorse osservate, come in figura \ref{fig:listenjs}.
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=.5\textwidth]{assets/listenjs.png}
@@ -408,7 +414,7 @@ Alternativamente è possibile scaricare direttamente il codice sorgente\cite{lis
 \subsubsection{Utilizzo}
 Per ogni risorsa per cui si vuole essere notificati degli aggiornamenti, basterà semplicemente chiamare la funzione per ascoltare uno specifico endpoint:
 \lstinputlisting[caption=Listen JS client example]{snippets/listenjsclient_sample.js}
-L'URI passato come argomento della funzione, può sia essere relativo, e quindi utilizzare lo stesso dominio della pagina di origine, oppure specificare un indirizzo completo, per esempio \lstinline{http://differentDomain.com/api/appointments}. Questo dominio per permettere al protocollo di WebSocket di fare l'handshake, dovrà avere abilitato i CORS (Cross-Origin Resource Sharing) in quanto la risorsa è su un'origine differente.
+L'URI passato come argomento della funzione, può sia essere relativo, e quindi utilizzare lo stesso dominio della pagina di origine, oppure specificare un indirizzo completo, per esempio \lstinline{differentDomain.com/api/appointments}. Questo dominio per permettere al protocollo di WebSocket di fare l'handshake, dovrà avere abilitato i CORS (Cross-Origin Resource Sharing) in quanto la risorsa è su un'origine differente.
 
 \subsection{Libreria server}
 La libreria server permette di inizializzare un server che supporti i WebSocket e gestisce i client in ascolto sulle varie risorse, permettendo di notificare tutti i client in ascolto su una specifica risorsa. 
