@@ -1,5 +1,11 @@
 \begin{thebibliography}{1}
 
+\bibitem{eventsource_api}
+{WHATWG}.
+\newblock {Server-Sent Events}.
+\newblock
+  \url{https://html.spec.whatwg.org/multipage/server-sent-events.html#server-sent-events}.
+
 \bibitem{sse_support_caniuse}
 {Server Sent Events Support}.
 \newblock \url{https://caniuse.com/#search=server%20sent%20events}.
@@ -20,10 +26,12 @@
 \newblock {Bootstrapping WebSockets with HTTP/2}.
 \newblock {RFC} {8441}, {RFC Editor}, {September} {2018}.
 
-\bibitem{eventsource_api}
-{WHATWG}.
-\newblock {Server-Sent Events}.
-\newblock
-  \url{https://html.spec.whatwg.org/multipage/server-sent-events.html#server-sent-events}.
+\bibitem{listenjs_repo}
+{ListenJS client source code}.
+\newblock \url{https://github.com/VeegaP/listenjs}.
+
+\bibitem{listenjs_server_repo}
+{ListenJS server source code}.
+\newblock \url{https://github.com/VeegaP/listenjs-server}.
 
 \end{thebibliography}

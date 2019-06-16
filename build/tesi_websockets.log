@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  15 JUN 2019 20:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  16 JUN 2019 16:35
 entering extended mode
 **./tesi_websockets.tex
 (tesi_websockets.tex
@@ -584,7 +584,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.34 ...\numberline {3}Valutazione}{12}{chapter.3}
+l.38 ...\numberline {3}Valutazione}{15}{chapter.3}
                                                   % [1
 
 
@@ -665,38 +665,41 @@ Package pdftex.def Info: assets/websockets.png  used on input line 350.
 Capitolo 2.
 [10
 
-] [11]
+] (snippets/listenjsclient_sample.js [11])
+(snippets/listenjsserver_sample.js [12])
+(snippets/listenjsserver_fastify_sample.js)
+(snippets/listenjsserver_notify_sample.js) [13] [14]
 Capitolo 3.
-[12
+[15
 
-] [13
+] [16
 
 
 
 ]
 Capitolo 4.
-[14
+[17
 
 ] (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 466.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 530.
 
-[15
+[18
 
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 466.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 530.
  (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 466.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 466.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 530.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 530.
 Package rerunfilecheck Info: File `tesi_websockets.out' has not changed.
-(rerunfilecheck)             Checksum: D18A9B6E84FBA32A0E90894543981637;2718.
+(rerunfilecheck)             Checksum: 4AEC52C09FC06E5A7AD5549C8D312E8E;2720.
  ) 
 Here is how much of TeX's memory you used:
- 10360 strings out of 492895
- 150615 string characters out of 3133473
- 324724 words of memory out of 3000000
- 13915 multiletter control sequences out of 15000+200000
+ 10458 strings out of 492895
+ 152508 string characters out of 3133473
+ 341754 words of memory out of 3000000
+ 13950 multiletter control sequences out of 15000+200000
  23337 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,12n,43p,806b,2011s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -722,9 +725,9 @@ four/jknappen/ec/dpi600\eccc1728.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/latxfont/lcircle1.pfb>
 Output written on C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websock
-ets.pdf (22 pages, 401497 bytes).
+ets.pdf (25 pages, 424459 bytes).
 PDF statistics:
- 1007 PDF objects out of 1200 (max. 8388607)
- 174 named destinations out of 1000 (max. 500000)
+ 1098 PDF objects out of 1200 (max. 8388607)
+ 225 named destinations out of 1000 (max. 500000)
  333 words of extra memory for PDF output out of 10000 (max. 10000000)
 

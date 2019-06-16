@@ -278,11 +278,11 @@ Poiché il polling richiede ad intervalli regolari la stessa risorsa, spreca tra
 \subsubsection{Ritardo}
 Per limitare questo consumo, si cerca di trovare un equilibrio riducendo la frequenza di poll. Ma così facendo, risulta che per ricevere un aggiornamento di una risorsa, il client potrebbe aspettare fino alla durata dell’intervallo di tempo tra una richiesta e la successiva.
 
-%%%%%%. Incoerenza dei dati
+% Incoerenza dei dati
 \subsubsection{Incoerenza dei dati}
 Nel caso del long polling, la risorsa viene inviata presumibilmente appena subisce delle modifiche. Tuttavia nel lasso di tempo che passa tra quando il client riceve una risposta, ed effettua la nuova richiesta da tenere aperta, la risorsa stessa potrebbe essere modificata. In tal caso, il server non ha nessuna connessione in sospeso con il client, ed esso perderebbe l’aggiornamento. 
 
-%%%%%%. Performance e scalabilità
+% Performance e scalabilità
 \subsubsection{Performance e scalabilità}
 Con l’aumentare del numero di client connessi, il numero di richieste rapportate al tempo invece di incrementare linearmente si moltiplica, in quanto ogni client per la stessa risorsa non effettuerà una singola richiesta, ma richieste multiple. Ciò rende i sistemi che implementano supportano polling difficili da scalare e poco performanti.
 
@@ -357,21 +357,84 @@ Sfortunatamente al momento della stesura non è possibile comunicare con i WebSo
 							% Listen JS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Listen JS}
+Il mio contributo nell'ambito dello sviluppo di web application real-time si concretizza in Listen JS, un insieme di librerie che permettono di osservare in tempo reale gli aggiornamenti ad una o più risorse.
+Il progetto comprende anche un'applicazione di esempio che permette a più utenti di collaborare sull'inserimento, la modifica e la cancellazione di appuntamenti su un calendario tramite una web app.
 
+\bigskip
+
+Le librerie messe a disposizione sono rispettivamente \lstinline{listenjs} e \lstinline{listenjs-server}, la prima è una libreria client, utilizzabile su qualsiasi browser che supporti i WebSocket, la seconda è una libreria server utilizzabile su server sviluppati in NodeJS.
+Entrambe le librerie sono volutamente framework-agnostic, cioè possono essere facilmente integrate in qualsiasi framework già esistente, sia front-end (e.g. Angular, React, VueJS...) che back-end (e.g. Express, Fastify, Koa...), e non sono opinionate rispetto ad alcun paradigma di programmazione. Utilizzando costrutti già presenti in Javascript, e non avendo dipendenze ad altre librerie, possono essere integrate in una codebase già esistente apportando pochissime modifiche.
+
+\bigskip
+
+Listen JS è volta a diminuire l'inerzia dell'implementazione di un'app real-time basata su WebSocket facilitandone l'utilizzo e riducendo il codice boilerplate. Inoltre fornisce una serie di funzionalità descritte nella sezione \ref{sec_features} per migliorare la gestione delle risorse, l'affidabilità e la semplicità d'utilizzo.
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Struttura ad alto livello
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Struttura ad alto livello}\label{sec_struttura_alto_livello}
+Le librerie utilizzano i WebSocket come layer di trasporto e astraggono la comunicazione scambiandosi dei messaggi predefiniti, ma che contengono payload definiti dall'utente.
+La scelta di utilizzare i WebSocket come trasporto invece dei Server Sent Events è dovuta ai seguenti motivi:
+\begin{enumerate}
+\item I WebSocket sono supportati da tutti i browser moderni, a differenza dei Server Sent Events che (al momento della stesura) non sono supportati da Internet Explorer e alcune versioni di Edge.
+\item Con i Server Sent Events non è possibile fare multiplexing utilizzando HTTP/1.1, in quanto non è possibile inviare messaggi successivi da client a server utilizzando la stessa connessione.
+\item Poiché con i Server Sent Events non si possono inviare messaggi da client a server sulla stessa connessione, risulta difficile implementare meccanismi di ping personalizzati. È dunque complicato lato client verificare quando un server non è più raggiungibile.
+\end{enumerate}
 
 \subsection{Libreria client}
+La libreria client permette con una linea di codice di rimanere in ascolto di qualsiasi risorsa negli endpoint che si desidera.
+
+\subsubsection{Installazione}
+La libreria client di ListenJS può essere aggiunta ad un progetto che sfrutti un module bundler (come per esempio WebPack) tramite il package manager NPM, eseguendo il comando:
+\begin{center}
+\lstinline{npm install @filippovigani/listenjs}
+\end{center}
+per poi essere importata o tramite CommonJS o gli import dei moduli di ES6:
+\begin{center}
+\lstinline{const listen = require('@filippovigani/listenjs').listen}
+\end{center}
+oppure
+\begin{center}
+\lstinline|import { listen, ... } from "@filippovigani/listenjs/listen"|
+\end{center}  
+Alternativamente è possibile scaricare direttamente il codice sorgente\cite{listenjs_repo} e importarlo nel progetto che si desidera.
+
+\subsubsection{Utilizzo}
+Per ogni risorsa per cui si vuole essere notificati degli aggiornamenti, basterà semplicemente chiamare la funzione per ascoltare uno specifico endpoint:
+\lstinputlisting[caption=Listen JS client example]{snippets/listenjsclient_sample.js}
+L'URI passato come argomento della funzione, può sia essere relativo, e quindi utilizzare lo stesso dominio della pagina di origine, oppure specificare un indirizzo completo, per esempio \lstinline{http://differentDomain.com/api/appointments}. Questo dominio per permettere al protocollo di WebSocket di fare l'handshake, dovrà avere abilitato i CORS (Cross-Origin Resource Sharing) in quanto la risorsa è su un'origine differente.
 
 \subsection{Libreria server}
+La libreria server permette di inizializzare un server che supporti i WebSocket e gestisce i client in ascolto sulle varie risorse, permettendo di notificare tutti i client in ascolto su una specifica risorsa. 
+\subsubsection{Installazione}
+Per aggiungere la libreria server di ListenJS ad un progetto NodeJS è sufficiente eseguire il comando:
+\begin{center}
+\lstinline{npm install @filippovigani/listenjs-server}
+\end{center}
+e per poterla utilizzare basta importarla come tutti i moduli di NodeJS
+\begin{center}
+\lstinline{const listen = require('@filippovigani/listenjs-server')}
+\end{center}
+Come per la parte client, è in alternativa possibile scaricare il codice sorgente\cite{listenjs_server_repo} e importarlo manualmente nel progetto.
+
+\subsubsection{Utilizzo}
+In fase di inizializzazione del server è necessario fare il binding di un server HTTP di NodeJS già esistente ListenJS, per poter inizializzare connessioni tramite WebSocket. Ciò si può fare chiamando la funzione \lstinline{setup} come segue: 
+\lstinputlisting[caption=Listen JS server setup example]{snippets/listenjsserver_sample.js}
+In caso fossero utilizzati framework per il routing degli endpoint, è sempre possibile reperire l'istanza del server HTTP sottostante per poter inizializzare ListenJS. Per esempio, utilizzando Fastify, ListenJS verrà inizializzato in questo modo:
+\lstinputlisting[caption=Listen JS Fastify setup example]{snippets/listenjsserver_fastify_sample.js}
+Per qualsiasi altro framework si può trovare nella documentazione come reperire il server HTTP.
+
+\bigskip
+
+Una volta inizializzato, è possibile notificare i client che sono in ascolto di una risorsa tramite la funzione \lstinline{notify}. Per esempio, in un endpoint POST, il codice per notificare tutti i client in ascolto su una risorsa è il seguente:
+\lstinputlisting[caption=Listen JS server notify example]{snippets/listenjsserver_notify_sample.js}
+
+La libreria si occuperà di inviare un messaggio contentente il nuovo payload a tutti e soli i client in ascolto. Se non ci fosse nessun client in ascolto su quella specifica risorsa, la chiamata non avrà alcun effetto.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Features
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Features}\label{sec_features}
-
+Oltre a permettere...
 \subsection{Disconnection detection}
 
 \subsection{Reconnection}
@@ -386,15 +449,16 @@ Sfortunatamente al momento della stesura non è possibile comunicare con i WebSo
 			% Struttura a basso livello
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Struttura a basso livello}\label{sec_struttura_basso_livello}
-
+Il funzionamento del sistema si basa sullo scambio dei messaggi che hanno la seguente struttura:
 \subsection{Architettura}
 E messaggi di scambio
 
 \subsection{Implementazione multiplexing}
 
 \subsection{Implementazione disconnection detection}
-
+ping/keep alive
 \subsection{Implementazione reconnection}
+backoff
 
 \subsection{Implementazione observer pattern}
 
@@ -402,7 +466,7 @@ E messaggi di scambio
 			% Applicazione di esempio
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Applicazione di esempio}\label{sec_applicazioneesempio}
-
+CORS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Valutazione
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -448,7 +512,7 @@ Conclusioni}}
 							% Sviluppi futuri
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Sviluppi futuri}
-
+SSL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Bibliografia
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -459,7 +523,7 @@ Bibliografia}]{\fancyplain{}{\bfseries\thepage}}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
 Bibliografia}}
 
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \bibliography{bibliografia}
 \addcontentsline{toc}{chapter}{Bibliografia}
 
