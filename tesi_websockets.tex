@@ -449,33 +449,70 @@ La libreria si occuperà di inviare un messaggio contentente il nuovo payload a 
 			% Features
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Features}\label{sec_features}
-Oltre a permettere...
+Oltre a semplificare la comunicazione dell'aggiornamento delle varie risorse in ascolto dai client, ListenJS implementa una serie di funzionalità per semplificare la vita allo sviluppatore, e permettere di adempire al Single Responsibility Principle\cite{single_responsibility_principle} nell'applicazione real-time che utilizza questo sistema di comunicazione.
 \subsection{Disconnection detection}
+L'evento \lstinline{onclose} fornito dai WebSocket viene lanciato solo nel caso in cui il socket venga chiuso esplicitamente o dal client o dal server tramite l'handshake di chiusura specificato nell'RFC 6455. Tuttavia, in caso di problemi di network, la chiusura del socket non verrà notificata, né dal client né dal server. In aggiunta, i messaggi scambiati in caso di pessime condizioni di network verranno lasciate in sospese.
 
+\bigskip
+
+Per ovviare a questo problema ListenJS implementa un sistema di heartbeat (aka ping-pong), che fa si che il client invii periodicamente dei messaggi di ping, aspettandosi un messaggio di pong dal server entro un certo timeout. Se non dovesse riceverlo, allora considererà il socket come chiuso, provando ad iniziare l'handshake di chiusura tramite la chiamata alla WebSocket API. Di contro, il server si aspetterà di ricevere un messaggio di ping ogni intervallo prestabilito. Se non dovesse succedere, allora si aspetterà di non avere più connettività con il client, chiudendo il socket.
 \subsection{Reconnection}
+I WebSocket non permettono di riaprire un socket precedentemente chiuso. Ciò comporta che in caso di disconnessione dovuta a delle condizioni di network non ottimali, non sia possibile riutilizzare lo stesso socket per mantenere la sessione precedente attiva.
+
+\bigskip
+
+ListenJS fornisce un sistema di riconnessione aprendo un nuovo WebSocket, ma mantenendo le informazioni di uno specifico client come se la sessione precedente fosse ripristinata. Ciò significa che il client non dovrà preoccuparsi di rimettersi in ascolto delle risorse precedentemente specificate, ma sarà tutto gestito dalla libreria.
 
 \subsection{Multiplexing}
+Un'implementazione naïve per rimanere in ascolto di alcune risorse potrebbe essere quella di aprire un WebSocket per ogni risorsa che si vuole osservare, specificando l'URL della risorsa nel pacchetto di handshake. Per esempio, se volessimo rimanere in ascolto di due risorse \lstinline{foo} e \lstinline{bar}, potremmo aprire due WebSocket chiamando \lstinline{new WebSocket('ws://myDomain.com/api/foo')} e \lstinline{new WebSocket('ws://myDomain.com/api/bar')}. Tuttavia così facendo si aprirebbero due connessioni separate, che non è ideale per due motivazioni:
+\begin{itemize}
+\item I browser limitano il numero di connessioni HTTP contemporanee su uno stesso dominio\cite{http11_rfc}. La maggior parte dei browser moderni consentono un massimo di sei connessioni per dominio.
+\item Per aprire un WebSocket c'è un ritardo dovuto all'handshake specificato dal protocollo, che potrebbe essere evitato utilizzando lo stesso socket.
+\end{itemize}
 
-\subsection{Observer pattern across the stack}
+\bigskip
 
-\subsection{Semplificazione utilizzo WebSocket}
+Per evitare questi problemi, ListenJS sfrutta intelligentemente le connessioni attive. Dunque, se non esiste un socket aperto per uno specifico dominio, allora ne aprirà uno, altrimenti riutilizzerà lo stesso socket per scambiare ulteriori messaggi. Per fare un parallelismo con l'esempio precedente, se con la libreria client si decidesse di osservare prima \lstinline{foo} e poi \lstinline{bar} sullo stesso dominio, prima verrebbe aperto un socket per il dominio, mentre successivamente verrebbe riutilizzato il socket già aperto per comunicare l'intenzione di mettersi in ascolto su \lstinline{bar}.
+In aggiunta, se nel ciclo di vita dell'applicazione non ci fosse più nessuna risorsa osservata su uno stesso dominio, ListenJS si occuperà di chiudere il socket per liberare le risorse utilizzate.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Struttura a basso livello
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Struttura a basso livello}\label{sec_struttura_basso_livello}
-Il funzionamento del sistema si basa sullo scambio dei messaggi che hanno la seguente struttura:
+Abbiamo visto ad alto livello cosa offre ListenJS e in generale come queste funzionalità sono utili nello sviluppo di applicazioni real-time. Possiamo ora andare più a fondo nel funzionamento specifico, in modo da avere le basi per estendere e potenzialmente migliorare questi comportamenti.
+
 \subsection{Architettura}
-E messaggi di scambio
+Il funzionamento del sistema si basa sullo scambio dei messaggi che hanno una struttura ben specifica, e conosciuta sia dal client che dal server. Ogni messaggio può essere un \textit{Control Message} o un \textit{Payload Message}, e sono dei messaggi testuali serializzati in JSON come segue:
+\lstinputlisting[caption=Listen JS Message Contract]{snippets/listenjs_message.json}
+Più altri valori specifici di una certa azione. In particolare, \lstinline{<ACTION>} è una stringa che specifica il tipo di messaggio di controllo (o di payload), e può assumere i seguenti valori:
+\begin{itemize}
+\item Da client a server:
+  \begin{itemize}
+  \item \lstinline{HANDSHAKE}: Specifica un messaggio di controllo per inizializzare un nuova nuova connessione con un client. Facoltativamente può essere specifica un \lstinline{clientId} come campo extra per ripristinare una sessione di uno specifico client. Se il server non riceve nessun messaggio di handshake entro un timeout specificato (default: 10000 ms) da quando un socket viene aperto, chiude automaticamente la connessione.
+  \item \lstinline{SUBSCRIBE}: Specifica che il client voglia mettersi in ascolto dell'endpoint specificato con il campo \lstinline{path}, tramite un observer gestito dal client con \lstinline{observerId}.
+  \item \lstinline{UNSUBSCRIBE}: Specifica che il client non desideri più ricevere notifiche di aggiornamenti dell'endpoint specificato con il campo \lstinline{path}.
+  \item \lstinline{HEARTBEAT}: Invia un messaggio di ping al server per verificare che sia ancora raggiungibile.
+  \end{itemize}
+\item Da server a client:
+  \begin{itemize}
+  \item \lstinline{HANDSHAKE_ACK}: Risponde ad un messaggio di handshake, chiudendo la procedura di riconoscimento del client. Se un \lstinline{clientId} è specificato come campo, allora verrà ripristinato quel client, recuperando le informazioni sulle risorse che sta ascoltando. Altrimenti, genererà un \lstinline{clientId} univoco come UUID (e.g. \lstinline{B16B00B5-81F6-A420-81F6-008C3285ADB9}).
+  \item \lstinline{SUBSCRIBE_ACK}: Conferma al client che la sottoscrizione alla risorsa in ascolto da \lstinline{observerId} è avvenuta con successo.
+  \item \lstinline{UNSUBSCRIBE_ACK}: Conferma al client l'avvenuta rimozione delle sottoscrizioni alla risorsa specificata dal suo \lstinline{path}.
+  \item \lstinline{HEARTBEAT_ACK}: Invia un messaggio di pong al client in risposta ad un ping.
+  \item \lstinline{UPDATE}: Invia un messaggio di payload al client, specificandone il contenuto nel campo \lstinline{body} e la risorsa di riferimento nel campo \lstinline{path}.
+  \end{itemize}
+\end{itemize}
+
+\subsection{Observer pattern across the stack}
 
 \subsection{Implementazione multiplexing}
 
 \subsection{Implementazione disconnection detection}
+contratto ping su handshake
 ping/keep alive
 \subsection{Implementazione reconnection}
 backoff
 
-\subsection{Implementazione observer pattern}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Applicazione di esempio
@@ -528,6 +565,8 @@ Separation of Concerns
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Sviluppi futuri}
 SSL
+delta messaging
+message queue
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Bibliografia
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

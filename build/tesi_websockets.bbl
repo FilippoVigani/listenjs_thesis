@@ -34,4 +34,15 @@
 {ListenJS server source code}.
 \newblock \url{https://github.com/VeegaP/listenjs-server}.
 
+\bibitem{single_responsibility_principle}
+{Robert C. Martin}.
+\newblock {SRP: The Single Responsibility Principle}.
+\newblock In {\em {Clean Architecture}}, chapter~{7}. {Prentice Hall}, {2017}.
+
+\bibitem{http11_rfc}
+{R. Fielding and J. Gettys and J. Mogul and H. Frystyk and L. Masinter and P.
+  Leach and T. Berners-Lee}.
+\newblock {Hypertext Transfer Protocol -- HTTP/1.1}.
+\newblock {RFC} {2616}, {RFC Editor}, {June} {1999}.
+
 \end{thebibliography}
