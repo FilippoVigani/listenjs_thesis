@@ -4,7 +4,7 @@ const server = http.createServer((request, response) => {
 	/* TODO: Handle response */
 })
 
-/* Setup ListenJS*/ 
+/* Setup ListenJS */ 
 listen.setup({server: server})
 
 server.listen(8000)

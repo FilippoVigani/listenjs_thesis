@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{eventsource_api}
 {WHATWG}.
@@ -44,5 +44,10 @@
   Leach and T. Berners-Lee}.
 \newblock {Hypertext Transfer Protocol -- HTTP/1.1}.
 \newblock {RFC} {2616}, {RFC Editor}, {June} {1999}.
+
+\bibitem{observer}
+{E. Gamma and R. Helm and R. Johnson and J. Vlissides}.
+\newblock {Behavioral Patterns: Observer}.
+\newblock In {\em {Design Patterns}}, chapter~{5}. {Addison-Wesley}, {1994}.
 
 \end{thebibliography}

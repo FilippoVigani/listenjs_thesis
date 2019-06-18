@@ -84,7 +84,7 @@
 %\linespread{1.3}
 \oddsidemargin=0pt
 \textwidth=450pt
-\hyphenation{} %serve per la sillabazione
+%\hyphenation{} %serve per la sillabazione
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -141,7 +141,7 @@ Filippo Vigani}}
 Anno Accademico 2018-2019}}%inserire l'anno accademico a cui si è iscritti
 \end{center}
 \end{titlepage}
-\newgeometry{hmarginratio=2:3}
+\newgeometry{margin=1.5in}
 \pagenumbering{roman}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -387,10 +387,10 @@ La scelta di utilizzare i WebSocket come trasporto invece dei Server Sent Events
 \item Con i Server Sent Events non è possibile fare multiplexing utilizzando HTTP/1.1, in quanto non è possibile inviare messaggi successivi da client a server utilizzando la stessa connessione.
 \item Poiché con i Server Sent Events non si possono inviare messaggi da client a server sulla stessa connessione, risulta difficile implementare meccanismi di ping personalizzati. È dunque complicato lato client verificare quando un server non è più raggiungibile.
 \end{enumerate}
-Il client può mettersi in ascolto di una o più risorse in qualsiasi istante nel tmepo, e ricevere aggiornamenti in tempo reale delle risorse osservate, come in figura \ref{fig:listenjs}.
+Il client può mettersi in ascolto di una o più risorse in qualsiasi istante nel tempo, e ricevere aggiornamenti in tempo reale delle risorse osservate, come in figura \ref{fig:listenjs}.
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=.5\textwidth]{assets/listenjs.png}
+\includegraphics[width=.7\textwidth]{assets/listenjs.png}
 \caption{ListenJS client-server interaction}
 \label{fig:listenjs}
 \end{figure}
@@ -432,7 +432,7 @@ e per poterla utilizzare basta importarla come tutti i moduli di NodeJS
 Come per la parte client, è in alternativa possibile scaricare il codice sorgente\cite{listenjs_server_repo} e importarlo manualmente nel progetto.
 
 \subsubsection{Utilizzo}
-In fase di inizializzazione del server è necessario fare il binding di un server HTTP di NodeJS già esistente ListenJS, per poter inizializzare connessioni tramite WebSocket. Ciò si può fare chiamando la funzione \lstinline{setup} come segue: 
+In fase di inizializzazione del server è necessario fare il binding di un server HTTP di NodeJS già esistente con ListenJS, per poter inizializzare connessioni tramite WebSocket. Ciò si può fare chiamando la funzione \lstinline{setup} come segue: 
 \lstinputlisting[caption=Listen JS server setup example]{snippets/listenjsserver_sample.js}
 In caso fossero utilizzati framework per il routing degli endpoint, è sempre possibile reperire l'istanza del server HTTP sottostante per poter inizializzare ListenJS. Per esempio, utilizzando Fastify, ListenJS verrà inizializzato in questo modo:
 \lstinputlisting[caption=Listen JS Fastify setup example]{snippets/listenjsserver_fastify_sample.js}
@@ -481,16 +481,16 @@ In aggiunta, se nel ciclo di vita dell'applicazione non ci fosse più nessuna ri
 \section{Struttura a basso livello}\label{sec_struttura_basso_livello}
 Abbiamo visto ad alto livello cosa offre ListenJS e in generale come queste funzionalità sono utili nello sviluppo di applicazioni real-time. Possiamo ora andare più a fondo nel funzionamento specifico, in modo da avere le basi per estendere e potenzialmente migliorare questi comportamenti.
 
-\subsection{Architettura}
+\subsection{Message channel}
 Il funzionamento del sistema si basa sullo scambio dei messaggi che hanno una struttura ben specifica, e conosciuta sia dal client che dal server. Ogni messaggio può essere un \textit{Control Message} o un \textit{Payload Message}, e sono dei messaggi testuali serializzati in JSON come segue:
 \lstinputlisting[caption=Listen JS Message Contract]{snippets/listenjs_message.json}
 Più altri valori specifici di una certa azione. In particolare, \lstinline{<ACTION>} è una stringa che specifica il tipo di messaggio di controllo (o di payload), e può assumere i seguenti valori:
 \begin{itemize}
 \item Da client a server:
   \begin{itemize}
-  \item \lstinline{HANDSHAKE}: Specifica un messaggio di controllo per inizializzare un nuova nuova connessione con un client. Facoltativamente può essere specifica un \lstinline{clientId} come campo extra per ripristinare una sessione di uno specifico client. Se il server non riceve nessun messaggio di handshake entro un timeout specificato (default: 10000 ms) da quando un socket viene aperto, chiude automaticamente la connessione.
-  \item \lstinline{SUBSCRIBE}: Specifica che il client voglia mettersi in ascolto dell'endpoint specificato con il campo \lstinline{path}, tramite un observer gestito dal client con \lstinline{observerId}.
-  \item \lstinline{UNSUBSCRIBE}: Specifica che il client non desideri più ricevere notifiche di aggiornamenti dell'endpoint specificato con il campo \lstinline{path}.
+  \item \lstinline{HANDSHAKE}: Specifica un messaggio di controllo per inizializzare un nuova nuova connessione con un client. Facoltativamente può essere specificato un \lstinline{clientId} come campo extra per ripristinare una sessione di uno specifico client. Se il server non riceve nessun messaggio di handshake entro un timeout specificato (default: 10000 ms) da quando un socket viene aperto, chiude automaticamente la connessione.
+  \item \lstinline{SUBSCRIBE}: Specifica che il client desidera mettersi in ascolto dell'endpoint specificato con il campo \lstinline{path}, tramite un observer gestito dal client con \lstinline{observerId}.
+  \item \lstinline{UNSUBSCRIBE}: Specifica che il client non desidera più ricevere notifiche di aggiornamenti dell'endpoint specificato con il campo \lstinline{path}.
   \item \lstinline{HEARTBEAT}: Invia un messaggio di ping al server per verificare che sia ancora raggiungibile.
   \end{itemize}
 \item Da server a client:
@@ -503,7 +503,48 @@ Più altri valori specifici di una certa azione. In particolare, \lstinline{<ACT
   \end{itemize}
 \end{itemize}
 
+Questa è la definizione formale del canale di comunicazione tra libreria client e libreria server. Per quanto riguarda i dettagli implementativi specifici dell'una o dell'altra, risulta più semplice andare ad analizzare singolarmente come le feature siano state implementate.
+
 \subsection{Observer pattern across the stack}
+La Gang of Four definisce l'observer pattern\cite{observer} come un behavioral pattern che prevede che un certo numero di observer siano notificati quando un subject subisce un cambiamento di stato. Questo tipo di pattern è largamente utilizzato nel design di interfacce grafiche, dove si vuole ridurre al minimo il coupling tra le classi per non renderle meno riutilizzabili. Questo però non significa che possa essere utilizzato in ambiti al di fuori dello sviluppo di UI.
+
+\bigskip
+
+Nel nostro caso, l'observer pattern viene inteso come publish/subscribe, e funziona attraverso i differenti layer di comunicazione. Ciò significa che viene in primo luogo applicato ad un livello di astrazione più alto, dove gli observer sono i vari client, e il subject è il server.
+
+Inoltre, lo stesso pattern viene applicato nella gestione del client, dove si hanno diversi observer che stanno in ascolto di una specifica risorsa. Quando un messaggio di payload viene ricevuto da un \textit{manager} del client, questo viene inoltrato agli observer corretti che sono in ascolto su una risorsa.
+
+In ListenJS il manager è un'istanza che gestisce la connessione ad uno specifico dominio. Ogni manager tiene in memoria una lista di observer. Quando si effettua la chiamata \lstinline{listen(path)}, viene creato un nuovo observer per il path specificato, ed aggiunto al manager.
+
+Un observer è descritto dalle seguenti proprietà:
+\begin{itemize}
+\item \lstinline{id}: Identifica l'observer univocamente
+\item \lstinline{path}: Indica il path che l'observer desidera osservare
+\item \lstinline{status}: Indica lo stato dell'observer, che può essere:
+  \begin{itemize}
+  \item \lstinline{WAITING_HANDSHAKE}: L'observer è stato appena inizializzato e sta attendendo che un handshake sia completato per potersi sottoscrivere
+  \item \lstinline{SUBSCRIBING}: Il manager ha inviato la richiesta di osservare l'endpoint, ma sta attendendo di ricevere una conferma
+  \item \lstinline{UNSUBSCRIBING}: Il manager ha inviato la richiesta di non osservare più l'endpoint
+  \item \lstinline{LISTENING}: L'observer sta correttamente ascoltando gli aggiornamenti ad una risorsa
+  \item \lstinline{ERROR}: Un errore imprevisto
+  \end{itemize}
+\end{itemize}
+
+Come l'observer, anche il manager mantiene uno stato interno che indica la fase della connessione. Lo stato del manager è legato agli eventi ricevuti dal socket, ma è più preciso sulla fase di connessione:
+\begin{itemize}
+\item \lstinline{IDLE}: Manager appena inizializzato
+\item \lstinline{CONNECTING}: Il socket è in fase di connessione
+\item \lstinline{HANDSHAKING}: Il socket è connesso ma il manager non ha ancora finito la fase di handshake
+\item \lstinline{CONNECTED}: Il socket è connesso e l'handshake è stato eseguito correttamente
+\item \lstinline{DISCONNECTED}: Il socket è disconnesso
+\item \lstinline{RECONNECTING}: Il socket è in fase di connessione dopo che un altro socket è stato chiuso
+\item \lstinline{ERROR}: Un errore imprevisto
+\end{itemize}
+
+Il manager gestisce sia gli observer, che il socket. 
+In particolare, quando un nuovo observer viene aggiunto al manager, esso utilizza il proprio stato interno per capire quando sia opportuno inviare i messaggi di controllo. Per esempio, se viene aggiunto un nuovo observer, ma lo stato del manager è \lstinline{CONNECTING} o \lstinline{HANDSHAKING}, allora dovrà mettersi in attesa che il proprio stato sia propriamente \lstinline{CONNECTED}. Una volta \lstinline{CONNECTED} (o nel caso lo fosse già in fase di aggiunta), potrà procedere ad inviare tramite il socket i messaggi di controllo per fare il \lstinline{SUBSCRIBE} del \lstinline{path} specificato.
+Inoltre, il manager si occupa di aprire un nuovo socket appena un nuovo observer viene aggiunto. Quando invece vengono rimossi tutti gli observer per lo stesso manager, allora si occuperà di chiudere il socket attuale.
+
 
 \subsection{Implementazione multiplexing}
 
