@@ -1,7 +1,7 @@
 \BOOKMARK [0][-]{chapter*.2}{Elenco delle figure}{}% 1
 \BOOKMARK [0][-]{chapter*.3}{Introduzione}{}% 2
-\BOOKMARK [0][-]{chapter.1}{Background}{}% 3
-\BOOKMARK [1][-]{section.1.1}{Sviluppo app moderne real-time}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.1}{Real-time web applications}{}% 3
+\BOOKMARK [1][-]{section.1.1}{Tecniche di sviluppo}{chapter.1}% 4
 \BOOKMARK [1][-]{section.1.2}{Client pull}{chapter.1}% 5
 \BOOKMARK [2][-]{subsection.1.2.1}{Polling e long polling}{section.1.2}% 6
 \BOOKMARK [2][-]{subsection.1.2.2}{Problematiche}{section.1.2}% 7
@@ -9,29 +9,32 @@
 \BOOKMARK [2][-]{subsection.1.3.1}{Server Sent Events}{section.1.3}% 9
 \BOOKMARK [2][-]{subsection.1.3.2}{WebSockets}{section.1.3}% 10
 \BOOKMARK [0][-]{chapter.2}{Listen JS}{}% 11
-\BOOKMARK [1][-]{section.2.1}{Struttura ad alto livello}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.1.1}{Libreria client}{section.2.1}% 13
-\BOOKMARK [2][-]{subsection.2.1.2}{Libreria server}{section.2.1}% 14
-\BOOKMARK [1][-]{section.2.2}{Features}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.2.1}{Disconnection detection}{section.2.2}% 16
-\BOOKMARK [2][-]{subsection.2.2.2}{Reconnection}{section.2.2}% 17
-\BOOKMARK [2][-]{subsection.2.2.3}{Multiplexing}{section.2.2}% 18
-\BOOKMARK [1][-]{section.2.3}{Struttura a basso livello}{chapter.2}% 19
-\BOOKMARK [2][-]{subsection.2.3.1}{Message channel}{section.2.3}% 20
-\BOOKMARK [2][-]{subsection.2.3.2}{Observer pattern across the stack}{section.2.3}% 21
-\BOOKMARK [2][-]{subsection.2.3.3}{Implementazione multiplexing}{section.2.3}% 22
-\BOOKMARK [2][-]{subsection.2.3.4}{Implementazione disconnection detection}{section.2.3}% 23
-\BOOKMARK [2][-]{subsection.2.3.5}{Implementazione reconnection}{section.2.3}% 24
-\BOOKMARK [1][-]{section.2.4}{Applicazione di esempio}{chapter.2}% 25
-\BOOKMARK [0][-]{chapter.3}{Valutazione}{}% 26
-\BOOKMARK [1][-]{section.3.1}{Confronto tra XHR polling e websockets}{chapter.3}% 27
-\BOOKMARK [2][-]{subsection.3.1.1}{Responsiveness}{section.3.1}% 28
-\BOOKMARK [2][-]{subsection.3.1.2}{Traffico dati}{section.3.1}% 29
-\BOOKMARK [2][-]{subsection.3.1.3}{User experience}{section.3.1}% 30
-\BOOKMARK [1][-]{section.3.2}{Valore aggiunto di Listen JS}{chapter.3}% 31
-\BOOKMARK [2][-]{subsection.3.2.1}{Utilizzo risorse e limitazioni browser}{section.3.2}% 32
-\BOOKMARK [2][-]{subsection.3.2.2}{Immediatezza integrazione da parte di sviluppatori}{section.3.2}% 33
-\BOOKMARK [2][-]{subsection.3.2.3}{Architettura}{section.3.2}% 34
-\BOOKMARK [0][-]{chapter*.12}{Conclusioni}{}% 35
-\BOOKMARK [0][-]{chapter.4}{Sviluppi futuri}{}% 36
-\BOOKMARK [0][-]{chapter*.13}{Bibliografia}{}% 37
+\BOOKMARK [1][-]{section.2.1}{Libreria client}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.1.1}{Installazione}{section.2.1}% 13
+\BOOKMARK [2][-]{subsection.2.1.2}{Utilizzo}{section.2.1}% 14
+\BOOKMARK [1][-]{section.2.2}{Libreria server}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.1}{Installazione}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.2}{Utilizzo}{section.2.2}% 17
+\BOOKMARK [1][-]{section.2.3}{Features}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.3.1}{Disconnection detection}{section.2.3}% 19
+\BOOKMARK [2][-]{subsection.2.3.2}{Reconnection}{section.2.3}% 20
+\BOOKMARK [2][-]{subsection.2.3.3}{Multiplexing}{section.2.3}% 21
+\BOOKMARK [0][-]{chapter.3}{ListenJS: Dettagli implementativi}{}% 22
+\BOOKMARK [1][-]{section.3.1}{Message channel}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.2}{Observer pattern across the stack}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.3}{Implementazione features}{chapter.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.1}{Multiplexing}{section.3.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.2}{Disconnection detection}{section.3.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.3}{Reconnection}{section.3.3}% 28
+\BOOKMARK [0][-]{chapter.4}{Valutazione}{}% 29
+\BOOKMARK [1][-]{section.4.1}{Applicazione di esempio}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.2}{Confronto tra XHR polling e websockets}{chapter.4}% 31
+\BOOKMARK [2][-]{subsection.4.2.1}{Responsiveness}{section.4.2}% 32
+\BOOKMARK [2][-]{subsection.4.2.2}{Traffico dati}{section.4.2}% 33
+\BOOKMARK [2][-]{subsection.4.2.3}{User experience}{section.4.2}% 34
+\BOOKMARK [1][-]{section.4.3}{Valore aggiunto di Listen JS}{chapter.4}% 35
+\BOOKMARK [2][-]{subsection.4.3.1}{Utilizzo risorse e limitazioni browser}{section.4.3}% 36
+\BOOKMARK [2][-]{subsection.4.3.2}{Immediatezza integrazione da parte di sviluppatori}{section.4.3}% 37
+\BOOKMARK [2][-]{subsection.4.3.3}{Architettura}{section.4.3}% 38
+\BOOKMARK [0][-]{chapter*.8}{Conclusioni}{}% 39
+\BOOKMARK [0][-]{chapter*.10}{Bibliografia}{}% 40

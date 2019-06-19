@@ -207,9 +207,9 @@ Tuttavia i websocket rimangono un’implementazione di basso livello, e lavorarc
 La soluzione proposta permette in modo semplice ed intuitivo di rimanere in ascolto di una risorsa come se fosse un endpoint REST, e ogni qualvolta questa risorsa venga aggiornata, essere notificati del nuovo contenuto, senza doversi preoccupare di una gestione efficiente delle risorse.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-							% Background
+							% Real-time web applications
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Background}
+\chapter{Real-time web applications}
 \pagestyle{fancy}
 \lhead[\rmfamily\thepage]{\fancyplain{}{\itshape\nouppercase\rightmark}} % respectively left page inner and right page inner 
 \rhead[\fancyplain{}{\itshape\nouppercase\leftmark}]{\rmfamily\thepage} % respectively left page outer and right page outer 
@@ -224,9 +224,9 @@ Nello sviluppo di applicazioni web moderne spesso si ha la necessità di aggiorn
 In tutti questi casi, poter vedere le modifiche effettuate da terzi sulle stesse risorse in real-time è essenziale o migliora di gran lunga la user experience. Le applicazioni real-time stanno gradualmente dominando l’internet in quanto forniscono un perfetto equilibrio di informazioni, funzionalità, contenuto e interattività che portano ad aumentare lo user engagement.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
-			% Sviluppo app moderne real-time
+			% Tecniche di sviluppo
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Sviluppo app moderne real-time}\label{sec_appmoderne}
+\section{Tecniche di sviluppo}
 
 Con applicazioni real-time intendiamo applicazioni che permettano di ricevere e visualizzare degli aggiornamenti che risiedono su un server nel minor tempo possibile. Da una definizione così banale, spuntano in realtà una serie di questioni importanti per quanto concerne sia le tecnologie per implementarle, che le tecniche utilizzate che la gestione delle risorse.
 
@@ -362,10 +362,10 @@ L'implementazione è molto simile a quella dei Server Sent Events:
 I WebSocket sono supportati da tutti i browser moderni. 
 Sfortunatamente al momento della stesura non è possibile comunicare con i WebSocket tramite HTTP/2, in quanto non dispone del meccanismo di Upgrade di HTTP/1.1. Tuttavia i browser si stanno adoperando per supportare l'apertura di una comunicazione attraverso WebSocket su HTTP/2 seguendo il recente RCF 8441\cite{websockets_http2_rfc}. Ciò porterà a poter sfruttare il multiplexing offerto da HTTP/2 automaticamente anche con i WebSocket.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-							% Listen JS
+							% ListenJS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Listen JS}
-Il mio contributo nell'ambito dello sviluppo di web application real-time si concretizza in Listen JS, un insieme di librerie che permettono di osservare in tempo reale gli aggiornamenti ad una o più risorse.
+\chapter{ListenJS}
+Il mio contributo nell'ambito dello sviluppo di web application real-time si concretizza in ListenJS, un insieme di librerie che permettono di osservare in tempo reale gli aggiornamenti ad una o più risorse.
 Il progetto comprende anche un'applicazione di esempio che permette a più utenti di collaborare sull'inserimento, la modifica e la cancellazione di appuntamenti su un calendario tramite una web app.
 
 \bigskip
@@ -375,11 +375,14 @@ Entrambe le librerie sono volutamente framework-agnostic, cioè possono essere f
 
 \bigskip
 
-Listen JS è volta a diminuire l'inerzia dell'implementazione di un'app real-time basata su WebSocket facilitandone l'utilizzo e riducendo il codice boilerplate. Inoltre fornisce una serie di funzionalità descritte nella sezione \ref{sec_features} per migliorare la gestione delle risorse, l'affidabilità e la semplicità d'utilizzo.
+ListenJS è volta a diminuire l'inerzia dell'implementazione di un'app real-time basata su WebSocket facilitandone l'utilizzo e riducendo il codice boilerplate. Inoltre fornisce una serie di funzionalità descritte nella sezione \ref{sec_features} per migliorare la gestione delle risorse, l'affidabilità e la semplicità d'utilizzo.
+
+\bigskip
+
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Struttura ad alto livello
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Struttura ad alto livello}\label{sec_struttura_alto_livello}
+%\section{Struttura ad alto livello}\label{sec_struttura_alto_livello}
 Le librerie utilizzano i WebSocket come layer di trasporto e astraggono la comunicazione scambiandosi dei messaggi predefiniti, ma che contengono payload definiti dall'utente.
 La scelta di utilizzare i WebSocket come trasporto invece dei Server Sent Events è dovuta ai seguenti motivi:
 \begin{enumerate}
@@ -395,10 +398,10 @@ Il client può mettersi in ascolto di una o più risorse in qualsiasi istante ne
 \label{fig:listenjs}
 \end{figure}
 
-\subsection{Libreria client}
+\section{Libreria client}
 La libreria client permette con una linea di codice di rimanere in ascolto di qualsiasi risorsa negli endpoint che si desidera.
 
-\subsubsection{Installazione}
+\subsection{Installazione}
 La libreria client di ListenJS può essere aggiunta ad un progetto che sfrutti un module bundler (come per esempio WebPack) tramite il package manager NPM, eseguendo il comando:
 \begin{center}
 \lstinline{npm install @filippovigani/listenjs}
@@ -413,14 +416,14 @@ oppure
 \end{center}  
 Alternativamente è possibile scaricare direttamente il codice sorgente\cite{listenjs_repo} e importarlo nel progetto che si desidera.
 
-\subsubsection{Utilizzo}
+\subsection{Utilizzo}
 Per ogni risorsa per cui si vuole essere notificati degli aggiornamenti, basterà semplicemente chiamare la funzione per ascoltare uno specifico endpoint:
-\lstinputlisting[caption=Listen JS client example]{snippets/listenjsclient_sample.js}
+\lstinputlisting[caption=ListenJS client example]{snippets/listenjsclient_sample.js}
 L'URI passato come argomento della funzione, può sia essere relativo, e quindi utilizzare lo stesso dominio della pagina di origine, oppure specificare un indirizzo completo, per esempio \lstinline{differentDomain.com/api/appointments}. Questo dominio per permettere al protocollo di WebSocket di fare l'handshake, dovrà avere abilitato i CORS (Cross-Origin Resource Sharing) in quanto la risorsa è su un'origine differente.
 
-\subsection{Libreria server}
+\section{Libreria server}
 La libreria server permette di inizializzare un server che supporti i WebSocket e gestisce i client in ascolto sulle varie risorse, permettendo di notificare tutti i client in ascolto su una specifica risorsa. 
-\subsubsection{Installazione}
+\subsection{Installazione}
 Per aggiungere la libreria server di ListenJS ad un progetto NodeJS è sufficiente eseguire il comando:
 \begin{center}
 \lstinline{npm install @filippovigani/listenjs-server}
@@ -431,17 +434,17 @@ e per poterla utilizzare basta importarla come tutti i moduli di NodeJS
 \end{center}
 Come per la parte client, è in alternativa possibile scaricare il codice sorgente\cite{listenjs_server_repo} e importarlo manualmente nel progetto.
 
-\subsubsection{Utilizzo}
+\subsection{Utilizzo}
 In fase di inizializzazione del server è necessario fare il binding di un server HTTP di NodeJS già esistente con ListenJS, per poter inizializzare connessioni tramite WebSocket. Ciò si può fare chiamando la funzione \lstinline{setup} come segue: 
-\lstinputlisting[caption=Listen JS server setup example]{snippets/listenjsserver_sample.js}
+\lstinputlisting[caption=ListenJS server setup example]{snippets/listenjsserver_sample.js}
 In caso fossero utilizzati framework per il routing degli endpoint, è sempre possibile reperire l'istanza del server HTTP sottostante per poter inizializzare ListenJS. Per esempio, utilizzando Fastify, ListenJS verrà inizializzato in questo modo:
-\lstinputlisting[caption=Listen JS Fastify setup example]{snippets/listenjsserver_fastify_sample.js}
+\lstinputlisting[caption=ListenJS Fastify setup example]{snippets/listenjsserver_fastify_sample.js}
 Per qualsiasi altro framework si può trovare nella documentazione come reperire il server HTTP.
 
 \bigskip
 
 Una volta inizializzato, è possibile notificare i client che sono in ascolto di una risorsa tramite la funzione \lstinline{notify}. Per esempio, in un endpoint POST, il codice per notificare tutti i client in ascolto su una risorsa è il seguente:
-\lstinputlisting[caption=Listen JS server notify example]{snippets/listenjsserver_notify_sample.js}
+\lstinputlisting[caption=ListenJS server notify example]{snippets/listenjsserver_notify_sample.js}
 
 La libreria si occuperà di inviare un messaggio contentente il nuovo payload a tutti e soli i client in ascolto. Se non ci fosse nessun client in ascolto su quella specifica risorsa, la chiamata non avrà alcun effetto.
 
@@ -476,14 +479,14 @@ Per evitare questi problemi, ListenJS sfrutta intelligentemente le connessioni a
 In aggiunta, se nel ciclo di vita dell'applicazione non ci fosse più nessuna risorsa osservata su uno stesso dominio, ListenJS si occuperà di chiudere il socket per liberare le risorse utilizzate.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
-			% Struttura a basso livello
+			% ListenJS: Dettagli implementativi
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Struttura a basso livello}\label{sec_struttura_basso_livello}
+\chapter{ListenJS: Dettagli implementativi}
 Abbiamo visto ad alto livello cosa offre ListenJS e in generale come queste funzionalità sono utili nello sviluppo di applicazioni real-time. Possiamo ora andare più a fondo nel funzionamento specifico, in modo da avere le basi per estendere e potenzialmente migliorare questi comportamenti.
 
-\subsection{Message channel}
+\section{Message channel}
 Il funzionamento del sistema si basa sullo scambio dei messaggi che hanno una struttura ben specifica, e conosciuta sia dal client che dal server. Ogni messaggio può essere un \textit{Control Message} o un \textit{Payload Message}, e sono dei messaggi testuali serializzati in JSON come segue:
-\lstinputlisting[caption=Listen JS Message Contract]{snippets/listenjs_message.json}
+\lstinputlisting[caption=ListenJS Message Contract]{snippets/listenjs_message.json}
 Più altri valori specifici di una certa azione. In particolare, \lstinline{<ACTION>} è una stringa che specifica il tipo di messaggio di controllo (o di payload), e può assumere i seguenti valori:
 \begin{itemize}
 \item Da client a server:
@@ -505,7 +508,7 @@ Più altri valori specifici di una certa azione. In particolare, \lstinline{<ACT
 
 Questa è la definizione formale del canale di comunicazione tra libreria client e libreria server. Per quanto riguarda i dettagli implementativi specifici dell'una o dell'altra, risulta più semplice andare ad analizzare singolarmente come le feature siano state implementate.
 
-\subsection{Observer pattern across the stack}
+\section{Observer pattern across the stack}
 La Gang of Four definisce l'observer pattern\cite{observer} come un behavioral pattern che prevede che un certo numero di observer siano notificati quando un subject subisce un cambiamento di stato. Questo tipo di pattern è largamente utilizzato nel design di interfacce grafiche, dove si vuole ridurre al minimo il coupling tra le classi per non renderle meno riutilizzabili. Questo però non significa che possa essere utilizzato in ambiti al di fuori dello sviluppo di UI.
 
 \bigskip
@@ -530,6 +533,15 @@ Un observer è descritto dalle seguenti proprietà:
   \end{itemize}
 \end{itemize}
 
+I passaggi di stato da uno all'altro rispetto agli eventi che hanno luogo nel manager sono descritti in figura \ref{fig:observer_statuses}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\textwidth]{assets/observer_statuses.png}
+\caption{ListenJS client observer statuses}
+\label{fig:observer_statuses}
+\end{figure}
+
 Come l'observer, anche il manager mantiene uno stato interno che indica la fase della connessione. Lo stato del manager è legato agli eventi ricevuti dal socket, ma è più preciso sulla fase di connessione:
 \begin{itemize}
 \item \lstinline{IDLE}: Manager appena inizializzato
@@ -541,29 +553,38 @@ Come l'observer, anche il manager mantiene uno stato interno che indica la fase 
 \item \lstinline{ERROR}: Un errore imprevisto
 \end{itemize}
 
+I cambiamenti di stato in base agli eventi del socket e il numero di observer sono meglio rappresentati in figura \ref{fig:manager_statuses}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\textwidth]{assets/manager_statuses.png}
+\caption{ListenJS client manager statuses}
+\label{fig:manager_statuses}
+\end{figure}
+
 Il manager gestisce sia gli observer, che il socket. 
 In particolare, quando un nuovo observer viene aggiunto al manager, esso utilizza il proprio stato interno per capire quando sia opportuno inviare i messaggi di controllo. Per esempio, se viene aggiunto un nuovo observer, ma lo stato del manager è \lstinline{CONNECTING} o \lstinline{HANDSHAKING}, allora dovrà mettersi in attesa che il proprio stato sia propriamente \lstinline{CONNECTED}. Una volta \lstinline{CONNECTED} (o nel caso lo fosse già in fase di aggiunta), potrà procedere ad inviare tramite il socket i messaggi di controllo per fare il \lstinline{SUBSCRIBE} del \lstinline{path} specificato.
 Inoltre, il manager si occupa di aprire un nuovo socket appena un nuovo observer viene aggiunto. Quando invece vengono rimossi tutti gli observer per lo stesso manager, allora si occuperà di chiudere il socket attuale.
 
+\section{Implementazione features}
 
-\subsection{Implementazione multiplexing}
+\subsection{Multiplexing}
 
-\subsection{Implementazione disconnection detection}
+\subsection{Disconnection detection}
 contratto ping su handshake
 ping/keep alive
-\subsection{Implementazione reconnection}
+\subsection{Reconnection}
 backoff
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
-			% Applicazione di esempio
-%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Applicazione di esempio}\label{sec_applicazioneesempio}
-CORS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Valutazione
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Valutazione}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+      % Applicazione di esempio
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Applicazione di esempio}\label{sec_applicazioneesempio}
+CORS
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Confronto tra XHR polling e WebSocket
@@ -578,9 +599,9 @@ CORS
 Tradeoff
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
-			% Valore aggiunto di Listen JS
+			% Valore aggiunto di ListenJS
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Valore aggiunto di Listen JS}\label{sec_valorelistenjs}
+\section{Valore aggiunto di ListenJS}\label{sec_valorelistenjs}
 
 \subsection{Utilizzo risorse e limitazioni browser}
 Limite socket aperti contemporaneamente
@@ -604,7 +625,7 @@ Separation of Concerns
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Sviluppi futuri
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Sviluppi futuri}
+\chapter*{Sviluppi futuri}
 SSL
 delta messaging
 message queue
