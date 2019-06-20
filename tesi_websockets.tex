@@ -9,6 +9,7 @@
 \usepackage{upquote}
 \usepackage{framed,xcolor,verbatim}
 \usepackage{emptypage} %removes header and footers from empty pages
+\usepackage{amsmath}
 \definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
 \definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
 \definecolor{editorGray}{rgb}{0.98, 0.98, 0.98}
@@ -506,8 +507,6 @@ Più altri valori specifici di una certa azione. In particolare, \lstinline{<ACT
   \end{itemize}
 \end{itemize}
 
-Questa è la definizione formale del canale di comunicazione tra libreria client e libreria server. Per quanto riguarda i dettagli implementativi specifici dell'una o dell'altra, risulta più semplice andare ad analizzare singolarmente come le feature siano state implementate.
-
 \section{Observer pattern across the stack}
 La Gang of Four definisce l'observer pattern\cite{observer} come un behavioral pattern che prevede che un certo numero di observer siano notificati quando un subject subisce un cambiamento di stato. Questo tipo di pattern è largamente utilizzato nel design di interfacce grafiche, dove si vuole ridurre al minimo il coupling tra le classi per non renderle meno riutilizzabili. Questo però non significa che possa essere utilizzato in ambiti al di fuori dello sviluppo di UI.
 
@@ -568,13 +567,45 @@ Inoltre, il manager si occupa di aprire un nuovo socket appena un nuovo observer
 
 \section{Implementazione features}
 
+Nella sezione precedente è stato definito formalmente il canale di comunicazione tra libreria client e libreria server, e l'interazione tra i componenti principali. Per quanto riguarda i dettagli implementativi specifici dell'una o dell'altra, vale la pena analizzare singolarmente come le feature siano state implementate.
+
 \subsection{Multiplexing}
 
+Ogni richiesta che viene fatta per mettersi in ascolto di una risorsa, deve essere gestita da un manager. Un manager però, come abbiamo visto, gestisce solo un socket alla volta. Il componente software che si occupa di gestire i manager è stato chiamato \textit{multiplexer}.
+
+\bigskip
+
+Il multiplexer si occupa di assicurarsi che per ogni richiesta effettuata, ci sia sempre solamente un manager attivo per ogni dominio di destinazione. Il funzionamento è piuttosto intuitivo: Ogni richiesta del client di ascoltare una risorsa passa attraverso il client, che fa da proxy per quella richiesta, inoltrandola al manager corretto. Il flusso per questa gestione può essere riassunto come segue:
+\begin{enumerate}
+\item Il client invia una richiesta al multiplexer
+\item Il multiplexer fa il parsing dell'URL di destinazione, estraendo il dominio del server che si vuole ascoltare
+\item Il multiplexer a questo punto controlla se nella propria map di manager, indicizzati per dominio di destinazione, è presente un manager
+\item Se esiste già un manager per quel dominio, inoltra la richiesta. Altrimenti, crea un nuovo manager, lo salva nella map, e inoltra la richiesta
+\end{enumerate}
+
+Oltre a gestire i manager per limitare i socket ad uno per dominio, il multiplexer si occupa anche di fare routing degli eventi scatenati dai diversi manager. In tal modo chi utilizza la libreria può rimanere in ascolto di eventi di connessione e disconnessione in un unico punto, nascondendo così i dettagli implementativi dello smistamento dei socket.
+
 \subsection{Disconnection detection}
-contratto ping su handshake
-ping/keep alive
+
+L'implementazione browser dei WebSocket non prevede nessun meccanismo di rilevazione di disconnessione, a meno che il socket non venga chiuso esplicitamente da una delle due parti con un handshake di chiusura completo. Per ovviare a questo problema, è stato sviluppato un meccanismo di keep alive implementato un livello sopra ai WebSocket.
+
+\bigskip
+
+Ogni manager in fase di handshake di ListenJS, da non confondere con l'handshake dei WebSocket, può inviare due parametri di configurazione: \lstinline{pingInterval} e \lstinline{pingTimeout}, espressi in millisecondi. Il server che riceve una richiesta di handshake può onorare i due parametri in arrivo, se presenti, e rispondere con gli stessi parametri, o rispondere con dei parametri diversi. Il client, una volta finito l'handshake, fa fede ai parametri ricevuti in risposta nell'ACK di handshake. Questo sistema è stato pensato in caso sia necessario limitare il carico di messaggi in arrivo sul server.
+Una volta terminato l'handshake, entrambe le parti hanno un contract sul quale fare affidamento per stabilire se una o l'altra parte è ancora connessa.
+Da un lato, il client invierà periodicamente un pacchetto di ping al server, con intervallo \lstinline{pingInterval}, aspettandosi dal server una risposta (pong) entro \lstinline{pingTimeout} millisecondi, o considerando il socket disconnesso dopo quel periodo di timeout.
+Dall'altro lato, il server si aspetterà di ricevere ogni \lstinline{pingInterval} millisecondi, per rispondere con un pong. Se da un pong all'altro dovesse passare più tempo di \lstinline{pingInterval + pingTimeout}, considererà il socket come disconnesso. Il pingTimeout è aggiunto per consentire un tempo massimo di ricezione dell'intervallo di ping.
+
 \subsection{Reconnection}
-backoff
+Una volta che un socket viene chiuso, o si rileva una disconnessione con il sistema descritto in precedenza, il manager si occupa di riaprire un nuovo socket. Se dovesse fallire nel riaprie un socket, allora attenderà un certo periodo di tempo, e ritenterà. La frequenza con cui un manager prova a riaprire un socket è scandita da un algoritmo chiamato \textit{Truncated Exponential Backoff}.
+
+\begin{align*}
+  E(x) &= min(d * f^x * (1 + j * r), t)
+\end{align*}
+
+La funzione calcola il prossimo delay da aspettare prima di effettuare un nuovo tentativo, sulla base del numero di tentativi $x$ e di una base esponenziale $f$. $d$ è un delay minimo, $t$ è una soglia massima, $r$ è un fattore random generato ad ogni esecuzione che nel range $[-1, 1]$, e $j$ è una durata di jitter, per non ripetere diverse richieste nello stesso istante continuativamente.
+
+ListenJS usa $f=2$, $j=0.5$, mentre i valore di minimo e di massimo possono essere configurati.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Valutazione

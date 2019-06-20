@@ -8,7 +8,7 @@
 \BOOKMARK [1][-]{section.1.3}{Server push}{chapter.1}% 8
 \BOOKMARK [2][-]{subsection.1.3.1}{Server Sent Events}{section.1.3}% 9
 \BOOKMARK [2][-]{subsection.1.3.2}{WebSockets}{section.1.3}% 10
-\BOOKMARK [0][-]{chapter.2}{Listen JS}{}% 11
+\BOOKMARK [0][-]{chapter.2}{ListenJS}{}% 11
 \BOOKMARK [1][-]{section.2.1}{Libreria client}{chapter.2}% 12
 \BOOKMARK [2][-]{subsection.2.1.1}{Installazione}{section.2.1}% 13
 \BOOKMARK [2][-]{subsection.2.1.2}{Utilizzo}{section.2.1}% 14
@@ -32,7 +32,7 @@
 \BOOKMARK [2][-]{subsection.4.2.1}{Responsiveness}{section.4.2}% 32
 \BOOKMARK [2][-]{subsection.4.2.2}{Traffico dati}{section.4.2}% 33
 \BOOKMARK [2][-]{subsection.4.2.3}{User experience}{section.4.2}% 34
-\BOOKMARK [1][-]{section.4.3}{Valore aggiunto di Listen JS}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.3}{Valore aggiunto di ListenJS}{chapter.4}% 35
 \BOOKMARK [2][-]{subsection.4.3.1}{Utilizzo risorse e limitazioni browser}{section.4.3}% 36
 \BOOKMARK [2][-]{subsection.4.3.2}{Immediatezza integrazione da parte di sviluppatori}{section.4.3}% 37
 \BOOKMARK [2][-]{subsection.4.3.3}{Architettura}{section.4.3}% 38

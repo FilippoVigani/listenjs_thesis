@@ -14,7 +14,7 @@
 \contentsline {section}{\numberline {1.3}Server push}{7}{section.1.3}% 
 \contentsline {subsection}{\numberline {1.3.1}Server Sent Events}{7}{subsection.1.3.1}% 
 \contentsline {subsection}{\numberline {1.3.2}WebSockets}{9}{subsection.1.3.2}% 
-\contentsline {chapter}{\numberline {2}Listen JS}{13}{chapter.2}% 
+\contentsline {chapter}{\numberline {2}ListenJS}{13}{chapter.2}% 
 \contentsline {section}{\numberline {2.1}Libreria client}{14}{section.2.1}% 
 \contentsline {subsection}{\numberline {2.1.1}Installazione}{14}{subsection.2.1.1}% 
 \contentsline {subsection}{\numberline {2.1.2}Utilizzo}{15}{subsection.2.1.2}% 
@@ -30,17 +30,17 @@
 \contentsline {section}{\numberline {3.2}Observer pattern across the stack}{23}{section.3.2}% 
 \contentsline {section}{\numberline {3.3}Implementazione features}{26}{section.3.3}% 
 \contentsline {subsection}{\numberline {3.3.1}Multiplexing}{26}{subsection.3.3.1}% 
-\contentsline {subsection}{\numberline {3.3.2}Disconnection detection}{26}{subsection.3.3.2}% 
-\contentsline {subsection}{\numberline {3.3.3}Reconnection}{26}{subsection.3.3.3}% 
-\contentsline {chapter}{\numberline {4}Valutazione}{27}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Applicazione di esempio}{27}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Confronto tra XHR polling e websockets}{27}{section.4.2}% 
-\contentsline {subsection}{\numberline {4.2.1}Responsiveness}{27}{subsection.4.2.1}% 
-\contentsline {subsection}{\numberline {4.2.2}Traffico dati}{27}{subsection.4.2.2}% 
-\contentsline {subsection}{\numberline {4.2.3}User experience}{27}{subsection.4.2.3}% 
-\contentsline {section}{\numberline {4.3}Valore aggiunto di Listen JS}{27}{section.4.3}% 
-\contentsline {subsection}{\numberline {4.3.1}Utilizzo risorse e limitazioni browser}{27}{subsection.4.3.1}% 
-\contentsline {subsection}{\numberline {4.3.2}Immediatezza integrazione da parte di sviluppatori}{28}{subsection.4.3.2}% 
-\contentsline {subsection}{\numberline {4.3.3}Architettura}{28}{subsection.4.3.3}% 
-\contentsline {chapter}{Conclusioni}{29}{chapter*.8}% 
-\contentsline {chapter}{Bibliografia}{33}{chapter*.10}% 
+\contentsline {subsection}{\numberline {3.3.2}Disconnection detection}{27}{subsection.3.3.2}% 
+\contentsline {subsection}{\numberline {3.3.3}Reconnection}{27}{subsection.3.3.3}% 
+\contentsline {chapter}{\numberline {4}Valutazione}{29}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Applicazione di esempio}{29}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Confronto tra XHR polling e websockets}{29}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Responsiveness}{29}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Traffico dati}{29}{subsection.4.2.2}% 
+\contentsline {subsection}{\numberline {4.2.3}User experience}{29}{subsection.4.2.3}% 
+\contentsline {section}{\numberline {4.3}Valore aggiunto di ListenJS}{29}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}Utilizzo risorse e limitazioni browser}{29}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}Immediatezza integrazione da parte di sviluppatori}{30}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.3}Architettura}{30}{subsection.4.3.3}% 
+\contentsline {chapter}{Conclusioni}{31}{chapter*.8}% 
+\contentsline {chapter}{Bibliografia}{35}{chapter*.10}% 
