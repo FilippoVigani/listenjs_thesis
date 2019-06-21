@@ -594,7 +594,7 @@ L'implementazione browser dei WebSocket non prevede nessun meccanismo di rilevaz
 Ogni manager in fase di handshake di ListenJS, da non confondere con l'handshake dei WebSocket, può inviare due parametri di configurazione: \lstinline{pingInterval} e \lstinline{pingTimeout}, espressi in millisecondi. Il server che riceve una richiesta di handshake può onorare i due parametri in arrivo, se presenti, e rispondere con gli stessi parametri, o rispondere con dei parametri diversi. Il client, una volta finito l'handshake, fa fede ai parametri ricevuti in risposta nell'ACK di handshake. Questo sistema è stato pensato in caso sia necessario limitare il carico di messaggi in arrivo sul server.
 Una volta terminato l'handshake, entrambe le parti hanno un contract sul quale fare affidamento per stabilire se una o l'altra parte è ancora connessa.
 Da un lato, il client invierà periodicamente un pacchetto di ping al server, con intervallo \lstinline{pingInterval}, aspettandosi dal server una risposta (pong) entro \lstinline{pingTimeout} millisecondi, o considerando il socket disconnesso dopo quel periodo di timeout.
-Dall'altro lato, il server si aspetterà di ricevere ogni \lstinline{pingInterval} millisecondi, per rispondere con un pong. Se da un pong all'altro dovesse passare più tempo di \lstinline{pingInterval + pingTimeout}, considererà il socket come disconnesso. Il pingTimeout è aggiunto per consentire un tempo massimo di ricezione dell'intervallo di ping.
+Dall'altro lato, il server si aspetterà di ricevere ogni \lstinline{pingInterval} millisecondi, per rispondere con un pong. Se da un pong all'altro dovesse passare più tempo di \lstinline{pingInterval + pingTimeout}, considererà il socket come disconnesso. Il \lstinline{pingTimeout} è aggiunto per consentire un tempo massimo di ricezione dell'intervallo di ping.
 
 \subsection{Reconnection}
 Una volta che un socket viene chiuso, o si rileva una disconnessione con il sistema descritto in precedenza, il manager si occupa di riaprire un nuovo socket. Se dovesse fallire nel riaprie un socket, allora attenderà un certo periodo di tempo, e ritenterà. La frequenza con cui un manager prova a riaprire un socket è scandita da un algoritmo chiamato \textit{Truncated Exponential Backoff}.
@@ -611,11 +611,48 @@ ListenJS usa $f=2$, $j=0.5$, mentre i valore di minimo e di massimo possono esse
 							% Valutazione
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Valutazione}
+L'obiettivo del progetto era quello di sviluppare due librerie che fossero semplici da utilizzare e che facessero uso di tecniche e tecnologie avanzate come i WebSocket per migliorare l'esperienza su tutti i fronti: dallo end-user al programmatore front-end al programmatore back-end.
+
+\bigskip
+
+Per meglio valutare l'applicabilità della soluzione, oltre alle librerie client e server, è stata sviluppata un'applicazione di esempio che ne facesse uso. Questa applicazione è un'istanza specifica di un caso d'uso particolare, ma è un buon punto di partenza per dimostrare la funzionalità della soluzione proposta.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%
       % Applicazione di esempio
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Applicazione di esempio}\label{sec_applicazioneesempio}
-CORS
+L'applicazione di esempio sviluppata permette a diversi utenti di contribuire alla gestione degli appuntamenti in real-time. Tutti gli utenti che utilizzano l'applicazione contribuiscono all'aggiunta, modifica e cancellazione di appuntamenti su un calendario condiviso, e vedono le modifiche effettuate dagli altri utenti in tempo reale. In aggiunta, è possibile spostarsi di periodo e visualizzare il calendario in formato giorno, settimana e mese, per avere diversi gradi di granularità.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{assets/listenjs_sample_app.png}
+\caption{ListenJS sample app interface}
+\label{fig:listenjs_sample_app}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{assets/listenjs_sample_app_edit.png}
+\caption{ListenJS sample app interface - add/edit appointment}
+\label{fig:listenjs_sample_app_edit}
+\end{figure}
+
+L'applicazione client\cite{listenjs_sample_repo} è stata sviluppata in React\cite{react}, libreria front-end che favorisce lo sviluppo con un paradigma di programmazione reactive. Nello sviluppo web la programmazione reattiva sta prendendo sempre più piede perché rende il codice di più semplice comprensione e favorisce un'interazione basata su eventi\cite{reactive_programming}, che nel nostro caso semplifica la gestione degli aggiornamenti alle risorse che possono avvenire in un qualsiase istante.
+
+È stato osservato che utilizzare React semplifica di molto la gestione degli aggiornamenti alle risorse, poiché mantenendo uno stato condiviso e costruendo la UI sulla base dello stato osservato, ogni volta che si riceve un aggiornamento alla risorsa basterà modificare lo stato e il framework si occuperà di apportare le modifiche necessare alla UI. Per mostrare la concisione che si può ottenere, di seguito è riportato il codice richiesto per integrare gli aggiornamenti periodici alle risorse nel front-end:
+\lstinputlisting[caption=ListenJS sample app resource listening]{snippets/listenjs_sample_listen.js}
+Sebbene ListenJS sia stato pensato in modo da essere framework-agnostic, la logica basata su observer sulla quale è stato costruito si sposta molto bene con librerie quali RxJS che si sta facendo strada anche sul web visto il successo delle suo controparti RxJava, RxSwift, eccetera.
+
+\bigskip
+
+L'indipendenza da framework è stata osservata anche nella parte del back-end, sviluppato in NodeJS\cite{nodejs} utilizzando Fastify\cite{fastify} come framework. L'integrazione con Fastify è stata semplice ed ha permesso di modificare gli oggetti di response del framework tramite degli hook per semplificare ulteriormente la notifica ai client in ascolto su una risorsa.
+\lstinputlisting[caption=ListenJS sample app Fastify hook]{snippets/listenjs_sample_server_hook.js}
+
+L'applicazione è stata configurata con Webpack\cite{webpack} e distribuita in due domini diversi per verificare l'impatto con i CORS: la parte client è stata transpilata per poi essere servita su un sito statico in Apache, mentre la parte server è stata servita mediante un container Docker. Come volevasi dimostrare, per poter funzionare l'handshake dei WebSocket (e tutte le altre richieste REST), la parte in NodeJS richiede di avere abilitato i CORS avendo come origine l'altro server da dove veniva servito il client.
+
+\bigskip
+
+Ultima ma non meno importante, è stata valutata la user experience nell'utilizzo dell'applicazione. Semplificare l'utilizzo dei WebSocket con librerie come ListenJS porta a migliorare le performance e a rendere scelte di design più semplici da implementare: si pensi al classico pulsante di refresh, reso futile se un'applicazione implementa un sistema reactive basato sugli observer e su WebSocket. In definitiva, migliorare le performance e l'esperienza utente porta ad aumentare il conversion rate\cite{why_performance_matters} e dunque ad aumentare i guadagni, con spese di sviluppo pressoché nulle.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Confronto tra XHR polling e WebSocket

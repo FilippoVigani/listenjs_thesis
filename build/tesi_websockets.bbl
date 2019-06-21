@@ -50,4 +50,24 @@
 \newblock {Behavioral Patterns: Observer}.
 \newblock In {\em {Design Patterns}}, chapter~{5}. {Addison-Wesley}, {1994}.
 
+\bibitem{react}
+{React - A JavaScript library for building user interfaces}.
+\newblock \url{https://reactjs.org/}.
+
+\bibitem{reactive_programming}
+{G. Salvaneschi and S. Proksch and S. Amann and S. Nadi and M. Mezini}.
+\newblock {On the Positive Effect of Reactive Programmingon Software
+  Comprehension:An Empirical Study}.
+\newblock \url{https://ieeexplore.ieee.org/abstract/document/7827078}.
+
+\bibitem{webpack}
+{Webpack}.
+\newblock \url{https://webpack.js.org/}.
+
+\bibitem{why_performance_matters}
+{Jeremy Wagner}.
+\newblock {Why Performance Matters}.
+\newblock
+  \url{https://developers.google.com/web/fundamentals/performance/why-performance-matters/}.
+
 \end{thebibliography}
