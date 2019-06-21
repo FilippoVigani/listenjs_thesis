@@ -28,8 +28,8 @@
 \BOOKMARK [2][-]{subsection.3.3.3}{Reconnection}{section.3.3}% 28
 \BOOKMARK [0][-]{chapter.4}{Valutazione}{}% 29
 \BOOKMARK [1][-]{section.4.1}{Applicazione di esempio}{chapter.4}% 30
-\BOOKMARK [1][-]{section.4.2}{Confronto tra XHR polling e websockets}{chapter.4}% 31
-\BOOKMARK [2][-]{subsection.4.2.1}{Responsiveness}{section.4.2}% 32
+\BOOKMARK [1][-]{section.4.2}{Confronto tra XHR polling e WebSocket}{chapter.4}% 31
+\BOOKMARK [2][-]{subsection.4.2.1}{Latenza}{section.4.2}% 32
 \BOOKMARK [2][-]{subsection.4.2.2}{Traffico dati}{section.4.2}% 33
 \BOOKMARK [2][-]{subsection.4.2.3}{User experience}{section.4.2}% 34
 \BOOKMARK [1][-]{section.4.3}{Valore aggiunto di ListenJS}{chapter.4}% 35

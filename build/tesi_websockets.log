@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  21 JUN 2019 15:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  21 JUN 2019 17:53
 entering extended mode
 **./tesi_websockets.tex
 (tesi_websockets.tex
@@ -379,40 +379,31 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
 )
-("C:\Program Files\MiKTeX 2.9\tex/latex/tools\indentfirst.sty"
-Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+("C:\Program Files\MiKTeX 2.9\tex/latex/url\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-("C:\Program Files\MiKTeX 2.9\tex/latex/fancyhdr\fancyhdr.sty"
-Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
-s
-\f@nch@headwidth=\skip47
-\f@nch@O@elh=\skip48
-\f@nch@O@erh=\skip49
-\f@nch@O@olh=\skip50
-\f@nch@O@orh=\skip51
-\f@nch@O@elf=\skip52
-\f@nch@O@erf=\skip53
-\f@nch@O@olf=\skip54
-\f@nch@O@orf=\skip55
-)
-("C:\Program Files\MiKTeX 2.9\tex/latex/natbib\natbib.sty"
-Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip56
-\bibsep=\skip57
-LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count118
-)
-("C:\Program Files\MiKTeX 2.9\tex/latex/base\newlfont.sty"
-Package: newlfont 1998/08/17 v2.2m Standard LaTeX package
-LaTeX Info: Redefining \em on input line 57.
+("C:\Program Files\MiKTeX 2.9\tex/latex/breakurl\breakurl.sty"
+Package: breakurl 2013/04/10 v1.40 Breakable hyperref URLs
 
-("C:\Program Files\MiKTeX 2.9\tex/latex/base\latexsym.sty"
-Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
-\symlasy=\mathgroup4
-LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
-(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+("C:\Program Files\MiKTeX 2.9\tex/latex/xkeyval\xkeyval.sty"
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+("C:\Program Files\MiKTeX 2.9\tex/generic/xkeyval\xkeyval.tex"
+("C:\Program Files\MiKTeX 2.9\tex/generic/xkeyval\xkvutils.tex"
+\XKV@toks=\toks26
+\XKV@tempa@toks=\toks27
+)
+\XKV@depth=\count118
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\hyperref.sty"
+
+Package breakurl Warning: You are using breakurl while processing via pdflatex.
+
+(breakurl)                \burl will be just a synonym of \url.
+(breakurl)                 on input line 48.
+
+) ("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\hyperref.sty"
 Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
 
 ("C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\hobsub-hyperref.sty"
@@ -473,6 +464,7 @@ Now handling font encoding PD1 ...
 ("C:\Program Files\MiKTeX 2.9\tex/latex/00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
+Package hyperref Info: Option `breaklinks' set `true' on input line 4393.
 Package hyperref Info: Hyper figures OFF on input line 4519.
 Package hyperref Info: Link nesting OFF on input line 4524.
 Package hyperref Info: Hyper index ON on input line 4527.
@@ -481,11 +473,6 @@ Package hyperref Info: Backreferencing OFF on input line 4539.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4772.
 \c@Hy@tempcnt=\count122
-
-("C:\Program Files\MiKTeX 2.9\tex/latex/url\url.sty"
-\Urlmuskip=\muskip11
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
 LaTeX Info: Redefining \url on input line 5125.
 \XeTeXLinkMargin=\dimen130
 \Fld@menulength=\count123
@@ -516,8 +503,41 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip58
+\Hy@SectionHShift=\skip47
 )
+("C:\Program Files\MiKTeX 2.9\tex/latex/tools\indentfirst.sty"
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/fancyhdr\fancyhdr.sty"
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip48
+\f@nch@O@elh=\skip49
+\f@nch@O@erh=\skip50
+\f@nch@O@olh=\skip51
+\f@nch@O@orh=\skip52
+\f@nch@O@elf=\skip53
+\f@nch@O@erf=\skip54
+\f@nch@O@olf=\skip55
+\f@nch@O@orf=\skip56
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/natbib\natbib.sty"
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip57
+\bibsep=\skip58
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count129
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/base\newlfont.sty"
+Package: newlfont 1998/08/17 v2.2m Standard LaTeX package
+LaTeX Info: Redefining \em on input line 57.
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/base\latexsym.sty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+))
 ("C:\Program Files\MiKTeX 2.9\tex/latex/graphics\graphicx.sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -553,8 +573,8 @@ Package shellesc Info: Restricted shell escape enabled on input line 69.
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
 \svg@box=\box31
-\c@svg@param@lastpage=\count129
-\c@svg@param@currpage=\count130
+\c@svg@param@lastpage=\count130
+\c@svg@param@currpage=\count131
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\transparent.sty"
 Package: transparent 2018/11/18 v1.3 Transparency via pdfTeX's color stack (HO)
@@ -562,37 +582,37 @@ Package: transparent 2018/11/18 v1.3 Transparency via pdfTeX's color stack (HO)
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/tools\afterpage.sty"
 Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
-\AP@output=\toks26
+\AP@output=\toks28
 \AP@partial=\box32
 \AP@footins=\box33
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 95.
+Package hyperref Info: Option `colorlinks' set `true' on input line 99.
 
 (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.aux)
 \openout1 = `tesi_websockets.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 106.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 106.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 110.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 110.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 110.
+LaTeX Font Info:    ... okay on input line 110.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -629,22 +649,22 @@ LaTeX Font Info:    ... okay on input line 106.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \it@ocap on input line 106.
-LaTeX Info: Redefining \it@ccap on input line 106.
-\c@lstlisting=\count131
+LaTeX Info: Redefining \it@ocap on input line 110.
+LaTeX Info: Redefining \it@ccap on input line 110.
+\c@lstlisting=\count132
 ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count132
+\scratchcounter=\count133
 \scratchdimen=\dimen135
 \scratchbox=\box34
-\nofMPsegments=\count133
-\nofMParguments=\count134
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count135
+\nofMPsegments=\count134
+\nofMParguments=\count135
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count136
 \MPscratchDim=\dimen136
-\MPnumerator=\count136
-\makeMPintoPDFobject=\count137
-\everyMPtoPDFconversion=\toks28
+\MPnumerator=\count137
+\makeMPintoPDFobject=\count138
+\everyMPtoPDFconversion=\toks30
 ) ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -659,7 +679,7 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 \AtBeginShipoutBox=\box35
-Package hyperref Info: Link coloring ON on input line 106.
+Package hyperref Info: Link coloring ON on input line 110.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -667,18 +687,18 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex/generic/oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count138
+\c@section@level=\count139
 )
-LaTeX Info: Redefining \ref on input line 106.
-LaTeX Info: Redefining \pageref on input line 106.
-LaTeX Info: Redefining \nameref on input line 106.
+LaTeX Info: Redefining \ref on input line 110.
+LaTeX Info: Redefining \pageref on input line 110.
+LaTeX Info: Redefining \nameref on input line 110.
 
 (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.out)
 (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.out)
 \@outlinefile=\write3
 \openout3 = `tesi_websockets.out'.
 
-LaTeX Font Info:    Try loading font information for U+lasy on input line 115.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 119.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
@@ -743,7 +763,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.181 \listoffigures
+l.185 \listoffigures
                      [2]
 (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.lof)
 \tf@lof=\write5
@@ -762,7 +782,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.237 
+l.241 
        [1]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -771,7 +791,7 @@ We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
 [2]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 258.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 262.
 
  ("C:\Program Files\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -784,20 +804,20 @@ LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 9.
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\ts1cmtt.fd"
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ))
-<assets/polling.png, id=279, 2534.46875pt x 1576.89125pt>
+<assets/polling.png, id=283, 2534.46875pt x 1576.89125pt>
 File: assets/polling.png Graphic file (type png)
 <use assets/polling.png>
-Package pdftex.def Info: assets/polling.png  used on input line 262.
+Package pdftex.def Info: assets/polling.png  used on input line 266.
 (pdftex.def)             Requested size: 304.55945pt x 189.48346pt.
  [3]
 (snippets/longpolling_sample.js
 Underfull \vbox (badness 3312) has occurred while \output is active []
 
  [4 <./assets/polling.png>])
-<assets/long_polling.png, id=341, 2530.45375pt x 1121.18875pt>
+<assets/long_polling.png, id=345, 2530.45375pt x 1121.18875pt>
 File: assets/long_polling.png Graphic file (type png)
 <use assets/long_polling.png>
-Package pdftex.def Info: assets/long_polling.png  used on input line 272.
+Package pdftex.def Info: assets/long_polling.png  used on input line 276.
 (pdftex.def)             Requested size: 304.55945pt x 134.93033pt.
 
 Underfull \vbox (badness 1521) has occurred while \output is active []
@@ -807,31 +827,31 @@ Underfull \vbox (badness 2961) has occurred while \output is active []
 
  [6]
 [7]
-<assets/server_sent_events.png, id=375, 1656.1875pt x 1288.815pt>
+<assets/server_sent_events.png, id=379, 1656.1875pt x 1288.815pt>
 File: assets/server_sent_events.png Graphic file (type png)
 <use assets/server_sent_events.png>
-Package pdftex.def Info: assets/server_sent_events.png  used on input line 326.
+Package pdftex.def Info: assets/server_sent_events.png  used on input line 330.
 
 (pdftex.def)             Requested size: 228.42104pt x 177.73866pt.
  (snippets/eventsource_sample.js) [8 <./assets/server_sent_events.png>]
 [9] (snippets/websocket_sample.js)
-<assets/websockets.png, id=418, 1648.1575pt x 1635.10875pt>
+<assets/websockets.png, id=422, 1648.1575pt x 1635.10875pt>
 File: assets/websockets.png Graphic file (type png)
 <use assets/websockets.png>
-Package pdftex.def Info: assets/websockets.png  used on input line 359.
+Package pdftex.def Info: assets/websockets.png  used on input line 363.
 (pdftex.def)             Requested size: 190.34894pt x 188.81946pt.
  [10] [11 <./assets/websockets.png>] [12
 
 ]
 Capitolo 2.
 [13]
-<assets/listenjs.png, id=465, 1208.515pt x 1189.44376pt>
+<assets/listenjs.png, id=469, 1208.515pt x 1189.44376pt>
 File: assets/listenjs.png Graphic file (type png)
 <use assets/listenjs.png>
-Package pdftex.def Info: assets/listenjs.png  used on input line 397.
+Package pdftex.def Info: assets/listenjs.png  used on input line 401.
 (pdftex.def)             Requested size: 266.48735pt x 262.27736pt.
  [14] (snippets/listenjsclient_sample.js [15 <./assets/listenjs.png>])
-Overfull \hbox (14.65825pt too wide) in paragraph at lines 436--437
+Overfull \hbox (14.65825pt too wide) in paragraph at lines 440--441
 \T1/cmr/m/n/12 Come per la par-te client, è in al-ter-na-ti-va pos-si-bi-le sca
 -ri-ca-re il co-di-ce sorgente[[]]
  []
@@ -843,46 +863,63 @@ Capitolo 3.
 (snippets/listenjs_message.json) [21
 
 ] [22] [23]
-<assets/observer_statuses.png, id=568, 2610.75375pt x 1294.8375pt>
+<assets/observer_statuses.png, id=572, 2610.75375pt x 1294.8375pt>
 File: assets/observer_statuses.png Graphic file (type png)
 <use assets/observer_statuses.png>
-Package pdftex.def Info: assets/observer_statuses.png  used on input line 539.
+Package pdftex.def Info: assets/observer_statuses.png  used on input line 543.
 (pdftex.def)             Requested size: 342.62576pt x 169.91539pt.
  [24 <./assets/observer_statuses.png>]
-<assets/manager_statuses.png, id=575, 2883.77374pt x 1544.77126pt>
+<assets/manager_statuses.png, id=579, 2883.77374pt x 1544.77126pt>
 File: assets/manager_statuses.png Graphic file (type png)
 <use assets/manager_statuses.png>
-Package pdftex.def Info: assets/manager_statuses.png  used on input line 559.
+Package pdftex.def Info: assets/manager_statuses.png  used on input line 563.
 (pdftex.def)             Requested size: 342.62576pt x 183.52599pt.
 
 Underfull \vbox (badness 6063) has occurred while \output is active []
 
  [25 <./assets/manager_statuses.png>] [26] [27] [28]
 Capitolo 4.
-<assets/listenjs_sample_app.png, id=601, 1927.2pt x 947.54pt>
+<assets/listenjs_sample_app.png, id=605, 1927.2pt x 947.54pt>
 File: assets/listenjs_sample_app.png Graphic file (type png)
 <use assets/listenjs_sample_app.png>
-Package pdftex.def Info: assets/listenjs_sample_app.png  used on input line 628
+Package pdftex.def Info: assets/listenjs_sample_app.png  used on input line 632
 .
 (pdftex.def)             Requested size: 380.69788pt x 187.17685pt.
-<assets/listenjs_sample_app_edit.png, id=602, 1927.2pt x 947.54pt>
+<assets/listenjs_sample_app_edit.png, id=606, 1927.2pt x 947.54pt>
 File: assets/listenjs_sample_app_edit.png Graphic file (type png)
 <use assets/listenjs_sample_app_edit.png>
 Package pdftex.def Info: assets/listenjs_sample_app_edit.png  used on input lin
-e 635.
+e 639.
 (pdftex.def)             Requested size: 380.69788pt x 187.17685pt.
 [29
 
 ] [30 <./assets/listenjs_sample_app.png> <./assets/listenjs_sample_app_edit.png
 >] (snippets/listenjs_sample_listen.js)
+Overfull \hbox (1.51921pt too wide) in paragraph at lines 652--653
+\T1/cmr/m/n/12 end, svi-lup-pa-to in NodeJS[[]] uti-liz-zan-do Fastify[[]] co-m
+e fra-mework. L'in-
+ []
+
 (snippets/listenjs_sample_server_hook.js [31])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32]
-[33] [34
+<assets/latency.png, id=671, 828.09375pt x 325.215pt>
+File: assets/latency.png Graphic file (type png)
+<use assets/latency.png>
+Package pdftex.def Info: assets/latency.png  used on input line 673.
+(pdftex.def)             Requested size: 342.62576pt x 134.55975pt.
+<assets/latency_chart.png, id=672, 831.105pt x 513.92pt>
+File: assets/latency_chart.png Graphic file (type png)
+<use assets/latency_chart.png>
+Package pdftex.def Info: assets/latency_chart.png  used on input line 680.
+(pdftex.def)             Requested size: 342.62576pt x 211.8613pt.
+
+Underfull \vbox (badness 1237) has occurred while \output is active []
+
+ [33 <./assets/latency.png>] [34 <./assets/latency_chart.png>] [35
 
 
-] [35
 
 ] [36
 
@@ -891,49 +928,61 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.bbl
-Underfull \hbox (badness 2245) in paragraph at lines 10--12
+Underfull \hbox (badness 2894) in paragraph at lines 10--12
 []\T1/cmr/m/n/12 Server Sent Even-ts Sup-port.  [][]$\T1/cmtt/m/n/12 https : / 
-/ caniuse . com / #search =
+/ caniuse\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / #search =
  []
 
 
-Underfull \hbox (badness 6220) in paragraph at lines 34--36
+Underfull \hbox (badness 7468) in paragraph at lines 34--36
 []\T1/cmr/m/n/12 ListenJS ser-ver sour-ce co-de.  [][]$\T1/cmtt/m/n/12 https : 
-/ / github . com / VeegaP /
+/ / github\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / VeegaP /
+ []
+
+
+Underfull \hbox (badness 5331) in paragraph at lines 54--56
+[]\T1/cmr/m/n/12 ListenJS sam-ple sour-ce co-de.  [][]$\T1/cmtt/m/n/12 https : 
+/ / github\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / VeegaP /
  []
 
 [39
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 68--72
+Underfull \hbox (badness 10000) in paragraph at lines 81--86
 []\T1/cmr/m/n/12 Jeremy Wag-ner.  Why Per-for-man-ce Mat-ters.  [][]$\T1/cmtt/m
 /n/12 https :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--72
-\T1/cmtt/m/n/12 / / developers . google . com / web / fundamentals / performanc
-e /
+Underfull \hbox (badness 10000) in paragraph at lines 81--86
+\T1/cmtt/m/n/12 / / developers\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 google\OML/cmm/
+m/it/12 :\T1/cmtt/m/n/12 com / web / fundamentals / performance / why -[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--99
+\T1/cmtt/m/n/12 explained -[] the -[] flow -[] of -[] data -[] through -[] soft
+ware -[] 2350b3e77ce7$[][]\T1/cmr/m/n/12 ,
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 713.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 735.
  [40]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 713.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 735.
  (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 713.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 713.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 735.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 735.
 Package rerunfilecheck Info: File `tesi_websockets.out' has not changed.
-(rerunfilecheck)             Checksum: 2956C378AC31694A997CB8A27C2F52CE;2681.
+(rerunfilecheck)             Checksum: 10EE0851A8DA7DC653B23F6251D31776;2673.
  ) 
 Here is how much of TeX's memory you used:
- 11706 strings out of 492895
- 169759 string characters out of 3133473
- 364471 words of memory out of 3000000
- 15072 multiletter control sequences out of 15000+200000
- 25026 words of font info for 62 fonts, out of 3000000 for 9000
+ 11970 strings out of 492895
+ 173935 string characters out of 3133473
+ 369906 words of memory out of 3000000
+ 15312 multiletter control sequences out of 15000+200000
+ 25652 words of font info for 64 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,12n,43p,806b,1981s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,12n,72p,1019b,2055s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\filippo\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ectt1200.pk> <C:\Users\filippo\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknap
 pen/ec/dpi600\tcrm1200.pk> <C:\Users\filippo\AppData\Local\MiKTeX\2.9\fonts/pk/
@@ -960,9 +1009,9 @@ amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/latxfont
 /lcircle1.pfb>
 Output written on C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websock
-ets.pdf (50 pages, 994845 bytes).
+ets.pdf (50 pages, 1099889 bytes).
 PDF statistics:
- 1367 PDF objects out of 1440 (max. 8388607)
- 300 named destinations out of 1000 (max. 500000)
- 366 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1405 PDF objects out of 1440 (max. 8388607)
+ 307 named destinations out of 1000 (max. 500000)
+ 376 words of extra memory for PDF output out of 10000 (max. 10000000)
 

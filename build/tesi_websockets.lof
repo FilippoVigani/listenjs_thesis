@@ -13,3 +13,5 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces ListenJS sample app interface}}{30}{figure.4.1}% 
 \contentsline {figure}{\numberline {4.2}{\ignorespaces ListenJS sample app interface - add/edit appointment}}{30}{figure.4.2}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Polling, long polling and WebSocket latency comparison}}{33}{figure.4.3}% 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Polling, long polling and WebSocket latency results}}{34}{figure.4.4}% 

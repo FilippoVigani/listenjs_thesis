@@ -10,6 +10,10 @@
 \usepackage{framed,xcolor,verbatim}
 \usepackage{emptypage} %removes header and footers from empty pages
 \usepackage{amsmath}
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+\usepackage{breakurl}
+\usepackage[breaklinks]{hyperref}
 \definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
 \definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
 \definecolor{editorGray}{rgb}{0.98, 0.98, 0.98}
@@ -657,9 +661,26 @@ Ultima ma non meno importante, è stata valutata la user experience nell'utilizz
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Confronto tra XHR polling e WebSocket
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Confronto tra XHR polling e websockets}\label{sec_confrontopollingwebsockets}
+\section{Confronto tra XHR polling e WebSocket}\label{sec_confrontopollingwebsockets}
 
-\subsection{Responsiveness}
+Una prima valutazione sull'efficacia del progetto va fatta confrontando le performance tra il polling e i WebSocket, in quanto sebbene ListenJS non sia l'alternativa unica al polling, grazie alle funzionalità che offre rende più seamless il passaggio da polling a WebSocket come tecnica di aggiornamento delle risorse.
+
+\subsection{Latenza}
+Per quanto riguarda i tempi di risposta medi, sono già stati fatti dei test empirici confrontando polling, long polling e WebSocket\cite{communicating_websocket}. I risultati mostrano che in ogni caso, i WebSocket hanno tempi medi di risposta inferiori rispetto al polling. Per quanto riguarda il long polling, i tempi di risposta sono comparabili con quelli dei WebSocket, ad eccezione dei casi in cui ci sia backpressure\cite{backpressure} sul server: in quel caso i messaggi che il server dovrà inviare al client saranno ritardati dai tempi di apertura di una nuova connessione, in quanto ogni nuovo messaggio da inviare dovrà rimanere in attesa della prossima richiesta di long polling, e i nuovi messaggi in arrivo durante questo tempo di attesa verranno messi in coda, aumentando progressivamente la latenza. La figura \ref{fig:latency} illustra chiaramente questo comportamento, mentre la figura \ref{fig:latency_chart} mette a confronto i risultati ottenuti.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{assets/latency.png}
+\caption{Polling, long polling and WebSocket latency comparison}
+\label{fig:latency}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{assets/latency_chart.png}
+\caption{Polling, long polling and WebSocket latency results}
+\label{fig:latency_chart}
+\end{figure}
 
 \subsection{Traffico dati}
 

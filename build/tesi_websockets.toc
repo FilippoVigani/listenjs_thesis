@@ -34,13 +34,13 @@
 \contentsline {subsection}{\numberline {3.3.3}Reconnection}{27}{subsection.3.3.3}% 
 \contentsline {chapter}{\numberline {4}Valutazione}{29}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Applicazione di esempio}{29}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Confronto tra XHR polling e websockets}{33}{section.4.2}% 
-\contentsline {subsection}{\numberline {4.2.1}Responsiveness}{33}{subsection.4.2.1}% 
-\contentsline {subsection}{\numberline {4.2.2}Traffico dati}{33}{subsection.4.2.2}% 
-\contentsline {subsection}{\numberline {4.2.3}User experience}{33}{subsection.4.2.3}% 
-\contentsline {section}{\numberline {4.3}Valore aggiunto di ListenJS}{33}{section.4.3}% 
-\contentsline {subsection}{\numberline {4.3.1}Utilizzo risorse e limitazioni browser}{33}{subsection.4.3.1}% 
-\contentsline {subsection}{\numberline {4.3.2}Immediatezza integrazione da parte di sviluppatori}{33}{subsection.4.3.2}% 
-\contentsline {subsection}{\numberline {4.3.3}Architettura}{33}{subsection.4.3.3}% 
+\contentsline {section}{\numberline {4.2}Confronto tra XHR polling e WebSocket}{33}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Latenza}{33}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Traffico dati}{34}{subsection.4.2.2}% 
+\contentsline {subsection}{\numberline {4.2.3}User experience}{34}{subsection.4.2.3}% 
+\contentsline {section}{\numberline {4.3}Valore aggiunto di ListenJS}{34}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}Utilizzo risorse e limitazioni browser}{34}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}Immediatezza integrazione da parte di sviluppatori}{34}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.3}Architettura}{34}{subsection.4.3.3}% 
 \contentsline {chapter}{Conclusioni}{35}{chapter*.8}% 
 \contentsline {chapter}{Bibliografia}{40}{chapter*.10}% 
