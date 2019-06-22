@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  21 JUN 2019 17:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.6.14)  22 JUN 2019 15:46
 entering extended mode
 **./tesi_websockets.tex
 (tesi_websockets.tex
@@ -804,7 +804,7 @@ LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 9.
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\ts1cmtt.fd"
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ))
-<assets/polling.png, id=283, 2534.46875pt x 1576.89125pt>
+<assets/polling.png, id=285, 2534.46875pt x 1576.89125pt>
 File: assets/polling.png Graphic file (type png)
 <use assets/polling.png>
 Package pdftex.def Info: assets/polling.png  used on input line 266.
@@ -814,7 +814,7 @@ Package pdftex.def Info: assets/polling.png  used on input line 266.
 Underfull \vbox (badness 3312) has occurred while \output is active []
 
  [4 <./assets/polling.png>])
-<assets/long_polling.png, id=345, 2530.45375pt x 1121.18875pt>
+<assets/long_polling.png, id=347, 2530.45375pt x 1121.18875pt>
 File: assets/long_polling.png Graphic file (type png)
 <use assets/long_polling.png>
 Package pdftex.def Info: assets/long_polling.png  used on input line 276.
@@ -827,7 +827,7 @@ Underfull \vbox (badness 2961) has occurred while \output is active []
 
  [6]
 [7]
-<assets/server_sent_events.png, id=379, 1656.1875pt x 1288.815pt>
+<assets/server_sent_events.png, id=381, 1656.1875pt x 1288.815pt>
 File: assets/server_sent_events.png Graphic file (type png)
 <use assets/server_sent_events.png>
 Package pdftex.def Info: assets/server_sent_events.png  used on input line 330.
@@ -835,7 +835,7 @@ Package pdftex.def Info: assets/server_sent_events.png  used on input line 330.
 (pdftex.def)             Requested size: 228.42104pt x 177.73866pt.
  (snippets/eventsource_sample.js) [8 <./assets/server_sent_events.png>]
 [9] (snippets/websocket_sample.js)
-<assets/websockets.png, id=422, 1648.1575pt x 1635.10875pt>
+<assets/websockets.png, id=424, 1648.1575pt x 1635.10875pt>
 File: assets/websockets.png Graphic file (type png)
 <use assets/websockets.png>
 Package pdftex.def Info: assets/websockets.png  used on input line 363.
@@ -845,7 +845,7 @@ Package pdftex.def Info: assets/websockets.png  used on input line 363.
 ]
 Capitolo 2.
 [13]
-<assets/listenjs.png, id=469, 1208.515pt x 1189.44376pt>
+<assets/listenjs.png, id=471, 1208.515pt x 1189.44376pt>
 File: assets/listenjs.png Graphic file (type png)
 <use assets/listenjs.png>
 Package pdftex.def Info: assets/listenjs.png  used on input line 401.
@@ -863,13 +863,13 @@ Capitolo 3.
 (snippets/listenjs_message.json) [21
 
 ] [22] [23]
-<assets/observer_statuses.png, id=572, 2610.75375pt x 1294.8375pt>
+<assets/observer_statuses.png, id=574, 2610.75375pt x 1294.8375pt>
 File: assets/observer_statuses.png Graphic file (type png)
 <use assets/observer_statuses.png>
 Package pdftex.def Info: assets/observer_statuses.png  used on input line 543.
 (pdftex.def)             Requested size: 342.62576pt x 169.91539pt.
  [24 <./assets/observer_statuses.png>]
-<assets/manager_statuses.png, id=579, 2883.77374pt x 1544.77126pt>
+<assets/manager_statuses.png, id=581, 2883.77374pt x 1544.77126pt>
 File: assets/manager_statuses.png Graphic file (type png)
 <use assets/manager_statuses.png>
 Package pdftex.def Info: assets/manager_statuses.png  used on input line 563.
@@ -879,13 +879,13 @@ Underfull \vbox (badness 6063) has occurred while \output is active []
 
  [25 <./assets/manager_statuses.png>] [26] [27] [28]
 Capitolo 4.
-<assets/listenjs_sample_app.png, id=605, 1927.2pt x 947.54pt>
+<assets/listenjs_sample_app.png, id=607, 1927.2pt x 947.54pt>
 File: assets/listenjs_sample_app.png Graphic file (type png)
 <use assets/listenjs_sample_app.png>
 Package pdftex.def Info: assets/listenjs_sample_app.png  used on input line 632
 .
 (pdftex.def)             Requested size: 380.69788pt x 187.17685pt.
-<assets/listenjs_sample_app_edit.png, id=606, 1927.2pt x 947.54pt>
+<assets/listenjs_sample_app_edit.png, id=608, 1927.2pt x 947.54pt>
 File: assets/listenjs_sample_app_edit.png Graphic file (type png)
 <use assets/listenjs_sample_app_edit.png>
 Package pdftex.def Info: assets/listenjs_sample_app_edit.png  used on input lin
@@ -904,12 +904,12 @@ e fra-mework. L'in-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32]
-<assets/latency.png, id=671, 828.09375pt x 325.215pt>
+<assets/latency.png, id=673, 828.09375pt x 325.215pt>
 File: assets/latency.png Graphic file (type png)
 <use assets/latency.png>
 Package pdftex.def Info: assets/latency.png  used on input line 673.
 (pdftex.def)             Requested size: 342.62576pt x 134.55975pt.
-<assets/latency_chart.png, id=672, 831.105pt x 513.92pt>
+<assets/latency_chart.png, id=674, 831.105pt x 513.92pt>
 File: assets/latency_chart.png Graphic file (type png)
 <use assets/latency_chart.png>
 Package pdftex.def Info: assets/latency_chart.png  used on input line 680.
@@ -917,13 +917,21 @@ Package pdftex.def Info: assets/latency_chart.png  used on input line 680.
 
 Underfull \vbox (badness 1237) has occurred while \output is active []
 
- [33 <./assets/latency.png>] [34 <./assets/latency_chart.png>] [35
+ [33 <./assets/latency.png>] (snippets/example_headers.txt [34 <./assets/latenc
+y_chart.png>]) [35]
+<assets/bandwidth.png, id=717, 831.105pt x 513.92pt>
+File: assets/bandwidth.png Graphic file (type png)
+<use assets/bandwidth.png>
+Package pdftex.def Info: assets/bandwidth.png  used on input line 719.
+(pdftex.def)             Requested size: 342.62576pt x 211.8613pt.
+ [36] [37 <./assets/bandwidth.png>] [38
 
 
+] [39
 
-] [36
+] [40
 
-] [37] [38
+] [41] [42
 
 
 ]
@@ -945,7 +953,7 @@ Underfull \hbox (badness 5331) in paragraph at lines 54--56
 / / github\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / VeegaP /
  []
 
-[39
+[43
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 81--86
@@ -966,20 +974,20 @@ ware -[] 2350b3e77ce7$[][]\T1/cmr/m/n/12 ,
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 735.
- [40]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 735.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 774.
+ [44]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 774.
  (C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websockets.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 735.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 735.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 774.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 774.
 Package rerunfilecheck Info: File `tesi_websockets.out' has not changed.
 (rerunfilecheck)             Checksum: 10EE0851A8DA7DC653B23F6251D31776;2673.
  ) 
 Here is how much of TeX's memory you used:
- 11970 strings out of 492895
- 173935 string characters out of 3133473
- 369906 words of memory out of 3000000
- 15312 multiletter control sequences out of 15000+200000
+ 12060 strings out of 492895
+ 175089 string characters out of 3133473
+ 369981 words of memory out of 3000000
+ 15362 multiletter control sequences out of 15000+200000
  25652 words of font info for 64 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,12n,72p,1019b,2055s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1009,9 +1017,9 @@ amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/latxfont
 /lcircle1.pfb>
 Output written on C:\Users\filippo\Documents\listenjs_thesis\build\tesi_websock
-ets.pdf (50 pages, 1099889 bytes).
+ets.pdf (54 pages, 1128378 bytes).
 PDF statistics:
- 1405 PDF objects out of 1440 (max. 8388607)
- 307 named destinations out of 1000 (max. 500000)
- 376 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1467 PDF objects out of 1728 (max. 8388607)
+ 342 named destinations out of 1000 (max. 500000)
+ 381 words of extra memory for PDF output out of 10000 (max. 10000000)
 

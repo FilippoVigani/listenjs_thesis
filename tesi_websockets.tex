@@ -684,8 +684,49 @@ Per quanto riguarda i tempi di risposta medi, sono già stati fatti dei test emp
 
 \subsection{Traffico dati}
 
+Per quanto riguarda l'utilizzo della banda, i dettagli del consumo dipendono dalle circostanze. Una richiesta di polling HTTP, deve stabilire una connessione TCP e confermare tale connessione, scambiandosi un certa quantità di dati, ancora di più se si tratta di una connessione SSL. Successivamente deve inviare la richiesta HTTP, includendo eventuali cookie, headers e URL della GET. Poi il server deve rispondere, e la maggior parte delle volte questo scambio di informatzioni è interamente sprecato perché non c'è nulla da notificare.
+
+\bigskip
+
+Supponiamo di avere un'applicazione web che utilizzi il polling come metodo di aggiornamento dei dati. Per ogni richiesta di polling, gli header scambiati potrebbero essere come i seguenti:
+\lstinputlisting[caption=HTTP Request and response headers example]{snippets/example_headers.txt}
+Il totale tra la richiesta e la risposta corrisponde a 568 byte. In base alle diverse casistiche, questo valore potrebbe essere leggermente inferiore o discretamente superiore; non è fuori dal comune vedere richiesta da 1500 o di più byte.
+Vediamo ora 3 casi d'uso differenti in base al numero di client che fanno polling contemporanemnte:
+\begin{enumerate}
+\item \textbf{Use case A}: $1000$ client fanno polling ogni secondo: Il throughput della rete è $568 \times 1000 = 568000$ byte al secondo $=> 4.5$ Mbps
+\item \textbf{Use case B}: $10000$ client fanno polling ogni secondo: Il throughput della rete è $568 \times 10000 = 5680000$ byte al secondo $=> 45.4$ Mbps
+\item \textbf{Use case C}: $100000$ client fanno polling ogni secondo: Il throughput della rete è $568 \times 100000 = 56800000$ byte al secondo $=> 454.4$ Mbps
+\end{enumerate}
+
+Per avere una stima più bassa possibile (a favore del polling), supponiamo che i dati in risposta alla richiesta di polling vengano inviati solo se il client non ha il dato aggiornato - e conseguentemente il server gestisca una sorta di versionamento della risorsa osservata. Inoltre, supponiamo che la risorsa venga aggiornata ogni 5 secondi ed abbia un payload di dimensione 100 byte. Significa che nel caso del polling dobbiamo aggiungere questa dimensione di payload:
+\begin{enumerate}
+\item \textbf{Use case A}: $1000$ client aprono una nuova connessione ogni $5$ secondi. Il throughput è di $568 \times 1000 / 5 = 113600$ byte al secondo $=> 0.9$ Mbps
+\item \textbf{Use case A}: $10000$ client aprono una nuova connessione ogni $5$ secondi. Il throughput è di $568 \times 10000 / 5 = 1136000$ byte al secondo $=> 9.1$ Mbps
+\item \textbf{Use case A}: $100000$ client aprono una nuova connessione ogni $5$ secondi. Il throughput è di $568 \times 100000 / 5 = 11360000$ byte al secondo $=> 90.9$ Mbps
+\end{enumerate}
+
+Nel caso del long polling, si dovrà aprire una nuova connessione per ogni volta che un nuovo dato è ricevuto. Il traffico dati è dato dunque da:
+\begin{enumerate}
+\item \textbf{Use case A}: $1000$ client ricevono $100$ byte ogni $5$ secondi. Il throughput è di $100 \times 1000 / 5 = 20000$ byte al secondo $=> 1.6$ Mbps
+\item \textbf{Use case B}: $10000$ client ricevono $100$ byte ogni $5$ secondi. Il throughput è di $100 \times 10000 / 5 = 200000$ byte al secondo $=> 16$ Mbps
+\item \textbf{Use case C}: $100000$ client ricevono $100$ byte ogni $5$ secondi. Il throughput è di $100 \times 100000 / 5 = 2000000$ byte al secondo $=> 160$ Mbps
+\end{enumerate}
+
+Possiamo ora andare a confrontare il traffico di data confrontando il caso del polling e long polling, che scambieranno i byte degli header e i byte del payload, con i WebSocket, che invece riceverà solo i byte del payload, oltre ai byte per la prima connessione che a regime sono trascurabili\cite{websocket_performance}. L'andamento è chiaramente visibile in figura \ref{fig:bandwidth}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{assets/bandwidth.png}
+\caption{Polling and WebSocket bandwidth usage comparison}
+\label{fig:bandwidth}
+\end{figure}
+
+Dal grafico si nota chiaramente che con l'aumentare del numero di client, il consumo di traffico di banda nel caso del polling aumenti esponenzialmente molto più rapidamente dei WebSocket, il che rende l'utilizzo del polling una soluzione non facilmente scalabile.
+
 \subsection{User experience}
-Tradeoff
+Entrambe gli aspetti di performance visti in precedenza sono strettamente collegati tra di loro, e hanno un effetto anche sulla esperienza dell'utente che utilizza l'applicazione. Aumentando la frequenza di polling, si ha una ridotta latenza rispetto all'istante in cui una risorsa viene aggiornata, ma aumenterà il consumo di banda, che talvolta per applicazioni web utilizzate da smartphone potrebbe portare a un consumo di traffico dati non desiderabile. Viceversa, riducendo la frequenza di polling, si riduce il consumo di banda ma si riceveranno dati con un ritardo che potenzialmente potrebbe non essere accettabile. Con il polling sta al programmatore pesare questo tradeoff tra ritardo e consumo dati.
+
+Con i WebSocket questa difficoltà di stabilire un equilibrio tra le due dimensioni viene reso superfluo, in quanto si ottiene il meglio da entrambi i lati. Conseguentemente, la user experience dell'utente è migliorata sia nei tempi di risposta, che nel consumo della banda.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Valore aggiunto di ListenJS
