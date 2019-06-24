@@ -38,9 +38,10 @@
 \contentsline {subsection}{\numberline {4.2.1}Latenza}{33}{subsection.4.2.1}% 
 \contentsline {subsection}{\numberline {4.2.2}Traffico dati}{34}{subsection.4.2.2}% 
 \contentsline {subsection}{\numberline {4.2.3}User experience}{37}{subsection.4.2.3}% 
-\contentsline {section}{\numberline {4.3}Valore aggiunto di ListenJS}{37}{section.4.3}% 
-\contentsline {subsection}{\numberline {4.3.1}Utilizzo risorse e limitazioni browser}{37}{subsection.4.3.1}% 
-\contentsline {subsection}{\numberline {4.3.2}Immediatezza integrazione da parte di sviluppatori}{37}{subsection.4.3.2}% 
-\contentsline {subsection}{\numberline {4.3.3}Architettura}{37}{subsection.4.3.3}% 
-\contentsline {chapter}{Conclusioni}{39}{chapter*.8}% 
+\contentsline {section}{\numberline {4.3}Valore aggiunto di ListenJS}{38}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}Immediatezza integrazione}{38}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}Utilizzo risorse e limitazioni browser}{38}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.3}Architettura}{39}{subsection.4.3.3}% 
+\contentsline {chapter}{Conclusioni e sviluppi futuri}{41}{chapter*.8}% 
+\contentsline {subsubsection}{Sviluppi futuri}{42}{section*.9}% 
 \contentsline {chapter}{Bibliografia}{44}{chapter*.10}% 

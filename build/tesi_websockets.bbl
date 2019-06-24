@@ -97,4 +97,12 @@
   \url{https://medium.com/@jayphelps/backpressure-explained-the-flow-of-data-through-software-2350b3e77ce7},
   {February} {2019}.
 
+\bibitem{websocket_performance}
+{D. Skvorc and M. Horvat,and S. Srbljic}.
+\newblock {Performance Evaluation of Websocket Protocol for Implementation of
+  Full-Duplex Web Streams}.
+\newblock
+  \url{https://sci-hub.se/https://ieeexplore.ieee.org/document/6859715}, {May}
+  {2014}.
+
 \end{thebibliography}

@@ -197,15 +197,15 @@ Quando si sviluppa un’applicazione web, si deve considerare che meccanismo di 
 
 \bigskip
 
-Per molto tempo l’unica modalità per reperire i dati da un web browser è stata tramite client pull, ovvero il client si occupa di richiedere una risorsa, e richiedere se la risorsa stessa sia stata modificata.
+Per molto tempo l’unica modalità per reperire i dati da un web browser è stata tramite \textit{client pull}, ovvero il client si occupa di richiedere una risorsa, e richiedere se la risorsa stessa sia stata modificata.
 
 \bigskip
 
-Con l’implementazione dei websocket nella maggior parte dei browser, la situazione cambia. Si apre la possibilità di ricevere dati tramite server push, senza dover periodicamente richiedere una risorsa, ma lasciando al server l’onere di notificare i client dell’avvenuta modifica della risorsa.
+Con l’implementazione dei \textit{WebSocket} nella maggior parte dei browser, la situazione cambia. Si apre la possibilità di ricevere dati tramite \textit{server push}, senza dover periodicamente richiedere una risorsa, ma lasciando al server l’onere di notificare i client dell’avvenuta modifica della risorsa.
 
 \bigskip
 
-Tuttavia i websocket rimangono un’implementazione di basso livello, e lavorarci su applicazioni di alto livello, dove l’architettura e la separation of concerns è un punto focale, risulta complesso.
+Tuttavia i WebSocket rimangono un’implementazione di basso livello, e lavorarci su applicazioni di alto livello, dove l’architettura e la separation of concerns è un punto focale, risulta complesso.
 
 \bigskip
 
@@ -233,7 +233,7 @@ In tutti questi casi, poter vedere le modifiche effettuate da terzi sulle stesse
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tecniche di sviluppo}
 
-Con applicazioni real-time intendiamo applicazioni che permettano di ricevere e visualizzare degli aggiornamenti che risiedono su un server nel minor tempo possibile. Da una definizione così banale, spuntano in realtà una serie di questioni importanti per quanto concerne sia le tecnologie per implementarle, che le tecniche utilizzate che la gestione delle risorse.
+Con applicazioni \textit{real-time} intendiamo applicazioni che permettano di ricevere e visualizzare degli aggiornamenti che risiedono su un server nel minor tempo possibile. Da una definizione così banale, spuntano in realtà una serie di questioni importanti per quanto concerne sia le tecnologie per implementarle, che le tecniche utilizzate che la gestione delle risorse.
 
 \bigskip
 
@@ -313,7 +313,7 @@ Prima di HTML5, non era possibile implementare un modello publish/subscribe che 
     % Server Sent Events
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Server Sent Events}
-I Server Sent Events (SSE) sono una tecnologia push che permette ad un browser di ricevere aggiornamenti da un server tramite una connessione HTTP tramite una comunicazione simplex\footnote{in un'unica direzione}. L'API che offre questa funzionalità, chiamata \textit{EventSource API}, è standardizzata dal W3C come parte di HTML5.
+I \textit{Server Sent Events (SSE)} sono una tecnologia push che permette ad un browser di ricevere aggiornamenti da un server tramite una connessione HTTP tramite una comunicazione simplex\footnote{in un'unica direzione}. L'API che offre questa funzionalità, chiamata \textit{EventSource API}, è standardizzata dal W3C come parte di HTML5.
 
 Il flusso di una comunicazione basata su EventSource è il seguente\cite{eventsource_api}, sintetizzato in figura \ref{fig:server_sent_events}.
 
@@ -342,7 +342,7 @@ Inoltre, al momento di questa stesura, nessuna versione di Internet Explorer e n
 		% WebSockets
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{WebSockets}
-I WebSocket sono un protocollo che permette una comunicazione full-duplex\footnote{in entrambe le direzioni e contemporaneamente} mediante una singola connessione TCP.
+I \textit{WebSocket} sono un protocollo che permette una comunicazione full-duplex\footnote{in entrambe le direzioni e contemporaneamente} mediante una singola connessione TCP.
 L'RFC 6455 afferma che WebSocket è progettato in modo da funzionare attraverso le porte HTTP 80 e 433 e di supportare proxy e intermediari HTTP, rendendolo dunque compatibile con il protocollo HTTP\cite{websockets_rfc}. Per poter essere compatibile, l'handshake tramite WebSocket fa uso dell'header \lstinline{Upgrade} di HTTP per cambiare protocollo da HTTP a WebSocket. Ciò è possibile perché entrambi i protocolli fanno parte dell'application layer nel modello OSI e dipendono da TCP.
 
 \bigskip
@@ -370,7 +370,7 @@ Sfortunatamente al momento della stesura non è possibile comunicare con i WebSo
 							% ListenJS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{ListenJS}
-Il mio contributo nell'ambito dello sviluppo di web application real-time si concretizza in ListenJS, un insieme di librerie che permettono di osservare in tempo reale gli aggiornamenti ad una o più risorse.
+Il mio contributo nell'ambito dello sviluppo di web application real-time si concretizza in \textit{ListenJS}, un insieme di librerie che permettono di osservare in tempo reale gli aggiornamenti ad una o più risorse.
 Il progetto comprende anche un'applicazione di esempio che permette a più utenti di collaborare sull'inserimento, la modifica e la cancellazione di appuntamenti su un calendario tramite una web app.
 
 \bigskip
@@ -471,7 +471,7 @@ I WebSocket non permettono di riaprire un socket precedentemente chiuso. Ciò co
 
 ListenJS fornisce un sistema di riconnessione aprendo un nuovo WebSocket, ma mantenendo le informazioni di uno specifico client come se la sessione precedente fosse ripristinata. Ciò significa che il client non dovrà preoccuparsi di rimettersi in ascolto delle risorse precedentemente specificate, ma sarà tutto gestito dalla libreria.
 
-\subsection{Multiplexing}
+\subsection{Multiplexing}\label{multiplexing}
 Un'implementazione naïve per rimanere in ascolto di alcune risorse potrebbe essere quella di aprire un WebSocket per ogni risorsa che si vuole osservare, specificando l'URL della risorsa nel pacchetto di handshake. Per esempio, se volessimo rimanere in ascolto di due risorse \lstinline{foo} e \lstinline{bar}, potremmo aprire due WebSocket chiamando \lstinline{new WebSocket('ws://myDomain.com/api/foo')} e \lstinline{new WebSocket('ws://myDomain.com/api/bar')}. Tuttavia così facendo si aprirebbero due connessioni separate, che non è ideale per due motivazioni:
 \begin{itemize}
 \item I browser limitano il numero di connessioni HTTP contemporanee su uno stesso dominio\cite{http11_rfc}. La maggior parte dei browser moderni consentono un massimo di sei connessioni per dominio.
@@ -690,7 +690,7 @@ Per quanto riguarda l'utilizzo della banda, i dettagli del consumo dipendono dal
 
 Supponiamo di avere un'applicazione web che utilizzi il polling come metodo di aggiornamento dei dati. Per ogni richiesta di polling, gli header scambiati potrebbero essere come i seguenti:
 \lstinputlisting[caption=HTTP Request and response headers example]{snippets/example_headers.txt}
-Il totale tra la richiesta e la risposta corrisponde a 568 byte. In base alle diverse casistiche, questo valore potrebbe essere leggermente inferiore o discretamente superiore; non è fuori dal comune vedere richiesta da 1500 o di più byte.
+Il totale tra la richiesta e la risposta corrisponde a 568 byte. In base alle diverse casistiche, questo valore potrebbe essere leggermente inferiore o discretamente superiore; non è fuori dal comune vedere richieste da 1500 o più byte.
 Vediamo ora 3 casi d'uso differenti in base al numero di client che fanno polling contemporanemnte:
 \begin{enumerate}
 \item \textbf{Use case A}: $1000$ client fanno polling ogni secondo: Il throughput della rete è $568 \times 1000 = 568000$ byte al secondo $=> 4.5$ Mbps
@@ -717,7 +717,7 @@ Possiamo ora andare a confrontare il traffico di data confrontando il caso del p
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{assets/bandwidth.png}
-\caption{Polling and WebSocket bandwidth usage comparison}
+\caption{Polling, long polling and WebSocket bandwidth usage comparison}
 \label{fig:bandwidth}
 \end{figure}
 
@@ -733,32 +733,51 @@ Con i WebSocket questa difficoltà di stabilire un equilibrio tra le due dimensi
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Valore aggiunto di ListenJS}\label{sec_valorelistenjs}
 
-\subsection{Utilizzo risorse e limitazioni browser}
-Limite socket aperti contemporaneamente
+Nella sezione precedente abbiamo fatto una valutazione quantitativa rispetto ai miglioramenti ottenuti tramite l'utilizzo dei WebSocket. Tuttavia tali benefici sono effettivamente fruibili solo se per lo sviluppatore che crea un'applicazione web il guadagno risulta inferiore al costo di implementazione.
 
-\subsection{Immediatezza integrazione da parte di sviluppatori}
+\subsection{Immediatezza integrazione}
+Utilizzare un sistema basato sui WebSocket come ListenJS semplifica l'utilizzo di WebSocket astrando i dettagli implementativi dell'API esposta dai browser. Avendo due librerie simmetriche lato browser e lato server che comunicano tra di loro senza necessità di configurazione permette di essere più veloci nell'integrazione dei WebSocket: Nei casi più banali nel front-end sarà sufficiente mettere una chiamata alla funzione per ascoltare le modifiche di una risorsa alla prima chiamata REST di ogni differente risorsa, e nel back-end chiamare la funzione di notifica dei client quando viene chiamato l'endpoint PUT o POST corrispondente.
+
+\bigskip
+
+Avere la possibilità di ottenere un comportamento server-push in maniera così semplice rende l'utilizzo dei WebSocket più immediato, il che porta a tutti i benefici descritti in precedenza con un costo implementativo molto basso.
+
+\subsection{Utilizzo risorse e limitazioni browser}
+Impostare un approccio basato sui WebSocket coinvolge una serie di casi da gestire che non sono immediati. ListenJS permette allo sviluppatore che usa la libreria di non doversi preoccupare di gestire funzionalità di difficile implementazione come disconnection detection, reconnection e multiplexing, talvolta indispensabili: si pensi al limite dei socket aperti contemporaneamente descritto nella sezione \ref{multiplexing}. Anche questo dovrebbe portare a rendere più lineare l'utilizzo dei WebSocket, non dovendo andare a gestire funzionalità che tendenzialmente hanno minore priorità: è già gestito dalla libreria.
 
 \subsection{Architettura}
-Separation of Concerns
+In ultimo utilizzare ListenJS come libreria per osservare le risorse definisce una chiara \textit{Separation Of Concerns}, in quanto sarà la libreria ad occuparsi esclusivamente del sistema di comunicazione e notifica delle risorse. Lo sviluppatore che crea un'applicazione web real-time cone ListenJS non deve preoccuparsi di non mischiare la logica dell'applicazione con la logica della gestione dei socket. Si dice in questo caso che la libreria crea una \textit{boundary} tra il sistema di comunicazione e la logica dell'applicazione: una linea di separazione che non permette di creare dipendenze forti tra i dettagli implementativi del canale di comunicazione e gli altri livelli più alti (e.g. domain e presentation) dell'applicazione.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 						% Conclusioni
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage{\pagestyle{empty}\cleardoublepage}
-\chapter*{Conclusioni}
-%\rhead[\fancyplain{}{\bfseries
-%Conclusioni}]{\fancyplain{}{\bfseries\thepage}}
-%\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries
-%Conclusioni}}
-\addcontentsline{toc}{chapter}{Conclusioni}
+\chapter*{Conclusioni e sviluppi futuri}
+\addcontentsline{toc}{chapter}{Conclusioni e sviluppi futuri}
+In questa dissertazione sono state valutate due tecniche di sviluppo di applicazioni web real-time attualmente applicabili nei browser moderni. In particolare è stato fatto un confronto tra le caratteristiche delle più utilizzate tecniche client-pull, cioè polling e long polling, e server-push, cioè Server Sent Events e WebSockets.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-							% Sviluppi futuri
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter*{Sviluppi futuri}
-SSL
-delta messaging
-message queue
+Si è notato come le tecniche client pull presentino problematiche date da un aumento della latenze e dell'utilizzo della banda di rete, e rendono l'applicazione di difficile scalabilità. Di contro, le tecniche server-push sfruttano in maniera efficiente il traffico dati e minimizzano i tempi di risposta.
+
+\bigskip
+
+È stato presentato \textit{ListenJS}, un progetto basato sul protocollo WebSocket atto a semplificare e migliorare sia l'esperienza utente che quella dello sviluppatore, offrendo funzionalità che sono implementate ad un livello superiore rispetto a quello dei WebSocket. Le librerie sviluppate, una client per tutti i browser moderni e una server per NodeJS, offrono un modo semplice di rimanere in ascolto di alcune risorse e di notificare i client degli aggiornamenti che subiscono.
+
+Inoltre, il sistema fornisce funzionalità integrate come \textit{disconnection detection}, per capire quando si perde connettività con il server (o di contro, con il client), \textit{reconnection}, per riconnettersi automaticamente in caso di problemi di rete, e \textit{multiplexing}, per poter sfruttare la stessa connessione per ogni differente dominio.
+
+È stato esposto il funzionamento a basso livello delle librerie e delle funzionalità implementate, per offrire una comprensione a tutto tondo e permettere di migliorare o ampliare il sistema.
+
+\bigskip
+
+Infine è stata presentata un'applicazione web di esempio che permette a diversi utenti di contribuire ad un calendario di appuntamenti in real-time. Sulla base di essa è stata fatta una valutazione qualitativa e quantitativa comparando le classiche tecniche di polling con i WebSocket, utilizzati dalle librerie.  Si è visto che in ogni caso un approccio basato sui WebSocket diminuisce la latenza media di notifica di aggiornamento delle risorse, diminuisce lo spreco della banda e favorisce la scalabilità.
+
+In ultimo si è sottolineato come usando un sistema come ListenJS si possa semplificare l'utilizzo dei WebSocket senza costi di sviluppo aggiuntivi, portando a migliorare lo sviluppo, le performance, e conseguentemente l'esperienza utente.
+
+\subsubsection{Sviluppi futuri}
+ListenJS può essere estesa sotto diversi aspetti. In primis, si può gestire le \textit{connessioni su TLS}, e quindi permettere di eseguire l'handshake dei WebSocket tramite HTTPS.
+
+Successivamente, è possibile diminuire ulteriormente l'utilizzo della banda tramite sistemi di \textit{delta messaging}: invece di inviare ogni volta l'intera risorsa aggiornata, si può pensare di inviare solo le modifiche effettuate su di essa, e dunque ogni client si occupa di ricostruire la nuova risorsa partendo dall'ultima salvata.
+
+Infine, si potrebbe gestire una \textit{coda di messaggi} in modo da mantenere in sospeso i messaggi che non si riescono a recapitare ad un client per problemi di connettività, e tenerli in coda finché il client non riesce a riconnettersi.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Bibliografia
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
