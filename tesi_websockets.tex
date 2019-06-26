@@ -147,30 +147,26 @@ Anno Accademico 2018-2019}}%inserire l'anno accademico a cui si è iscritti
 \end{center}
 \end{titlepage}
 \newgeometry{margin=1.5in}
-\pagenumbering{roman}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 							% Dedica
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\cleardoublepage
-
-\cleardoublepage
+\clearpage{\pagestyle{empty}\cleardoublepage}
 \thispagestyle{empty}
 \vspace*{\stretch{1}}
-\large                                  %aumenta la grandezza del carattere a 14pt
+\normalsize                                  
 \begin{flushright}
 \em
-\itshape
+\itshape Alla mia famiglia, che mi ha spinto ad intraprendere questa strada,\\
+e ai miei amici, senza i quali non avrei continuato a percorrerla.
 
 \end{flushright}
 \vspace{\stretch{2}}
+
 \cleardoublepage
-
-
-\afterpage{\blankpage}
-
 \linespread{1.3}
+
 %\textwidth=345.0pt
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -244,7 +240,7 @@ Gli sviluppatori web, fino a qualche anno fa, per ottenere dei risultati simili 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Client pull}\label{sec_clientpull}
 
-Questo stile di comunicazione ove la richiesta è originata dal client e risposta dal server è chiamato \textit{client pull}. Il client pull forma la base per la comunicazione tra un browser e un server tramite il protocollo HTTP, e su di esso si sono costruiti una serie di stili architetturali per fornire interoperabilità tra web services in maniera prestabilita. Per esempio, uno degli stili più utilizzati è REST (REpresentational State Transfer), che stabilisce che i web services devono permettere ad altri sistemi di richiedere l’accesso o la manipolazione di rappresentazioni testuali di risorse web usando un insieme predefinito di operazioni stateless.
+Questo stile di comunicazione ove la richiesta è originata dal client e corrisposta dal server è chiamato \textit{client pull}. Il client pull forma la base per la comunicazione tra un browser e un server tramite il protocollo HTTP, e su di esso si sono costruiti una serie di stili architetturali per fornire interoperabilità tra web services in maniera prestabilita. Per esempio, uno degli stili più utilizzati è REST (REpresentational State Transfer), che stabilisce che i web services devono permettere ad altri sistemi di richiedere l’accesso o la manipolazione di rappresentazioni testuali di risorse web usando un insieme predefinito di operazioni stateless.
 
 \bigskip
 
@@ -277,7 +273,7 @@ Questo flusso può essere implementato come l'esempio seguente:
 \caption{Long polling}
 \end{figure}
 
-A differenza del polling semplice, dove l’implementazione riguarda solo la parte client, e il server espone un semplice endpoint REST, nel long polling il server deve supportare questo tipo di interazione con il client. Infatti, oltre ad esporre un semplice endpoint REST, dovrà esporre un endpoint che si occupa di mantenere il client in attesa, ed inviare la risposta solo una volta che viene aggiornata la risorsa. Inoltre, dovrà gestire lo stato di connessioni multiple, ed implementare strategie per preservare lo stato delle sessioni quando si utilizzano più server e load balancers.
+A differenza del polling semplice, dove l’implementazione riguarda solo la parte client, e il server espone un semplice endpoint REST, nel long polling il server deve supportare questo tipo di interazione con il client. Infatti, oltre ad esporre l'endpoint REST, dovrà offrire un endpoint che si occupa di mantenere il client in attesa, ed inviare la risposta solo una volta che viene aggiornata la risorsa. Inoltre, dovrà gestire lo stato di connessioni multiple, ed implementare strategie per preservare lo stato delle sessioni quando si utilizzano più server e load balancers.
 
 \end{description}
 
@@ -293,17 +289,17 @@ Per limitare questo consumo, si cerca di trovare un equilibrio riducendo la freq
 
 % Incoerenza dei dati
 \subsubsection{Incoerenza dei dati}
-Nel caso del long polling, la risorsa viene inviata presumibilmente appena subisce delle modifiche. Tuttavia nel lasso di tempo che passa tra quando il client riceve una risposta, ed effettua la nuova richiesta da tenere aperta, la risorsa stessa potrebbe essere modificata. In tal caso, il server non ha nessuna connessione in sospeso con il client, ed esso perderebbe l’aggiornamento. 
+Nel caso del long polling, la risorsa viene inviata presumibilmente appena subisce delle modifiche. Tuttavia nel lasso di tempo che passa tra quando il client riceve una risposta, ed effettua la nuova richiesta da tenere aperta, la risorsa stessa potrebbe essere modificata. In tal caso, il server non ha nessuna connessione in sospeso con il client, ed esso perderebbe l’aggiornamento. Alternativamente si potrebbe pensare di mantenere una coda di messaggi da inviare ad un client, ma il throughput di questa coda è determinato dal tempo impiegato a stabilire una nuova connessione, portando una serie di aggiornamenti frequenti ad essere inviati con un ritardo.
 
 % Performance e scalabilità
 \subsubsection{Performance e scalabilità}
-Con l’aumentare del numero di client connessi, il numero di richieste rapportate al tempo invece di incrementare linearmente si moltiplica, in quanto ogni client per la stessa risorsa non effettuerà una singola richiesta, ma richieste multiple. Ciò rende i sistemi che implementano supportano polling difficili da scalare e poco performanti.
+Con l’aumentare del numero di client connessi, il numero di richieste rapportate al tempo invece di incrementare linearmente si moltiplica, in quanto ogni client per la stessa risorsa non effettuerà una singola richiesta, ma richieste multiple. Ciò rende i sistemi che implementano polling difficili da scalare e poco performanti.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Server push
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Server push}\label{sec_serverpush}
-A differenza del client pull, il server push è uno stile di comunicazione che prevede che sia il server a inviare ad un client dei dati, senza che una richiesta venga inviata in precedenza da parte del client. I servizi che supportano server push, spesso si basano su delle preferenze espresse dal client in precedenza. Questo modello è chiamato publish/subscribe. Un client esprime di voler ricevere gli aggiornamenti ad una risorsa o “channel”, e il server si occupa di inviare la risorsa a tale channel ogni volta che viene modificata.
+A differenza del client pull, il server push è uno stile di comunicazione che prevede che sia il server ad inviare ad un client dei dati, senza che una richiesta venga necessariamente inviata in precedenza da parte del client. I servizi che supportano server push, spesso si basano su delle preferenze espresse dal client in precedenza. Questo modello è chiamato publish/subscribe. Un client esprime di voler ricevere gli aggiornamenti ad una risorsa o “channel”, e il server si occupa di inviare la risorsa a tale channel ogni volta che viene modificata.
 
 \bigskip
 
@@ -313,7 +309,7 @@ Prima di HTML5, non era possibile implementare un modello publish/subscribe che 
     % Server Sent Events
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Server Sent Events}
-I \textit{Server Sent Events (SSE)} sono una tecnologia push che permette ad un browser di ricevere aggiornamenti da un server tramite una connessione HTTP tramite una comunicazione simplex\footnote{in un'unica direzione}. L'API che offre questa funzionalità, chiamata \textit{EventSource API}, è standardizzata dal W3C come parte di HTML5.
+I \textit{Server Sent Events (SSE)} sono una tecnologia push che permette ad un browser di ricevere aggiornamenti da un server tramite una connessione HTTP basandosi su una comunicazione simplex\footnote{in un'unica direzione}. L'API che offre questa funzionalità, chiamata \textit{EventSource API}, è standardizzata dal W3C come parte di HTML5.
 
 Il flusso di una comunicazione basata su EventSource è il seguente\cite{eventsource_api}, sintetizzato in figura \ref{fig:server_sent_events}.
 
@@ -370,8 +366,8 @@ Sfortunatamente al momento della stesura non è possibile comunicare con i WebSo
 							% ListenJS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{ListenJS}
-Il mio contributo nell'ambito dello sviluppo di web application real-time si concretizza in \textit{ListenJS}, un insieme di librerie che permettono di osservare in tempo reale gli aggiornamenti ad una o più risorse.
-Il progetto comprende anche un'applicazione di esempio che permette a più utenti di collaborare sull'inserimento, la modifica e la cancellazione di appuntamenti su un calendario tramite una web app.
+Il mio contributo nell'ambito dello sviluppo di web application real-time si concretizza in \textit{ListenJS}, un insieme di librerie che permette di osservare in tempo reale gli aggiornamenti ad una o più risorse.
+Il progetto comprende anche un'applicazione di esempio che permette a più utenti di collaborare all'inserimento, la modifica e la cancellazione di appuntamenti su un calendario tramite una web app.
 
 \bigskip
 
@@ -427,7 +423,7 @@ Per ogni risorsa per cui si vuole essere notificati degli aggiornamenti, baster�
 L'URI passato come argomento della funzione, può sia essere relativo, e quindi utilizzare lo stesso dominio della pagina di origine, oppure specificare un indirizzo completo, per esempio \lstinline{differentDomain.com/api/appointments}. Questo dominio per permettere al protocollo di WebSocket di fare l'handshake, dovrà avere abilitato i CORS (Cross-Origin Resource Sharing) in quanto la risorsa è su un'origine differente.
 
 \section{Libreria server}
-La libreria server permette di inizializzare un server che supporti i WebSocket e gestisce i client in ascolto sulle varie risorse, permettendo di notificare tutti i client in ascolto su una specifica risorsa. 
+La libreria server permette di inizializzare un server che supporti i WebSocket e gestisca i client in ascolto sulle varie risorse, permettendo di notificare tutti i client in ascolto su una specifica risorsa. 
 \subsection{Installazione}
 Per aggiungere la libreria server di ListenJS ad un progetto NodeJS è sufficiente eseguire il comando:
 \begin{center}
@@ -459,17 +455,17 @@ La libreria si occuperà di inviare un messaggio contentente il nuovo payload a 
 \section{Features}\label{sec_features}
 Oltre a semplificare la comunicazione dell'aggiornamento delle varie risorse in ascolto dai client, ListenJS implementa una serie di funzionalità per semplificare la vita allo sviluppatore, e permettere di adempire al Single Responsibility Principle\cite{single_responsibility_principle} nell'applicazione real-time che utilizza questo sistema di comunicazione.
 \subsection{Disconnection detection}
-L'evento \lstinline{onclose} fornito dai WebSocket viene lanciato solo nel caso in cui il socket venga chiuso esplicitamente o dal client o dal server tramite l'handshake di chiusura specificato nell'RFC 6455. Tuttavia, in caso di problemi di network, la chiusura del socket non verrà notificata, né dal client né dal server. In aggiunta, i messaggi scambiati in caso di pessime condizioni di network verranno lasciate in sospese.
+L'evento \lstinline{onclose} fornito dai WebSocket viene lanciato solo nel caso in cui il socket venga chiuso esplicitamente o dal client o dal server tramite l'handshake di chiusura specificato nell'RFC 6455. Tuttavia, in caso di problemi di network, la chiusura del socket non verrà notificata, né dal client né dal server. In aggiunta, i messaggi scambiati in caso di pessime condizioni di network verranno lasciati in sospeso.
 
 \bigskip
 
-Per ovviare a questo problema ListenJS implementa un sistema di heartbeat (aka ping-pong), che fa si che il client invii periodicamente dei messaggi di ping, aspettandosi un messaggio di pong dal server entro un certo timeout. Se non dovesse riceverlo, allora considererà il socket come chiuso, provando ad iniziare l'handshake di chiusura tramite la chiamata alla WebSocket API. Di contro, il server si aspetterà di ricevere un messaggio di ping ogni intervallo prestabilito. Se non dovesse succedere, allora si aspetterà di non avere più connettività con il client, chiudendo il socket.
+Per ovviare a questo problema ListenJS implementa un sistema di heartbeat (aka ping-pong), che fa sì che il client invii periodicamente dei messaggi di ping, aspettandosi un messaggio di pong dal server entro un certo timeout. Se non dovesse riceverlo, allora considererà il socket come chiuso, provando ad iniziare l'handshake di chiusura tramite la chiamata alla WebSocket API. Di contro, il server si aspetterà di ricevere un messaggio di ping ogni intervallo prestabilito. Se non dovesse succedere, allora si aspetterà di non avere più connettività con il client, chiudendo il socket.
 \subsection{Reconnection}
 I WebSocket non permettono di riaprire un socket precedentemente chiuso. Ciò comporta che in caso di disconnessione dovuta a delle condizioni di network non ottimali, non sia possibile riutilizzare lo stesso socket per mantenere la sessione precedente attiva.
 
 \bigskip
 
-ListenJS fornisce un sistema di riconnessione aprendo un nuovo WebSocket, ma mantenendo le informazioni di uno specifico client come se la sessione precedente fosse ripristinata. Ciò significa che il client non dovrà preoccuparsi di rimettersi in ascolto delle risorse precedentemente specificate, ma sarà tutto gestito dalla libreria.
+ListenJS fornisce un sistema di riconnessione aprendo un nuovo WebSocket, ma mantenendo le informazioni di uno specifico client come se la sessione precedente fosse stata ripristinata. Conseguentemente il client non dovrà preoccuparsi di rimettersi in ascolto delle risorse precedentemente specificate, ma sarà tutto gestito dalla libreria.
 
 \subsection{Multiplexing}\label{multiplexing}
 Un'implementazione naïve per rimanere in ascolto di alcune risorse potrebbe essere quella di aprire un WebSocket per ogni risorsa che si vuole osservare, specificando l'URL della risorsa nel pacchetto di handshake. Per esempio, se volessimo rimanere in ascolto di due risorse \lstinline{foo} e \lstinline{bar}, potremmo aprire due WebSocket chiamando \lstinline{new WebSocket('ws://myDomain.com/api/foo')} e \lstinline{new WebSocket('ws://myDomain.com/api/bar')}. Tuttavia così facendo si aprirebbero due connessioni separate, che non è ideale per due motivazioni:
@@ -490,9 +486,9 @@ In aggiunta, se nel ciclo di vita dell'applicazione non ci fosse più nessuna ri
 Abbiamo visto ad alto livello cosa offre ListenJS e in generale come queste funzionalità sono utili nello sviluppo di applicazioni real-time. Possiamo ora andare più a fondo nel funzionamento specifico, in modo da avere le basi per estendere e potenzialmente migliorare questi comportamenti.
 
 \section{Message channel}
-Il funzionamento del sistema si basa sullo scambio dei messaggi che hanno una struttura ben specifica, e conosciuta sia dal client che dal server. Ogni messaggio può essere un \textit{Control Message} o un \textit{Payload Message}, e sono dei messaggi testuali serializzati in JSON come segue:
+Il funzionamento del sistema si basa sullo scambio dei messaggi che hanno una struttura ben specifica, e conosciuta sia dal client che dal server. Ogni messaggio può essere un \textit{Control Message} o un \textit{Payload Message}, e sono dei messaggi testuali codificati in UTF-8 e serializzati in JSON come segue:
 \lstinputlisting[caption=ListenJS Message Contract]{snippets/listenjs_message.json}
-Più altri valori specifici di una certa azione. In particolare, \lstinline{<ACTION>} è una stringa che specifica il tipo di messaggio di controllo (o di payload), e può assumere i seguenti valori:
+In aggiunta contengono altri valori specifici di una certa azione. In particolare l'azione \lstinline{<ACTION>} è una stringa che specifica il tipo di messaggio di controllo (o di payload), e può assumere i seguenti valori:
 \begin{itemize}
 \item Da client a server:
   \begin{itemize}
@@ -512,7 +508,7 @@ Più altri valori specifici di una certa azione. In particolare, \lstinline{<ACT
 \end{itemize}
 
 \section{Observer pattern across the stack}
-La Gang of Four definisce l'observer pattern\cite{observer} come un behavioral pattern che prevede che un certo numero di observer siano notificati quando un subject subisce un cambiamento di stato. Questo tipo di pattern è largamente utilizzato nel design di interfacce grafiche, dove si vuole ridurre al minimo il coupling tra le classi per non renderle meno riutilizzabili. Questo però non significa che possa essere utilizzato in ambiti al di fuori dello sviluppo di UI.
+La Gang of Four definisce l'observer pattern\cite{observer} come un behavioral pattern che prevede che un certo numero di observer siano notificati quando un subject subisce un cambiamento di stato. Questo tipo di pattern è largamente utilizzato nel design di interfacce grafiche, dove si vuole ridurre al minimo il coupling tra le classi per non renderle meno riutilizzabili. Questo però non significa che non possa essere utilizzato in ambiti al di fuori dello sviluppo di UI.
 
 \bigskip
 
@@ -524,7 +520,7 @@ In ListenJS il manager è un'istanza che gestisce la connessione ad uno specific
 
 Un observer è descritto dalle seguenti proprietà:
 \begin{itemize}
-\item \lstinline{id}: Identifica l'observer univocamente
+\item \lstinline{id}: Identifica l'observer univocamente con uno UUID
 \item \lstinline{path}: Indica il path che l'observer desidera osservare
 \item \lstinline{status}: Indica lo stato dell'observer, che può essere:
   \begin{itemize}
@@ -532,7 +528,7 @@ Un observer è descritto dalle seguenti proprietà:
   \item \lstinline{SUBSCRIBING}: Il manager ha inviato la richiesta di osservare l'endpoint, ma sta attendendo di ricevere una conferma
   \item \lstinline{UNSUBSCRIBING}: Il manager ha inviato la richiesta di non osservare più l'endpoint
   \item \lstinline{LISTENING}: L'observer sta correttamente ascoltando gli aggiornamenti ad una risorsa
-  \item \lstinline{ERROR}: Un errore imprevisto
+  \item \lstinline{ERROR}: È avvenuto un errore imprevisto
   \end{itemize}
 \end{itemize}
 
@@ -553,7 +549,7 @@ Come l'observer, anche il manager mantiene uno stato interno che indica la fase 
 \item \lstinline{CONNECTED}: Il socket è connesso e l'handshake è stato eseguito correttamente
 \item \lstinline{DISCONNECTED}: Il socket è disconnesso
 \item \lstinline{RECONNECTING}: Il socket è in fase di connessione dopo che un altro socket è stato chiuso
-\item \lstinline{ERROR}: Un errore imprevisto
+\item \lstinline{ERROR}: È avvenuto un errore imprevisto
 \end{itemize}
 
 I cambiamenti di stato in base agli eventi del socket e il numero di observer sono meglio rappresentati in figura \ref{fig:manager_statuses}.
@@ -579,7 +575,7 @@ Ogni richiesta che viene fatta per mettersi in ascolto di una risorsa, deve esse
 
 \bigskip
 
-Il multiplexer si occupa di assicurarsi che per ogni richiesta effettuata, ci sia sempre solamente un manager attivo per ogni dominio di destinazione. Il funzionamento è piuttosto intuitivo: Ogni richiesta del client di ascoltare una risorsa passa attraverso il client, che fa da proxy per quella richiesta, inoltrandola al manager corretto. Il flusso per questa gestione può essere riassunto come segue:
+Il multiplexer si occupa di assicurarsi che per ogni richiesta effettuata, ci sia sempre solamente un manager attivo per ogni dominio di destinazione. Il funzionamento è piuttosto intuitivo: ogni richiesta del client di ascoltare una risorsa passa attraverso il client, che fa da proxy per quella richiesta, inoltrandola al manager corretto. Il flusso per questa gestione può essere riassunto come segue:
 \begin{enumerate}
 \item Il client invia una richiesta al multiplexer
 \item Il multiplexer fa il parsing dell'URL di destinazione, estraendo il dominio del server che si vuole ascoltare
@@ -596,12 +592,13 @@ L'implementazione browser dei WebSocket non prevede nessun meccanismo di rilevaz
 \bigskip
 
 Ogni manager in fase di handshake di ListenJS, da non confondere con l'handshake dei WebSocket, può inviare due parametri di configurazione: \lstinline{pingInterval} e \lstinline{pingTimeout}, espressi in millisecondi. Il server che riceve una richiesta di handshake può onorare i due parametri in arrivo, se presenti, e rispondere con gli stessi parametri, o rispondere con dei parametri diversi. Il client, una volta finito l'handshake, fa fede ai parametri ricevuti in risposta nell'ACK di handshake. Questo sistema è stato pensato in caso sia necessario limitare il carico di messaggi in arrivo sul server.
+
 Una volta terminato l'handshake, entrambe le parti hanno un contract sul quale fare affidamento per stabilire se una o l'altra parte è ancora connessa.
 Da un lato, il client invierà periodicamente un pacchetto di ping al server, con intervallo \lstinline{pingInterval}, aspettandosi dal server una risposta (pong) entro \lstinline{pingTimeout} millisecondi, o considerando il socket disconnesso dopo quel periodo di timeout.
-Dall'altro lato, il server si aspetterà di ricevere ogni \lstinline{pingInterval} millisecondi, per rispondere con un pong. Se da un pong all'altro dovesse passare più tempo di \lstinline{pingInterval + pingTimeout}, considererà il socket come disconnesso. Il \lstinline{pingTimeout} è aggiunto per consentire un tempo massimo di ricezione dell'intervallo di ping.
+Dall'altro lato, il server si aspetterà di ricevere un messaggio di ping ogni \lstinline{pingInterval} millisecondi, per rispondere con un pong. Se da un ping all'altro dovesse passare più tempo di \lstinline{pingInterval + pingTimeout}, considererà il socket come disconnesso. In questo caso il \lstinline{pingTimeout} è aggiunto per consentire un tempo massimo di ricezione dell'intervallo di ping.
 
 \subsection{Reconnection}
-Una volta che un socket viene chiuso, o si rileva una disconnessione con il sistema descritto in precedenza, il manager si occupa di riaprire un nuovo socket. Se dovesse fallire nel riaprie un socket, allora attenderà un certo periodo di tempo, e ritenterà. La frequenza con cui un manager prova a riaprire un socket è scandita da un algoritmo chiamato \textit{Truncated Exponential Backoff}.
+Una volta che un socket viene chiuso, o si rileva una disconnessione con il sistema descritto in precedenza, il manager si occupa di riaprire un nuovo socket. Se dovesse fallire nel riaprire un socket, allora attenderà un certo periodo di tempo, e ritenterà. La frequenza con la quale un manager prova a riaprire un socket è scandita da un algoritmo chiamato \textit{Truncated Exponential Backoff}.
 
 \begin{align*}
   E(x) &= min(d * f^x * (1 + j * r), t)
@@ -625,7 +622,7 @@ Per meglio valutare l'applicabilità della soluzione, oltre alle librerie client
       % Applicazione di esempio
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Applicazione di esempio}\label{sec_applicazioneesempio}
-L'applicazione di esempio sviluppata permette a diversi utenti di contribuire alla gestione degli appuntamenti in real-time. Tutti gli utenti che utilizzano l'applicazione contribuiscono all'aggiunta, modifica e cancellazione di appuntamenti su un calendario condiviso, e vedono le modifiche effettuate dagli altri utenti in tempo reale. In aggiunta, è possibile spostarsi di periodo e visualizzare il calendario in formato giorno, settimana e mese, per avere diversi gradi di granularità.
+L'applicazione di esempio sviluppata permette a diversi utenti di contribuire alla gestione degli appuntamenti in real-time. Tutti gli utenti che utilizzano l'applicazione collaborano all'aggiunta, modifica e cancellazione di appuntamenti su un calendario condiviso, e vedono le modifiche effettuate dagli altri utenti in tempo reale. In aggiunta, è possibile spostarsi di periodo e visualizzare il calendario in formato giorno, settimana e mese, per avere diversi gradi di granularità.
 
 \begin{figure}[htbp]
 \centering
@@ -645,14 +642,14 @@ L'applicazione client\cite{listenjs_sample_repo} è stata sviluppata in React\ci
 
 È stato osservato che utilizzare React semplifica di molto la gestione degli aggiornamenti alle risorse, poiché mantenendo uno stato condiviso e costruendo la UI sulla base dello stato osservato, ogni volta che si riceve un aggiornamento alla risorsa basterà modificare lo stato e il framework si occuperà di apportare le modifiche necessare alla UI. Per mostrare la concisione che si può ottenere, di seguito è riportato il codice richiesto per integrare gli aggiornamenti periodici alle risorse nel front-end:
 \lstinputlisting[caption=ListenJS sample app resource listening]{snippets/listenjs_sample_listen.js}
-Sebbene ListenJS sia stato pensato in modo da essere framework-agnostic, la logica basata su observer sulla quale è stato costruito si sposta molto bene con librerie quali RxJS che si sta facendo strada anche sul web visto il successo delle suo controparti RxJava, RxSwift, eccetera.
+Sebbene ListenJS sia stato pensato in modo da essere framework-agnostic, la logica basata su observer sulla quale è stato costruito si sposa molto bene con librerie quali RxJS - libreria che si sta facendo strada anche sul web visto il successo delle suo controparti RxJava, RxSwift, eccetera.
 
 \bigskip
 
 L'indipendenza da framework è stata osservata anche nella parte del back-end, sviluppato in NodeJS\cite{nodejs} utilizzando Fastify\cite{fastify} come framework. L'integrazione con Fastify è stata semplice ed ha permesso di modificare gli oggetti di response del framework tramite degli hook per semplificare ulteriormente la notifica ai client in ascolto su una risorsa.
 \lstinputlisting[caption=ListenJS sample app Fastify hook]{snippets/listenjs_sample_server_hook.js}
 
-L'applicazione è stata configurata con Webpack\cite{webpack} e distribuita in due domini diversi per verificare l'impatto con i CORS: la parte client è stata transpilata per poi essere servita su un sito statico in Apache, mentre la parte server è stata servita mediante un container Docker. Come volevasi dimostrare, per poter funzionare l'handshake dei WebSocket (e tutte le altre richieste REST), la parte in NodeJS richiede di avere abilitato i CORS avendo come origine l'altro server da dove veniva servito il client.
+L'applicazione è stata configurata con Webpack\cite{webpack} e distribuita su due domini diversi per verificare l'impatto con i CORS: la parte client è stata transpilata per poi essere servita su un sito statico in Apache, mentre la parte server è stata servita mediante un container Docker. Come volevasi dimostrare, per poter sì che l'handshake dei WebSocket funzionasse (così come tutte le altre richieste REST), la parte in NodeJS richiede di avere abilitato i CORS avendo come origine l'altro server da dove veniva servito il client.
 
 \bigskip
 
@@ -724,9 +721,9 @@ Possiamo ora andare a confrontare il traffico di data confrontando il caso del p
 Dal grafico si nota chiaramente che con l'aumentare del numero di client, il consumo di traffico di banda nel caso del polling aumenti esponenzialmente molto più rapidamente dei WebSocket, il che rende l'utilizzo del polling una soluzione non facilmente scalabile.
 
 \subsection{User experience}
-Entrambe gli aspetti di performance visti in precedenza sono strettamente collegati tra di loro, e hanno un effetto anche sulla esperienza dell'utente che utilizza l'applicazione. Aumentando la frequenza di polling, si ha una ridotta latenza rispetto all'istante in cui una risorsa viene aggiornata, ma aumenterà il consumo di banda, che talvolta per applicazioni web utilizzate da smartphone potrebbe portare a un consumo di traffico dati non desiderabile. Viceversa, riducendo la frequenza di polling, si riduce il consumo di banda ma si riceveranno dati con un ritardo che potenzialmente potrebbe non essere accettabile. Con il polling sta al programmatore pesare questo tradeoff tra ritardo e consumo dati.
+Entrambi gli aspetti di performance visti in precedenza sono strettamente collegati tra di loro, e hanno un effetto anche sull'esperienza dell'utente che utilizza l'applicazione. Aumentando la frequenza di polling, si ha una ridotta latenza rispetto all'istante in cui una risorsa viene aggiornata, ma aumenterà il consumo di banda, che talvolta per applicazioni web utilizzate da smartphone potrebbe portare a un consumo di traffico dati non desiderabile. Viceversa, riducendo la frequenza di polling, si riduce il consumo di banda ma si riceveranno dati con un ritardo che potenzialmente potrebbe non essere accettabile. Con il polling sta al programmatore pesare questo tradeoff tra ritardo e consumo dati.
 
-Con i WebSocket questa difficoltà di stabilire un equilibrio tra le due dimensioni viene reso superfluo, in quanto si ottiene il meglio da entrambi i lati. Conseguentemente, la user experience dell'utente è migliorata sia nei tempi di risposta, che nel consumo della banda.
+Facendo uso dei WebSocket questa difficoltà di stabilire un equilibrio tra le due dimensioni viene rimossa, in quanto si ottiene il meglio da entrambi i lati. Conseguentemente, la user experience dell'utente è migliorata sia nei tempi di risposta, che nel consumo della banda.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 			% Valore aggiunto di ListenJS
@@ -746,7 +743,7 @@ Avere la possibilità di ottenere un comportamento server-push in maniera così 
 Impostare un approccio basato sui WebSocket coinvolge una serie di casi da gestire che non sono immediati. ListenJS permette allo sviluppatore che usa la libreria di non doversi preoccupare di gestire funzionalità di difficile implementazione come disconnection detection, reconnection e multiplexing, talvolta indispensabili: si pensi al limite dei socket aperti contemporaneamente descritto nella sezione \ref{multiplexing}. Anche questo dovrebbe portare a rendere più lineare l'utilizzo dei WebSocket, non dovendo andare a gestire funzionalità che tendenzialmente hanno minore priorità: è già gestito dalla libreria.
 
 \subsection{Architettura}
-In ultimo utilizzare ListenJS come libreria per osservare le risorse definisce una chiara \textit{Separation Of Concerns}, in quanto sarà la libreria ad occuparsi esclusivamente del sistema di comunicazione e notifica delle risorse. Lo sviluppatore che crea un'applicazione web real-time cone ListenJS non deve preoccuparsi di non mischiare la logica dell'applicazione con la logica della gestione dei socket. Si dice in questo caso che la libreria crea una \textit{boundary} tra il sistema di comunicazione e la logica dell'applicazione: una linea di separazione che non permette di creare dipendenze forti tra i dettagli implementativi del canale di comunicazione e gli altri livelli più alti (e.g. domain e presentation) dell'applicazione.
+In ultimo utilizzare ListenJS come libreria per osservare le risorse definisce una chiara \textit{Separation Of Concerns}, in quanto sarà la libreria ad occuparsi esclusivamente del sistema di comunicazione e notifica delle risorse. Lo sviluppatore che crea un'applicazione web real-time con ListenJS non deve preoccuparsi di non mischiare la logica dell'applicazione con la logica della gestione dei socket. Si dice in questo caso che la libreria crea una \textit{boundary} tra il sistema di comunicazione e la logica dell'applicazione: una linea di separazione che non permette di creare dipendenze forti tra i dettagli implementativi del canale di comunicazione e gli altri livelli più alti (e.g. domain e presentation) dell'applicazione.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 						% Conclusioni
@@ -756,11 +753,11 @@ In ultimo utilizzare ListenJS come libreria per osservare le risorse definisce u
 \addcontentsline{toc}{chapter}{Conclusioni e sviluppi futuri}
 In questa dissertazione sono state valutate due tecniche di sviluppo di applicazioni web real-time attualmente applicabili nei browser moderni. In particolare è stato fatto un confronto tra le caratteristiche delle più utilizzate tecniche client-pull, cioè polling e long polling, e server-push, cioè Server Sent Events e WebSockets.
 
-Si è notato come le tecniche client pull presentino problematiche date da un aumento della latenze e dell'utilizzo della banda di rete, e rendono l'applicazione di difficile scalabilità. Di contro, le tecniche server-push sfruttano in maniera efficiente il traffico dati e minimizzano i tempi di risposta.
+Si è notato come le tecniche client-pull presentino problematiche date da un aumento della latenza e dell'utilizzo della banda di rete, e rendano l'applicazione di difficile scalabilità. Di contro, le tecniche server-push sfruttano in maniera efficiente il traffico dati e minimizzano i tempi di risposta.
 
 \bigskip
 
-È stato presentato \textit{ListenJS}, un progetto basato sul protocollo WebSocket atto a semplificare e migliorare sia l'esperienza utente che quella dello sviluppatore, offrendo funzionalità che sono implementate ad un livello superiore rispetto a quello dei WebSocket. Le librerie sviluppate, una client per tutti i browser moderni e una server per NodeJS, offrono un modo semplice di rimanere in ascolto di alcune risorse e di notificare i client degli aggiornamenti che subiscono.
+È stato presentato \textit{ListenJS}, un progetto basato sul protocollo WebSocket atto a semplificare e migliorare sia l'esperienza utente che quella dello sviluppatore, offrendo funzionalità che sono implementate ad un livello più alto rispetto a quello dei WebSocket. Le librerie sviluppate, una client per tutti i browser moderni e una server per NodeJS, offrono un modo semplice di rimanere in ascolto di alcune risorse e di notificare i client degli aggiornamenti che subiscono.
 
 Inoltre, il sistema fornisce funzionalità integrate come \textit{disconnection detection}, per capire quando si perde connettività con il server (o di contro, con il client), \textit{reconnection}, per riconnettersi automaticamente in caso di problemi di rete, e \textit{multiplexing}, per poter sfruttare la stessa connessione per ogni differente dominio.
 
@@ -768,7 +765,7 @@ Inoltre, il sistema fornisce funzionalità integrate come \textit{disconnection 
 
 \bigskip
 
-Infine è stata presentata un'applicazione web di esempio che permette a diversi utenti di contribuire ad un calendario di appuntamenti in real-time. Sulla base di essa è stata fatta una valutazione qualitativa e quantitativa comparando le classiche tecniche di polling con i WebSocket, utilizzati dalle librerie.  Si è visto che in ogni caso un approccio basato sui WebSocket diminuisce la latenza media di notifica di aggiornamento delle risorse, diminuisce lo spreco della banda e favorisce la scalabilità.
+Successivamente è stata presentata un'applicazione web di esempio che permette a diversi utenti di contribuire ad un calendario di appuntamenti in real-time. Sulla base di essa è stata fatta una valutazione qualitativa e quantitativa comparando le classiche tecniche di polling con i WebSocket, utilizzati dalle librerie.  Si è visto che in ogni caso un approccio basato sui WebSocket diminuisce la latenza media di notifica di aggiornamento delle risorse, diminuisce lo spreco della banda e favorisce la scalabilità.
 
 In ultimo si è sottolineato come usando un sistema come ListenJS si possa semplificare l'utilizzo dei WebSocket senza costi di sviluppo aggiuntivi, portando a migliorare lo sviluppo, le performance, e conseguentemente l'esperienza utente.
 
