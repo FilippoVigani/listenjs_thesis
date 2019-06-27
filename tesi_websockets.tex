@@ -14,6 +14,7 @@
 \def\UrlBreaks{\do\/\do-}
 \usepackage{breakurl}
 \usepackage[breaklinks]{hyperref}
+\usepackage{subcaption}
 \definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}
 \definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}
 \definecolor{editorGray}{rgb}{0.98, 0.98, 0.98}
@@ -649,7 +650,7 @@ Sebbene ListenJS sia stato pensato in modo da essere framework-agnostic, la logi
 L'indipendenza da framework è stata osservata anche nella parte del back-end, sviluppato in NodeJS\cite{nodejs} utilizzando Fastify\cite{fastify} come framework. L'integrazione con Fastify è stata semplice ed ha permesso di modificare gli oggetti di response del framework tramite degli hook per semplificare ulteriormente la notifica ai client in ascolto su una risorsa.
 \lstinputlisting[caption=ListenJS sample app Fastify hook]{snippets/listenjs_sample_server_hook.js}
 
-L'applicazione è stata configurata con Webpack\cite{webpack} e distribuita su due domini diversi per verificare l'impatto con i CORS: la parte client è stata transpilata per poi essere servita su un sito statico in Apache, mentre la parte server è stata servita mediante un container Docker. Come volevasi dimostrare, per poter sì che l'handshake dei WebSocket funzionasse (così come tutte le altre richieste REST), la parte in NodeJS richiede di avere abilitato i CORS avendo come origine l'altro server da dove veniva servito il client.
+L'applicazione è stata configurata con Webpack\cite{webpack} e distribuita su due domini diversi per verificare l'impatto con i CORS: la parte client è stata transpilata per poi essere servita su un sito statico in Apache, mentre la parte server è stata servita mediante un container Docker. Come volevasi dimostrare, per far sì che l'handshake dei WebSocket funzionasse (così come tutte le altre richieste REST), la parte in NodeJS richiede di avere abilitato i CORS avendo come origine l'altro server da dove veniva servito il client.
 
 \bigskip
 
@@ -663,12 +664,27 @@ Ultima ma non meno importante, è stata valutata la user experience nell'utilizz
 Una prima valutazione sull'efficacia del progetto va fatta confrontando le performance tra il polling e i WebSocket, in quanto sebbene ListenJS non sia l'alternativa unica al polling, grazie alle funzionalità che offre rende più seamless il passaggio da polling a WebSocket come tecnica di aggiornamento delle risorse.
 
 \subsection{Latenza}
-Per quanto riguarda i tempi di risposta medi, sono già stati fatti dei test empirici confrontando polling, long polling e WebSocket\cite{communicating_websocket}. I risultati mostrano che in ogni caso, i WebSocket hanno tempi medi di risposta inferiori rispetto al polling. Per quanto riguarda il long polling, i tempi di risposta sono comparabili con quelli dei WebSocket, ad eccezione dei casi in cui ci sia backpressure\cite{backpressure} sul server: in quel caso i messaggi che il server dovrà inviare al client saranno ritardati dai tempi di apertura di una nuova connessione, in quanto ogni nuovo messaggio da inviare dovrà rimanere in attesa della prossima richiesta di long polling, e i nuovi messaggi in arrivo durante questo tempo di attesa verranno messi in coda, aumentando progressivamente la latenza. La figura \ref{fig:latency} illustra chiaramente questo comportamento, mentre la figura \ref{fig:latency_chart} mette a confronto i risultati ottenuti.
+Per quanto riguarda i tempi di risposta medi, sono già stati fatti dei test empirici confrontando polling, long polling e WebSocket\cite{communicating_websocket}. I risultati mostrano che in ogni caso, i WebSocket hanno tempi medi di risposta inferiori rispetto al polling. Per quanto riguarda il long polling, i tempi di risposta sono comparabili con quelli dei WebSocket, ad eccezione dei casi in cui ci sia backpressure\cite{backpressure} sul server: in quel caso i messaggi che il server dovrà inviare al client saranno ritardati dai tempi di apertura di una nuova connessione, in quanto ogni nuovo messaggio da inviare dovrà rimanere in attesa della prossima richiesta di long polling, e i nuovi messaggi in arrivo durante questo tempo di attesa verranno messi in coda, aumentando progressivamente la latenza. La figura \ref{fig:latency_longpolling} illustra chiaramente questo comportamento, non presente nel caso dei WebSocket in figura \ref{fig:latency_websockets} e del polling, in cui un update viene perso, in figura \ref{fig:latency_polling}, mentre la figura \ref{fig:latency_chart} mette a confronto i risultati ottenuti.
 
-\begin{figure}[htbp]
+\begin{figure}[!htb]
 \centering
-\includegraphics[width=0.9\textwidth]{assets/latency.png}
-\caption{Polling, long polling and WebSocket latency comparison}
+\begin{subfigure}{.5\linewidth}
+  \includegraphics[width=1\linewidth]{assets/latency_websockets.png}
+  \caption{WebSockets}
+  \label{fig:latency_websockets}
+\end{subfigure}%
+\begin{subfigure}{.5\linewidth}
+  \includegraphics[width=1\linewidth]{assets/latency_polling.png}
+  \caption{Polling}
+  \label{fig:latency_polling}
+\end{subfigure}\\[1ex]
+\begin{subfigure}{.6\linewidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{assets/latency_longpolling.png}
+  \caption{Long polling}
+  \label{fig:latency_longpolling}
+\end{subfigure}%
+\caption{WebSocket, polling and long polling latency comparison}
 \label{fig:latency}
 \end{figure}
 
@@ -698,8 +714,8 @@ Vediamo ora 3 casi d'uso differenti in base al numero di client che fanno pollin
 Per avere una stima più bassa possibile (a favore del polling), supponiamo che i dati in risposta alla richiesta di polling vengano inviati solo se il client non ha il dato aggiornato - e conseguentemente il server gestisca una sorta di versionamento della risorsa osservata. Inoltre, supponiamo che la risorsa venga aggiornata ogni 5 secondi ed abbia un payload di dimensione 100 byte. Significa che nel caso del polling dobbiamo aggiungere questa dimensione di payload:
 \begin{enumerate}
 \item \textbf{Use case A}: $1000$ client aprono una nuova connessione ogni $5$ secondi. Il throughput è di $568 \times 1000 / 5 = 113600$ byte al secondo $=> 0.9$ Mbps
-\item \textbf{Use case A}: $10000$ client aprono una nuova connessione ogni $5$ secondi. Il throughput è di $568 \times 10000 / 5 = 1136000$ byte al secondo $=> 9.1$ Mbps
-\item \textbf{Use case A}: $100000$ client aprono una nuova connessione ogni $5$ secondi. Il throughput è di $568 \times 100000 / 5 = 11360000$ byte al secondo $=> 90.9$ Mbps
+\item \textbf{Use case B}: $10000$ client aprono una nuova connessione ogni $5$ secondi. Il throughput è di $568 \times 10000 / 5 = 1136000$ byte al secondo $=> 9.1$ Mbps
+\item \textbf{Use case C}: $100000$ client aprono una nuova connessione ogni $5$ secondi. Il throughput è di $568 \times 100000 / 5 = 11360000$ byte al secondo $=> 90.9$ Mbps
 \end{enumerate}
 
 Nel caso del long polling, si dovrà aprire una nuova connessione per ogni volta che un nuovo dato è ricevuto. Il traffico dati è dato dunque da:
